@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  // overflow: hidden;
+  font-size: 16px;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+img{
+  display: block;
+}
+
+strong,small{
+  display: block;
+}
+
+ul,ol,li{
+  list-style: none;
+}
+
+h1{
+  display: none;
+}

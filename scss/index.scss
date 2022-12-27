@@ -1,0 +1,585 @@
+@import "./style.scss";
+@import "./reset.scss";
+@import "./mixin.scss";
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
+
+
+.grid{
+  //  width: 89.74358974358974%;
+  width: 87.5vw;
+  margin: 0 auto;
+   max-width: 1400px;
+}
+
+section > h2{
+  display: none;
+}
+.gnb{
+  position: fixed;
+  color: #fff;
+}
+header{
+  .banner {
+  position: relative;
+  height: 500vh;
+
+
+
+  &__img{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    h2{
+      position: absolute;
+      left: 50%;
+      z-index: 100;
+      color: #fff;
+      font-family: "Luckiest Guy", cursive;
+      font-size: min(16.5625vw , 90px);
+      transform: translateX(-50%);
+      margin-top: 70px;
+      text-align: center;
+
+      text-shadow: 
+      0 0.1em 20px rgba(174,41,246, 1), 
+      0.05em -0.03em 0 rgba(174,41,246, 1),
+      0.05em 0.005em 0 rgba(174,41,246, 1),
+      0em 0.08em 0 rgba(174,41,246, 1),
+      0.05em 0.08em 0 rgba(174,41,246, 1), 
+      0px -0.03em 0 rgba(174,41,246, 1),
+      -0.03em -0.03em 0 rgba(174,41,246, 1), 
+      -0.03em 0.08em 0 rgba(174,41,246, 1),
+      -0.03em 0 0 rgba(174,41,246, 1);
+    }
+
+    .banner__bg {
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 500vh;
+      height: 500vh;
+      background: rgb(23,30,64);
+      background: linear-gradient(0deg,  rgba(133,198,227,1) 40%, rgba(255,255,255,1) 45%,#5f3f8e 55%, rgba(23,30,64,1) 65%);
+      transform-origin: 50% 50%;
+      transform: translate(-50% ,-50%) rotate(180deg) ;
+      transition: all 600ms cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */;
+
+      
+      @keyframes rotate2 {
+        100%{
+          transform-origin: 50% 50%;
+          transform: translate(-50% ,-50%) rotate(0deg);
+        }
+      }
+
+      &--person {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 200vh;
+        transform: translate(-50% , -50%);
+      }
+
+      &--arm{
+        position: absolute;
+        top:40.6%;
+        left: 50.50%;
+        z-index: 1000;
+        width: 6.7vh;
+        transform-origin: 0% 100%;
+
+        animation: wave 0.7s cubic-bezier(0.785, 0.135, 0.150, 0.860) infinite alternate;
+        @keyframes wave {
+          0% {
+            transform: rotate(-11deg);
+          }
+          100%{
+            transform: rotate(11deg);
+          }
+        }
+      }
+
+    }
+
+    .banner__obj-box{
+      display: flex;
+      position: absolute;
+      top: -30vh;
+      left: 0;
+      width: 100vw; 
+      // transform: translateY(100%);
+      // width: 200vh;
+
+      & > img{
+        position: absolute;
+        transition: all 350ms cubic-bezier(0.680, -0.550, 0.265, 1.550); /* easeInOutBack */
+        transform: translate(-50% -50%);
+      }
+
+      &--cloud1{
+        top: 0;
+        left: 60vw;
+        width: 20vw;
+        min-width: 120px;
+
+      }
+      &--cloud2{
+        top: 0;
+        left: 4vw;
+        z-index: 3;
+        width: 20vw;
+        min-width: 140px;
+        max-width: 180px;
+
+      }
+      &--planet-blue{
+        top: 0;
+        left: 70vw;
+        width: 20vw;
+        min-width: 100px;
+        max-width: 130px;
+
+
+      }
+      &--planet-red{
+        top: 0;
+        left: 20vw;
+        width: 20vw;
+        min-width: 130px;
+        max-width: 180px;
+
+      }
+
+      &.cloud {
+        .banner__obj-box--cloud1{
+          top: min(123.4375vw , 470px ) ;
+        transition-delay: .33s;
+        }
+        .banner__obj-box--cloud2{
+          top: min(143.1250vw , 540px ) ;
+        }
+      }
+
+      &.planet {
+        .banner__obj-box--planet-red{
+          top: min(87.5vw , 280px ) ;
+        transition-delay: .33s;
+        }
+        .banner__obj-box--planet-blue{
+          top: min(125vw , 400px ) ;
+        }
+      }
+      
+    }
+  }//banner__img
+}
+
+  .outer-img{
+    position: relative;
+    height: 200px;
+    background: #5f3f8e;
+    background: linear-gradient(180deg,  rgba(255,255,255,1) -52%,#5f3f8e 55%);
+    &__half{
+      position: absolute;
+      left: 50%;
+      width: 51.68vh;
+      margin-top: -2px;
+      // margin-left: 5.3px;
+      transform: translateX(-50%);
+      transform-origin: 50% 0%;
+    }
+  }//banner
+}
+
+.about{
+  h4{
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  p{
+    line-height: 26px;
+  }
+
+  &-top{
+    &__img{
+      padding: 10px;
+      border: 1.5px solid #ae29f6;
+  
+      img{
+        width: 100%;
+      }
+    }
+
+    &__txt{
+      &-first{
+        margin-bottom: 60px;
+        h3{
+          margin: 30px 0;
+          font-size: 16px;
+          strong{
+            display: inline-block;
+            position: relative;
+            z-index: 20;
+            font-size: 24px;
+
+            &::before{
+              content: "";
+              display: block;
+              position: absolute;
+              bottom: 5px;
+              z-index: -1;
+              width: 100%;
+              height: 5px;
+              background-color: #ae29f6;
+            }
+          }
+        }
+      }
+
+      &-last{
+        margin-bottom: 60px;
+      }
+    }
+  }
+  
+  &-btm{
+    &__img{
+      padding: 10px;
+      border: 1.5px solid #ae29f6;
+    }
+
+    &__txt{
+      &-first,
+      &-last{
+        margin-bottom: 60px;
+      }
+    }
+  }
+}
+.skill{
+  background: #171e40;
+
+  &__contain{
+    position: relative;
+    height: 500vh;
+
+    // width: 320px;
+
+    .skill__sticky{
+      display: flex;
+      position: sticky;
+      top: 0px;
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      overflow: hidden;
+      align-items: center;
+      align-content: space-around;
+      // 174,41,246,1
+      &::before{
+        content: "SKILL";
+        color: #fff;
+        font-size: 15vw;
+        font-family: "Luckiest Guy", cursive;
+        text-shadow: 
+        0 0.1em 20px rgba(174,41,246, 1), 
+        0.05em -0.03em 0 rgba(174,41,246, 1),
+        0.05em 0.005em 0 rgba(174,41,246, 1),
+        0em 0.08em 0 rgba(174,41,246, 1),
+        0.05em 0.08em 0 rgba(174,41,246, 1), 
+        0px -0.03em 0 rgba(174,41,246, 1),
+        -0.03em -0.03em 0 rgba(174,41,246, 1), 
+        -0.03em 0.08em 0 rgba(174,41,246, 1),
+        -0.03em 0 0 rgba(174,41,246, 1);
+      }
+
+      
+      
+      .cards{
+        display: flex;
+        position: absolute;
+        width: 95vw;
+        height: 30vh;
+        align-items: center;
+        justify-content: space-evenly;
+        // transform: translateX(100vw);
+
+
+        &:last-of-type{
+          margin-top: 65.5vw;
+        }
+        &:first-of-type{
+          margin-bottom: 65.5vw;
+        }
+  
+        &__card{
+          position: relative;
+          width: 23.4375vw;
+          height: 30.3125vw;
+          background-color: #fff;
+          line-height : 100%;
+          border-radius: 4.6875vw;
+          text-align: center;
+          line-height: 30.3125vw;
+          transform-style: preserve-3d;
+          transform: perspective(4000px) rotateY(180deg) translateX(100vw);
+          // transition: 300ms;
+
+  
+          &--front,
+          &--back
+          {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            backface-visibility: hidden;
+  
+            img{
+              display: inline-block;
+              width: 14.0625vw;
+              transform: translateY(50%);
+              margin-bottom: 5px;
+            }
+          }
+          &--front{
+            background-color: #fff;
+            border-radius: 4.6875vw;
+
+          }
+          &--back{
+            transform: rotateY(180deg);
+            background-color: #fff;
+            border-radius: 4.6875vw;
+
+
+            &::before{
+              content: "";
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              display: block;
+              width: 100%;
+              height: 55%;
+              background-color: #ae29f6;
+              
+            }
+          }
+        }
+        
+      }
+  }
+  }
+} //skill
+
+.about{
+  padding-top: 500px;
+  background-color: #171e40;
+  background: linear-gradient(180deg,  #5f3f8e 0%,#171e40 55%);
+  color: #fff;
+}
+
+
+.work{
+  position: relative;
+  background-size: cover;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+  & > img{
+    position: absolute;
+    left: 50%;
+    z-index: -2;
+    // width: 100%;
+    height: 100vh;
+    transform: translateX(-50%);
+    filter: blur(4px);
+
+    @include responsive(tablet-screens) {
+      width: 100%;
+    }
+  }
+  &::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg,#5f3f8e 0%, rgba(23,30,64,1) 100%);;
+    opacity: 0.5;
+    
+    }
+
+  .work-des{
+    z-index: 100;
+    @include responsive(tablet-screens) {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__rf-contain{
+      border: 1.5px solid #ae29f6;
+        padding: 10px;
+
+
+      @include responsive(tablet-screens) {
+        padding: 0px;
+        overflow: hidden;
+        height : fit-content;
+        width: 50%;
+        height: 25vw;
+      }
+
+      img{
+        width: 100%;
+
+        @include responsive(tablet-screens) {
+          width: 150%;
+        }
+      }
+    }
+
+    &__lf-contain{
+      width: 50%;
+
+
+      h3{
+        margin: 20px 0;
+        font-size: 28px;
+      }
+
+      small{
+        padding-top: 30px;
+        border-top: #ae29f6 1.5px solid;
+        font-size: 14px;
+        color: #c6c6c6;
+      }
+
+      strong{
+        margin: 20px 0;
+
+      }
+      &--time{
+        font-size: 14px;
+      }
+
+      &--skill{
+        margin: 20px 0 50px;
+        color: #c6c6c6;
+        font-size: 14px;
+        word-spacing: 10px;
+      }
+
+      .work__btns{
+        button{
+          width: 100px;
+          height:30px;
+          margin-bottom: 20px;
+          background: transparent;
+          color: #fff;
+          border-color: #fff;
+        }
+      }
+    }
+
+  }
+}
+
+.contect{
+  padding: 80px 0;
+  background-color: #171e40;
+
+  @include responsive(tablet-screens) {
+    // display: flex;
+  }
+  h2{
+    font-family: "Luckiest Guy", cursive;
+    text-shadow: 
+    0 0.1em 20px rgba(174,41,246, 1), 
+    0.05em -0.03em 0 rgba(174,41,246, 1),
+    0.05em 0.005em 0 rgba(174,41,246, 1),
+    0em 0.08em 0 rgba(174,41,246, 1),
+    0.05em 0.08em 0 rgba(174,41,246, 1), 
+    0px -0.03em 0 rgba(174,41,246, 1),
+    -0.03em -0.03em 0 rgba(174,41,246, 1), 
+    -0.03em 0.08em 0 rgba(174,41,246, 1),
+    -0.03em 0 0 rgba(174,41,246, 1);
+    color: #fff;
+    font-size: min(10vw , 48px)  ;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__sns{
+    display: grid;
+    padding: 6.2500vw;
+    grid-template-columns: 43.1250vw  29.0625vw;
+    gap: min( 2.2500vw, 30px);
+    border: 1.5px solid #ae29f6;
+    justify-content: center;
+    overflow: hidden;
+
+    @include responsive(tablet-screens) {
+      display: flex;
+      border: none;
+      padding: 1.7857vw;
+    }
+
+
+    &--github,
+    &--velog{
+      width: min(43.1250vw , 290px);
+      img{
+        width: 100%;
+        border-radius: min(4.6875vw , 30px);
+
+      }
+    }
+    &--gmail{
+      width: min(29.0625vw , 197px);
+      height: min(32.5vw, 217px);
+      text-align: center;
+      background-color: #fff;
+      border-radius: min(4.6875vw , 30px);
+      line-height:  min(32.5vw, 217px);
+
+
+      img{
+        display: inline-block;
+        width:59.1397%;
+        margin: 0 auto;
+        transform: translateY(50%);
+      }
+    }
+
+    &--character{
+      position: relative;
+      width: 29.0625vw;
+      // top: min( 6.2500vw, 25px);
+      // left:  min( 6.2500vw, 25px);
+      height: 32.5vw;
+      transform: scale(1.10);
+        @include responsive(tablet-screens) {
+          transform: scale(1);
+
+          // position: absolute;
+    
+        }
+      svg{
+        position: absolute;
+        left: 0px;
+        width: 52.5vw;
+      }
+    }
+  }
+}
