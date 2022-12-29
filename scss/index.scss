@@ -322,6 +322,7 @@ header{
 .skill{
   background: #171e40;
   margin-bottom: 100px;
+  width: 100vw;
 
   &__contain{
     position: relative;
@@ -339,6 +340,7 @@ header{
       overflow: hidden;
       align-items: center;
       align-content: space-around;
+
       &::before{
         content: "SKILL";
         color: #fff;
@@ -465,150 +467,202 @@ header{
 
 .work{
   position: relative;
-  height: 100vh;
+  height: 600vh;
+  width: 100%;
   color: #fff;
-  overflow: hidden;
-  // min-height: 600px;
-  display: flex;
-  align-items: center;
 
-
-  & > img{
-    position: absolute;
-    left: 50%;
-    z-index: -2;
-    // width: 100%;
-    height: 100vh;
-    // min-height: 600px;
-    transform: translateX(-50%);
-    filter: blur(4px);
-
-    @include responsive(tablet-screens) {
-      width: 100%;
-    }
-  }
-  &::before{
-    content: "";
-    display: block;
-    position: absolute;
+  
+  &__sticky{
+    position: sticky;
     top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(270deg,#5f3f8e 0%, rgba(23,30,64,1) 100%);;
-    opacity: 0.5;
+    height: 100vh;
+    width: 100vw;
     
-    }
+    // overflow: hidden;
 
-  .work-des{
-    z-index: 100;
+   
 
-    @include responsive(tablet-screens) {
+  
+    .work__abs-box{ 
       display: flex;
-      flex-direction: row-reverse;
-      height: 33.5714vw;
-      max-height: 400px;
-      min-height: 330px;
-      justify-content: center;
-    }
+      position: absolute;
+      left: 0px;
+      background: #171e40;
 
-    &__rf-contain{
-        height: fit-content;
-        width: 100%;
-        padding: 10px;
-        border: 1.5px solid #ae29f6;
 
-        @include responsive(tablet-screens) {
-          padding: 15px;
-          width: 45%;
-          height: 100%;
-        }
+      .work-list{
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #171e40;
 
-        &--border {
+
+
+        &__bg{
+          z-index: 1;
+          position: absolute;
+          height: 100vh;
           overflow: hidden;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
+          top: 0;
+          left: 0;
 
-          img {
-            // height: 100%;
+          & > img{
             width: 100%;
+            object-fit: cover;
+            height: 100%;
+            filter: blur(4px);
+            object-fit: cover;
+            display: inline-block;
+          }
+
+          &::before{
+            content: "";
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg,#5f3f8e 0%, rgba(23,30,64,1) 100%);;
+            opacity: 0.5;
+            }
+        }  // bg
+        .work-des{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          z-index: 100;
+          
+        @include responsive(tablet-screens) {
+          display: flex;
+          flex-direction: row-reverse;
+        }
+  
+          &__rf-contain{
+              line-height: 100vh;
+              padding: 10px;
+              border: 1.5px solid #ae29f6;
+              z-index: 100;
+              height: fit-content;
+              height: 33.5714vw;
+              max-height: 400px;
+               min-height: 330px;
+      
+              @include responsive(tablet-screens) {
+                padding: 15px;
+                width: 45%;
+              }
+      
+              &--border {
+                position: relative;
+                overflow: hidden;
+                height: 100%;
+      
+                img {
+                  height: 100%;
+                  object-fit: cover;
+                  width: 100%;
+                  display: block;
+                }
+              }
+          }
+      
+          &__lf-contain{
+            width: 100%;
+            height: 100%;
+  
+            height: fit-content;
             @include responsive(tablet-screens) {
-              width: 210%;
+              justify-content: center;
+              flex-direction: column;
+              width: 50%;
+              display: flex;
+            }
+      
+            h3{
+              margin: 20px 0;
+              font-size: clamp(20px , 3.4286vw , 48px);
+              @include responsive(tablet-screens) {
+                margin:  0 0 20px 0;
+              }
+            }
+      
+            small{
+              padding-top: 30px;
+              border-top: #ae29f6 1.5px solid;
+              font-size:clamp(14px , 1.5714vw , 22px);
+              color: #c6c6c6;
+            }
+      
+            strong{
+              margin: 20px 0;
+              font-size:clamp(18px , 1.8714vw , 26px);
+      
+            }
+            &--time{
+              // font-size: 14px;
+              font-size:clamp(14px , 1.5714vw , 22px);
+      
+            }
+      
+            &--skill{
+              margin: 20px 0 50px;
+              color: #c6c6c6;
+              // font-size: 14px;
+              word-spacing: 10px;
+              font-size:clamp(14px , 1.5714vw , 22px);
+  
+              @include responsive(tablet-screens) {
+                margin: 20px 0 30px;
+              }
+            
+      
+            }
+          
+            .work__btns{
+              button{
+                width: 7.1429vw;
+                height: 2.1429vw;
+                min-width: 90px;
+                max-width: 120px;
+                min-height: 30px;
+                max-height: 35px;
+                border: 1.5px solid #ae29f6;
+                cursor: pointer;
+                font-size:clamp(14px , 1.5714vw , 20px);
+  
+  
+                @include responsive(tablet-screens) {
+                  width: 10.1429vw;
+                  height: 4.1429vw;
+                  max-width: 140px;
+                  max-height: 45px;
+                }
+                background: transparent;
+                color: #fff;
+              }
             }
           }
-        }
+        } //work-des
+      } //work-list
     }
-
-    &__lf-contain{
-      width: 100%;
-      height: 100%;
-
-      @include responsive(tablet-screens) {
-        width: 50%;
-      }
-
-      h3{
-        margin: 20px 0;
-        font-size: clamp(20px , 3.4286vw , 48px);
-        @include responsive(tablet-screens) {
-          margin:  0 0 20px 0;
-        }
-      }
-
-      small{
-        padding-top: 30px;
-        border-top: #ae29f6 1.5px solid;
-        font-size:clamp(14px , 1.5714vw , 22px);
-        color: #c6c6c6;
-      }
-
-      strong{
-        margin: 20px 0;
-        font-size:clamp(18px , 1.8714vw , 26px);
-
-      }
-      &--time{
-        // font-size: 14px;
-        font-size:clamp(14px , 1.5714vw , 22px);
-
-      }
-
-      &--skill{
-        margin: 20px 0 50px;
-        color: #c6c6c6;
-        // font-size: 14px;
-        word-spacing: 10px;
-        font-size:clamp(14px , 1.5714vw , 22px);
-
-      }
-    
-      .work__btns{
-        button{
-          width: 7.1429vw;
-          height: 2.1429vw;
-          min-width: 90px;
-          max-width: 120px;
-          min-height: 30px;
-          max-height: 35px;
-          border: 1.5px solid #ae29f6;
-          cursor: pointer;
-        
-          background: transparent;
-          color: #fff;
-        }
-        
-      }
-    }
-
   }
 }
 
 .contect{
   padding: 80px 0;
   background-color: #171e40;
+  height: 100vh;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
 
   @include responsive(tablet-screens) {
     // display: flex;
@@ -632,6 +686,7 @@ header{
   }
 
   &__sns{
+
     display: grid;
     padding: 6.2500vw;
     grid-template-columns: 1fr 1fr;
@@ -639,14 +694,13 @@ header{
     gap: min( 2.2500vw, 30px);
     border: 1.5px solid #ae29f6;
     justify-content: center;
+    margin: 0 10px;
     overflow: hidden;
 
     @include responsive(tablet-screens) {
       display: flex;
       padding: 1.7857vw;
       width: fit-content;
-      // margin: 0 10px;
-      // border: none;
     }
 
     // @include responsive(tablet-screens) {
