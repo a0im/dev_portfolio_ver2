@@ -158,9 +158,18 @@ header{
         .banner__obj-box--cloud1{
           top: min(123.4375vw , 470px ) ;
         transition-delay: .33s;
+
+        @include responsive(tablet-screens) {
+          top: min(123.4375vw , 670px ) ;
+        }
         }
         .banner__obj-box--cloud2{
-          top: min(143.1250vw , 540px ) ;
+            top: min(143.1250vw , 540px ) ;
+
+          @include responsive(tablet-screens) {
+            top: min(123.4375vw , 740px ) ;
+      
+          }
         }
       }
 
@@ -168,9 +177,19 @@ header{
         .banner__obj-box--planet-red{
           top: min(87.5vw , 280px ) ;
         transition-delay: .33s;
+
+        @include responsive(tablet-screens) {
+          top: min(123.4375vw , 480px ) ;
+      
+        }
         }
         .banner__obj-box--planet-blue{
           top: min(125vw , 400px ) ;
+
+          @include responsive(tablet-screens) {
+            top: min(123.4375vw , 600px ) ;
+      
+          }
         }
       }
       
@@ -195,7 +214,15 @@ header{
   }//banner
 }
 
+
+
 .about{
+  padding-top: 500px;
+  background-color: #171e40;
+  background: linear-gradient(180deg,  #5f3f8e 0%,#171e40 55%);
+  color: #fff;
+
+
   h4{
     font-size: 22px;
     margin-bottom: 30px;
@@ -206,18 +233,34 @@ header{
   }
 
   &-top{
+    @include responsive(tablet-screens) {
+      display: flex;
+      flex-direction: row-reverse;
+    }
     &__img{
       padding: 10px;
-      border: 1.5px solid #ae29f6;
-  
+
+      @include responsive(tablet-screens) {
+        width: 44.4444vw;
+        max-width: 640px;
+      }
+ 
       img{
         width: 100%;
       }
     }
 
     &__txt{
+
+      @include responsive(tablet-screens) {
+        width: 40vw;
+        max-width: 530px;
+      }
+
+
       &-first{
         margin-bottom: 60px;
+        width: 100%;
         h3{
           margin: 30px 0;
           font-size: 16px;
@@ -242,18 +285,33 @@ header{
       }
 
       &-last{
+        width: 100%;
         margin-bottom: 60px;
       }
     }
   }
   
   &-btm{
+    @include responsive(tablet-screens) {
+      display: flex;
+    }
+
     &__img{
       padding: 10px;
-      border: 1.5px solid #ae29f6;
+      @include responsive(tablet-screens) {
+        width: 44.4444vw;
+        max-width: 640px;
+      }
+      width: 100%;
     }
 
     &__txt{
+
+      @include responsive(tablet-screens) {
+        width: 40vw;
+        max-width: 530px;
+      }
+
       &-first,
       &-last{
         margin-bottom: 60px;
@@ -263,6 +321,7 @@ header{
 }
 .skill{
   background: #171e40;
+  margin-bottom: 100px;
 
   &__contain{
     position: relative;
@@ -280,7 +339,6 @@ header{
       overflow: hidden;
       align-items: center;
       align-content: space-around;
-      // 174,41,246,1
       &::before{
         content: "SKILL";
         color: #fff;
@@ -308,13 +366,23 @@ header{
         align-items: center;
         justify-content: space-evenly;
         // transform: translateX(100vw);
+        @include responsive(tablet-screens) {
+          justify-content: center;
+        }
 
 
         &:last-of-type{
           margin-top: 65.5vw;
+          @include responsive(tablet-screens) {
+            margin-top: 370px;
+          }
         }
         &:first-of-type{
           margin-bottom: 65.5vw;
+          @include responsive(tablet-screens) {
+            margin-bottom: 370px;
+
+          }
         }
   
         &__card{
@@ -325,10 +393,19 @@ header{
           line-height : 100%;
           border-radius: 4.6875vw;
           text-align: center;
-          line-height: 30.3125vw;
+          box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.78);
+
+
           transform-style: preserve-3d;
           transform: perspective(4000px) rotateY(180deg) translateX(100vw);
-          // transition: 300ms;
+          @include responsive(tablet-screens) {
+            margin: 0 10px;
+            border-radius: 20px;
+            max-width: 140px;
+            max-height: 170px;
+            justify-content: center;
+          }
+
 
   
           &--front,
@@ -339,12 +416,14 @@ header{
             height: 100%;
             overflow: hidden;
             backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
   
             img{
               display: inline-block;
-              width: 14.0625vw;
-              transform: translateY(50%);
-              margin-bottom: 5px;
+              width: 50%;
+              z-index: 100;
             }
           }
           &--front{
@@ -357,15 +436,19 @@ header{
             background-color: #fff;
             border-radius: 4.6875vw;
 
+            @include responsive(tablet-screens) {
+            border-radius: 20px;
+            }
+
 
             &::before{
               content: "";
+              display: block;
               position: absolute;
               top: 50%;
-              transform: translateY(-50%);
-              display: block;
-              width: 100%;
+              width: 120%;
               height: 55%;
+              transform: translateY(-50%);
               background-color: #ae29f6;
               
             }
@@ -377,26 +460,26 @@ header{
   }
 } //skill
 
-.about{
-  padding-top: 500px;
-  background-color: #171e40;
-  background: linear-gradient(180deg,  #5f3f8e 0%,#171e40 55%);
-  color: #fff;
-}
+
 
 
 .work{
   position: relative;
-  background-size: cover;
-  color: #fff;
   height: 100vh;
+  color: #fff;
   overflow: hidden;
+  // min-height: 600px;
+  display: flex;
+  align-items: center;
+
+
   & > img{
     position: absolute;
     left: 50%;
     z-index: -2;
     // width: 100%;
     height: 100vh;
+    // min-height: 600px;
     transform: translateX(-50%);
     filter: blur(4px);
 
@@ -420,75 +503,103 @@ header{
 
   .work-des{
     z-index: 100;
+
     @include responsive(tablet-screens) {
       display: flex;
       flex-direction: row-reverse;
-      align-items: center;
-      justify-content: space-between;
+      height: 33.5714vw;
+      max-height: 400px;
+      min-height: 330px;
+      justify-content: center;
     }
 
     &__rf-contain{
-      border: 1.5px solid #ae29f6;
-        padding: 10px;
-
-
-      @include responsive(tablet-screens) {
-        padding: 0px;
-        overflow: hidden;
-        height : fit-content;
-        width: 50%;
-        height: 25vw;
-      }
-
-      img{
+        height: fit-content;
         width: 100%;
+        padding: 10px;
+        border: 1.5px solid #ae29f6;
 
         @include responsive(tablet-screens) {
-          width: 150%;
+          padding: 15px;
+          width: 45%;
+          height: 100%;
         }
-      }
+
+        &--border {
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+
+          img {
+            // height: 100%;
+            width: 100%;
+            display: block;
+            @include responsive(tablet-screens) {
+              width: 210%;
+            }
+          }
+        }
     }
 
     &__lf-contain{
-      width: 50%;
+      width: 100%;
+      height: 100%;
 
+      @include responsive(tablet-screens) {
+        width: 50%;
+      }
 
       h3{
         margin: 20px 0;
-        font-size: 28px;
+        font-size: clamp(20px , 3.4286vw , 48px);
+        @include responsive(tablet-screens) {
+          margin:  0 0 20px 0;
+        }
       }
 
       small{
         padding-top: 30px;
         border-top: #ae29f6 1.5px solid;
-        font-size: 14px;
+        font-size:clamp(14px , 1.5714vw , 22px);
         color: #c6c6c6;
       }
 
       strong{
         margin: 20px 0;
+        font-size:clamp(18px , 1.8714vw , 26px);
 
       }
       &--time{
-        font-size: 14px;
+        // font-size: 14px;
+        font-size:clamp(14px , 1.5714vw , 22px);
+
       }
 
       &--skill{
         margin: 20px 0 50px;
         color: #c6c6c6;
-        font-size: 14px;
+        // font-size: 14px;
         word-spacing: 10px;
-      }
+        font-size:clamp(14px , 1.5714vw , 22px);
 
+      }
+    
       .work__btns{
         button{
-          width: 100px;
-          height:30px;
-          margin-bottom: 20px;
+          width: 7.1429vw;
+          height: 2.1429vw;
+          min-width: 90px;
+          max-width: 120px;
+          min-height: 30px;
+          max-height: 35px;
+          border: 1.5px solid #ae29f6;
+          cursor: pointer;
+        
           background: transparent;
           color: #fff;
-          border-color: #fff;
         }
+        
       }
     }
 
@@ -515,7 +626,7 @@ header{
     -0.03em 0.08em 0 rgba(174,41,246, 1),
     -0.03em 0 0 rgba(174,41,246, 1);
     color: #fff;
-    font-size: min(10vw , 48px)  ;
+    font-size: min(12vw , 64px)  ;
     text-align: center;
     margin-bottom: 20px;
   }
@@ -523,7 +634,8 @@ header{
   &__sns{
     display: grid;
     padding: 6.2500vw;
-    grid-template-columns: 43.1250vw  29.0625vw;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
     gap: min( 2.2500vw, 30px);
     border: 1.5px solid #ae29f6;
     justify-content: center;
@@ -531,49 +643,37 @@ header{
 
     @include responsive(tablet-screens) {
       display: flex;
-      border: none;
       padding: 1.7857vw;
+      width: fit-content;
+      // margin: 0 10px;
+      // border: none;
     }
+
+    // @include responsive(tablet-screens) {
+    //   width: 33%;
+    // }
 
 
     &--github,
-    &--velog{
-      width: min(43.1250vw , 290px);
+    &--velog,
+    &--gmail
+    {
+      // width: min(43.1250vw , 290px);
+
       img{
         width: 100%;
         border-radius: min(4.6875vw , 30px);
-
       }
     }
-    &--gmail{
-      width: min(29.0625vw , 197px);
-      height: min(32.5vw, 217px);
-      text-align: center;
-      background-color: #fff;
-      border-radius: min(4.6875vw , 30px);
-      line-height:  min(32.5vw, 217px);
 
-
-      img{
-        display: inline-block;
-        width:59.1397%;
-        margin: 0 auto;
-        transform: translateY(50%);
-      }
-    }
 
     &--character{
       position: relative;
       width: 29.0625vw;
-      // top: min( 6.2500vw, 25px);
-      // left:  min( 6.2500vw, 25px);
-      height: 32.5vw;
       transform: scale(1.10);
         @include responsive(tablet-screens) {
           transform: scale(1);
-
-          // position: absolute;
-    
+          display: none;
         }
       svg{
         position: absolute;
