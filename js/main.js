@@ -1,25 +1,22 @@
       // setTimeout(()=> scrollTo(0,0),100)
 
 
+
+      //skill
       class CardFlipOnScroll{
         constructor(wrapper , sticky , cards){
           this.wrapper = wrapper
           this.sticky = sticky
-          this.cards = cards.querySelectorAll('.cards__card')
-          this.length = this.cards.length
-
           this.start = 0
           this.end = 0
           this.step = 0
-
-          
+          this.cards = cards.querySelectorAll('.cards__card')
+          this.length = this.cards.length
         }       
         init(option = 0){
             this.start = this.wrapper.offsetTop
             this.end = this.wrapper.offsetTop + this.wrapper.offsetHeight - innerHeight * 1.2
             this.step = (this.end - this.start) / (this.length * 2) + option
-            console.log(option);
-            console.log(this.step)
         }
         animate(){
           this.cards.forEach((card, i) => {
@@ -70,8 +67,11 @@
 
 
       // 0 타이틀 구름위로 회전 행성 타이틀 종료 
+      //banner
 
-      class BannerRotateOnScroll{
+
+
+      class BannerRotateOnScroll {
         constructor(wrapper , sticky){
           this.wrapper = wrapper
           this.sticky = sticky
@@ -131,6 +131,7 @@
           }
         }
       }
+
       const $banner_sticky = document.querySelector('.banner__img')
       const $banner = document.querySelector('.banner')
       const bannerRotateOnScroll = new BannerRotateOnScroll( $banner , $banner_sticky)
@@ -142,10 +143,13 @@
         if (checkRAF) return ;
         checkRAF = true
         requestAnimationFrame(()=>{
+
           bannerRotateOnScroll.animate(scrollYvalue)
+
           cardFlipOnScroll1.animate()
           cardFlipOnScroll2.animate()
           cardFlipOnScroll3.animate()
+
           checkRAF = false
         })
         
@@ -159,3 +163,24 @@
         cardFlipOnScroll2.init(20)
         cardFlipOnScroll3.init(10)
       })
+
+
+     class WorkSlideVerticalOnScroll {
+       constructor (wrapper , sticky){
+          this.wrapper = wrapper
+          this.sticky = sticky
+          this.start = 0
+          this.end = 0
+          this.step = 0
+          this.
+       }
+       init(){
+        this.start = this.wrapper.offsetTop
+        this.end = this.wrapper.offsetTop +this. wrapper.offsetHeight - innerHeight
+        this.step = (this.end - this.start) / this.section
+       }
+       scroll(){
+
+       }
+     }
+     const workSlideVerticalOnScroll = new WorkSlideVerticalOnScroll

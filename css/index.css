@@ -218,6 +218,8 @@ header .outer-img__half {
 }
 
 .about {
+  position: relative;
+  height: 200vh;
   padding-top: 500px;
   background-color: #171e40;
   background: linear-gradient(180deg, #5f3f8e 0%, #171e40 55%);
@@ -230,14 +232,20 @@ header .outer-img__half {
 .about p {
   line-height: 26px;
 }
+.about-top {
+  margin-bottom: 60px;
+}
 @media screen and (min-width: 768px) {
   .about-top {
     display: flex;
     flex-direction: row-reverse;
+    margin-bottom: 200px;
+    justify-content: space-between;
   }
 }
 .about-top__img {
   padding: 10px;
+  border: 1px solid #ae29f6;
 }
 @media screen and (min-width: 768px) {
   .about-top__img {
@@ -255,8 +263,8 @@ header .outer-img__half {
   }
 }
 .about-top__txt-first {
-  margin-bottom: 60px;
   width: 100%;
+  margin-bottom: 60px;
 }
 .about-top__txt-first h3 {
   margin: 30px 0;
@@ -285,17 +293,22 @@ header .outer-img__half {
 @media screen and (min-width: 768px) {
   .about-btm {
     display: flex;
+    justify-content: space-between;
   }
 }
 .about-btm__img {
-  padding: 10px;
   width: 100%;
+  padding: 10px;
+  border: #ae29f6 1px solid;
 }
 @media screen and (min-width: 768px) {
   .about-btm__img {
     width: 44.4444vw;
-    max-width: 640px;
   }
+}
+.about-btm__img img {
+  width: 50%;
+  margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
   .about-btm__txt {
@@ -308,9 +321,9 @@ header .outer-img__half {
 }
 
 .skill {
+  width: 100vw;
   background: #171e40;
   margin-bottom: 100px;
-  width: 100vw;
 }
 .skill__contain {
   position: relative;
@@ -386,20 +399,20 @@ header .outer-img__half {
   }
 }
 .skill__contain .skill__sticky .cards__card--front, .skill__contain .skill__sticky .cards__card--back {
+  display: flex;
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 .skill__contain .skill__sticky .cards__card--front img, .skill__contain .skill__sticky .cards__card--back img {
   display: inline-block;
-  width: 50%;
   z-index: 100;
+  width: 50%;
 }
 .skill__contain .skill__sticky .cards__card--front {
   background-color: #fff;
@@ -428,16 +441,16 @@ header .outer-img__half {
 
 .work {
   position: relative;
-  height: 600vh;
   width: 100%;
+  height: 600vh;
   color: #fff;
 }
 .work__sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 }
 .work__sticky .work__abs-box {
   display: flex;
@@ -446,30 +459,30 @@ header .outer-img__half {
   background: #171e40;
 }
 .work__sticky .work__abs-box .work-list {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
   display: flex;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   background: #171e40;
 }
 .work__sticky .work__abs-box .work-list__bg {
-  z-index: 1;
   position: absolute;
-  height: 100vh;
-  overflow: hidden;
   top: 0;
   left: 0;
+  z-index: 1;
+  height: 100vh;
+  overflow: hidden;
 }
 .work__sticky .work__abs-box .work-list__bg > img {
+  display: inline-block;
   width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  height: 100%;
   filter: blur(4px);
   object-fit: cover;
-  display: inline-block;
 }
 .work__sticky .work__abs-box .work-list__bg::before {
   content: "";
@@ -485,9 +498,9 @@ header .outer-img__half {
 }
 .work__sticky .work__abs-box .work-list .work-des {
   display: flex;
+  z-index: 100;
   flex-direction: column;
   align-items: center;
-  z-index: 100;
 }
 @media screen and (min-width: 768px) {
   .work__sticky .work__abs-box .work-list .work-des {
@@ -496,34 +509,34 @@ header .outer-img__half {
   }
 }
 .work__sticky .work__abs-box .work-list .work-des__rf-contain {
-  line-height: 100vh;
-  padding: 10px;
-  border: 1.5px solid #ae29f6;
   z-index: 100;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   height: 33.5714vw;
+  padding: 10px;
+  line-height: 100vh;
+  border: 1.5px solid #ae29f6;
   max-height: 400px;
   min-height: 330px;
 }
 @media screen and (min-width: 768px) {
   .work__sticky .work__abs-box .work-list .work-des__rf-contain {
-    padding: 15px;
     width: 45%;
+    padding: 15px;
   }
 }
 .work__sticky .work__abs-box .work-list .work-des__rf-contain--border {
   position: relative;
-  overflow: hidden;
   height: 100%;
+  overflow: hidden;
 }
 .work__sticky .work__abs-box .work-list .work-des__rf-contain--border img {
+  display: block;
+  width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  width: 100%;
-  display: block;
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain {
   width: 100%;
@@ -534,10 +547,10 @@ header .outer-img__half {
 }
 @media screen and (min-width: 768px) {
   .work__sticky .work__abs-box .work-list .work-des__lf-contain {
+    display: flex;
+    width: 50%;
     justify-content: center;
     flex-direction: column;
-    width: 50%;
-    display: flex;
   }
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain h3 {
@@ -596,14 +609,14 @@ header .outer-img__half {
 }
 
 .contect {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
   padding: 80px 0;
   background-color: #171e40;
-  height: 100vh;
-  display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
 }
 .contect h2 {
   font-family: "Luckiest Guy", cursive;
@@ -615,22 +628,22 @@ header .outer-img__half {
 }
 .contect__sns {
   display: grid;
+  margin: 0 10px;
   padding: 6.25vw;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: min(2.25vw, 30px);
   border: 1.5px solid #ae29f6;
   justify-content: center;
-  margin: 0 10px;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
   .contect__sns {
     display: flex;
-    padding: 1.7857vw;
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
+    padding: 1.7857vw;
   }
 }
 .contect__sns--github img, .contect__sns--velog img, .contect__sns--gmail img {
@@ -644,8 +657,8 @@ header .outer-img__half {
 }
 @media screen and (min-width: 768px) {
   .contect__sns--character {
-    transform: scale(1);
     display: none;
+    transform: scale(1);
   }
 }
 .contect__sns--character svg {
