@@ -46,12 +46,48 @@ section > h2 {
   color: #fff;
 }
 
+header nav .gnb {
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-bottom: #ae29f6 1.5px solid;
+}
+header nav .gnb li {
+  width: 15%;
+  height: 25px;
+  text-align: center;
+  position: relative;
+}
+header nav .gnb li a {
+  color: #5a5753;
+  color: #ae29f6;
+  line-height: 25px;
+}
+header nav .gnb li a:hover {
+  color: #fff;
+}
+header nav .gnb li a::before {
+  content: "";
+  display: block;
+  background-color: #ae29f6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 330ms ease;
+  width: 0%;
+  height: 100%;
+}
+header nav .gnb li a:hover::before {
+  width: 100%;
+  color: #ae29f6;
+}
 header .banner {
   position: relative;
   height: 500vh;
 }
 header .banner__img {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100%;
@@ -83,12 +119,6 @@ header .banner__img .banner__bg {
   transform: translate(-50%, -50%) rotate(180deg);
   transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
 }
-@-webkit-keyframes rotate2 {
-  100% {
-    transform-origin: 50% 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-}
 @keyframes rotate2 {
   100% {
     transform-origin: 50% 50%;
@@ -109,16 +139,7 @@ header .banner__img .banner__bg--arm {
   z-index: 1000;
   width: 6.7vh;
   transform-origin: 0% 100%;
-  -webkit-animation: wave 0.7s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite alternate;
-          animation: wave 0.7s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite alternate;
-}
-@-webkit-keyframes wave {
-  0% {
-    transform: rotate(-11deg);
-  }
-  100% {
-    transform: rotate(11deg);
-  }
+  animation: wave 0.7s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite alternate;
 }
 @keyframes wave {
   0% {
@@ -204,7 +225,7 @@ header .banner__img .banner__obj-box.planet .banner__obj-box--planet-blue {
 }
 header .outer-img {
   position: relative;
-  height: 200px;
+  height: 250px;
   background: #5f3f8e;
   background: linear-gradient(180deg, rgb(255, 255, 255) -52%, #5f3f8e 55%);
 }
@@ -323,7 +344,6 @@ header .outer-img__half {
 .skill {
   width: 100vw;
   background: #171e40;
-  margin-bottom: 100px;
 }
 .skill__contain {
   position: relative;
@@ -331,7 +351,6 @@ header .outer-img__half {
 }
 .skill__contain .skill__sticky {
   display: flex;
-  position: -webkit-sticky;
   position: sticky;
   top: 0px;
   width: 100%;
@@ -404,8 +423,7 @@ header .outer-img__half {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   align-items: center;
   justify-content: center;
 }
@@ -446,17 +464,18 @@ header .outer-img__half {
   color: #fff;
 }
 .work__sticky {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 .work__sticky .work__abs-box {
   display: flex;
   position: absolute;
   left: 0px;
   background: #171e40;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* easeInOutBack */
 }
 .work__sticky .work__abs-box .work-list {
   display: flex;
@@ -479,8 +498,7 @@ header .outer-img__half {
   display: inline-block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   filter: blur(4px);
   object-fit: cover;
 }
@@ -510,8 +528,6 @@ header .outer-img__half {
 }
 .work__sticky .work__abs-box .work-list .work-des__rf-contain {
   z-index: 100;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   height: 33.5714vw;
   padding: 10px;
@@ -535,14 +551,11 @@ header .outer-img__half {
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain {
   width: 100%;
   height: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
 }
 @media screen and (min-width: 768px) {
@@ -640,8 +653,6 @@ header .outer-img__half {
 @media screen and (min-width: 768px) {
   .contect__sns {
     display: flex;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     padding: 1.7857vw;
   }

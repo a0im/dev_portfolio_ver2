@@ -8,7 +8,7 @@
   //  width: 89.74358974358974%;
   width: 87.5vw;
   margin: 0 auto;
-   max-width: 1400px;
+  max-width: 1400px;
 }
 
 section > h2{
@@ -19,11 +19,58 @@ section > h2{
   color: #fff;
 }
 header{
+  nav {
+    .gnb{
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      background-color: rgba(0,0,0,0.7);
+      border-bottom: #ae29f6 1.5px solid;
+
+      li{
+        width: 15%;
+        height: 25px;
+        text-align: center;
+        position: relative;
+        
+        a{
+          color: #5a5753;
+          color: #ae29f6;
+          
+        line-height: 25px;
+
+          &:hover{
+            color : #fff;
+
+        
+          }
+
+          &::before{
+            content: "";
+            display: block;
+
+            background-color: #ae29f6;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 330ms ease;
+            width: 0%;
+            height: 100%;
+          }
+
+          &:hover::before{
+            width: 100%;
+            color: #ae29f6;
+          }
+        }
+      }
+    }
+  }
+
   .banner {
   position: relative;
   height: 500vh;
-
-
 
   &__img{
     position: sticky;
@@ -199,7 +246,7 @@ header{
 
   .outer-img{
     position: relative;
-    height: 200px;
+    height: 250px;
     background: #5f3f8e;
     background: linear-gradient(180deg,  rgba(255,255,255,1) -52%,#5f3f8e 55%);
     &__half{
@@ -339,7 +386,7 @@ header{
 .skill{
   width: 100vw;
   background: #171e40;
-  margin-bottom: 100px;
+  // margin-bottom: 100px;
 
   &__contain{
     position: relative;
@@ -494,10 +541,8 @@ header{
     top: 0;
     width: 100vw;
     height: 100vh;
-    
-    // overflow: hidden;
+    overflow: hidden;
 
-   
 
   
     .work__abs-box{ 
@@ -505,6 +550,7 @@ header{
       position: absolute;
       left: 0px;
       background: #171e40;
+      transition: all .5s cubic-bezier(0.25, 1, 0.5, 1); /* easeInOutBack */
 
 
       .work-list{
@@ -548,6 +594,7 @@ header{
             opacity: 0.5;
             }
         }  // bg
+
         .work-des{
           display: flex;
           z-index: 100;
