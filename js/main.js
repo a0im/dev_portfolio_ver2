@@ -1,5 +1,30 @@
       // setTimeout(()=> scrollTo(0,0),100)
 
+      //nav
+      const $gnb = document.querySelector('.gnb')
+      let lastMenu = 0 //대소비교 
+
+      //nav animation 
+      let navAnimate = (e) => {
+        e.preventDefault()
+        const targetMap = {
+          LI : e.target,
+          A : e.target.parentElement
+        }
+
+        let li =  targetMap[e.target.tagName]; 
+        if (!li) return 
+
+        const list = [...$gnb.children]
+        list.forEach(e => e.classList = '') //reset 
+        let direct = lastMenu > list.indexOf(li) ? '--reverse' : '';
+        li.classList.add('gnb-start' + direct)
+        setTimeout(()=> li.classList = 'gnb-end' +  direct,300)
+        lastMenu = list.indexOf(li)
+      }
+
+      $gnb.addEventListener('click',navAnimate)
+
 
 
       //skill
@@ -62,8 +87,6 @@
               }
           
               console.log(setTarget[e.target.className]);
-
-
               
 
             })

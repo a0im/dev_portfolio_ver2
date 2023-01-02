@@ -2,8 +2,13 @@
 @import "./reset.scss";
 @import "./mixin.scss";
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
+//조별포폴은 하이퍼링크 // 본인의 깃페이지로 연결할것
 
-
+//나머지는 파일로 링크걸기 (project폴더로 구성)
+// project폴더 - pages 
+//            - image
+//            - css 등 
+//리엑트는 하이퍼링크 
 .grid{
   //  width: 89.74358974358974%;
   width: 87.5vw;
@@ -24,50 +29,81 @@ header{
       z-index: 10000;
       display: flex;
       justify-content: center;
+      // align-items: center;
       width: 100%;
       background-color: rgba(0,0,0,0.7);
       border-bottom: #ae29f6 1.5px solid;
 
       li{
         width: 15%;
-        height: 25px;
         text-align: center;
         position: relative;
+        overflow: hidden;
+
         
         a{
+          height: 25px;
+          line-height: 25px;
           color: #5a5753;
-          color: #ae29f6;
-          
-        line-height: 25px;
-
+          width: 100%;
+          font-weight: 600;
+      
           &:hover{
             color : #fff;
-
-        
           }
 
           &::before{
             content: "";
             display: block;
-
             background-color: #ae29f6;
             position: absolute;
-            left: 0;
             top: 0;
-            transition: all 330ms ease;
             width: 0%;
             height: 100%;
           }
 
-          &:hover::before{
-            width: 100%;
-            color: #ae29f6;
-          }
         }
       }
+
+      .gnb-start,
+      .gnb-start--reverse{
+        a::before {
+          width: 100%;
+          transition: width 330ms ease;
+        }
+      } 
+
+      .gnb-start--reverse {
+        a::before {
+          right: 0 !important;
+        }
+      }
+
+      .gnb-end,
+      .gnb-end--reverse {
+        a{
+          text-shadow: 0 0 20px #4df9ffd2;
+          color: #ae29f6;
+          &::before {
+            transition: all 330ms ease;
+            color: #ae29f6;
+            width: 100%;
+            font-weight: 600;
+            transform : translateX(110%) scale(1.2);
+            transition-delay: 300ms;
+         
+          }             
+        }
+      }
+
+      .gnb-end--reverse {
+        a::before {
+          transform : translateX(-110%) scale(1.2);  
+        }
+      }
+
     }
   }
-
   .banner {
   position: relative;
   height: 500vh;
@@ -431,6 +467,7 @@ header{
         height: 30vh;
         align-items: center;
         justify-content: space-evenly;
+
         // transform: translateX(100vw);
         @include responsive(tablet-screens) {
           justify-content: center;
@@ -440,16 +477,19 @@ header{
         &:last-of-type{
           margin-top: 65.5vw;
           @include responsive(tablet-screens) {
-            margin-top: 370px;
+          top:  18.9286vw;
           }
         }
-        &:first-of-type{
-          margin-bottom: 65.5vw;
-          @include responsive(tablet-screens) {
-            margin-bottom: 370px;
 
-          }
-        }
+
+        // &:first-of-type{
+        //   margin-bottom: 65.5vw;
+        //   @include responsive(tablet-screens) {
+        //   margin-bottom:  clamp( 400px,30.5vw,500px );
+
+
+        //   }
+        // }
   
         &__card{
           position: relative;
@@ -457,19 +497,25 @@ header{
           height: 30.3125vw;
           background-color: #fff;
           line-height : 100%;
-          border-radius: 4.6875vw;
           text-align: center;
           box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.78);
-
+          border-radius: 4.6875vw;
+          overflow: hidden;
+          // 150 / 200 
 
           transform-style: preserve-3d;
           transform: perspective(4000px) rotateY(180deg) translateX(100vw);
           @include responsive(tablet-screens) {
-            margin: 0 10px;
-            border-radius: 20px;
-            max-width: 140px;
-            max-height: 170px;
-            justify-content: center;
+            // margin: 0 10px;
+            // border-radius: 20px;
+            // max-width: 140px;
+            // max-height: 170px;
+            // justify-content: center;
+            width: 14.2857vw;
+            height: 18.9286vw;
+            max-width: 150px;
+            max-height: 200px;
+            border-radius: 2.1429vw;
           }
 
 
@@ -485,6 +531,12 @@ header{
             backface-visibility: hidden;
             align-items: center;
             justify-content: center;
+
+            @include responsive(tablet-screens) {
+            border-radius: 2.1429vw;
+            }
+          
+            
   
             img{
               display: inline-block;
@@ -494,13 +546,20 @@ header{
           }
           &--front{
             background-color: #fff;
-            border-radius: 4.6875vw;
+            // overflow: hidden;
+            .cards__card--wave1{
 
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-color: red;
+              transform: scale(1.5);
+              border-radius: 0%;
+            }
           }
           &--back{
             transform: rotateY(180deg);
             background-color: #fff;
-            border-radius: 4.6875vw;
 
             @include responsive(tablet-screens) {
             border-radius: 20px;
