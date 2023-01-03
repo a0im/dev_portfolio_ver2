@@ -463,59 +463,68 @@ header{
       .cards{
         display: flex;
         position: absolute;
-        width: 95vw;
+        width: 95vw; ///s
         height: 30vh;
+        // justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
-        justify-content: space-evenly;
 
-        // transform: translateX(100vw);
         @include responsive(tablet-screens) {
           justify-content: center;
         }
 
 
         &:last-of-type{
-          margin-top: 65.5vw;
+          margin-top: min(56.5vw,330px);;
           @include responsive(tablet-screens) {
-          top:  18.9286vw;
+            margin-top: min(40.5vw,430px);;
+          }
+
+          @include responsive(pc-screens) {
+            margin-bottom: min(56.5vw,430px);;
           }
         }
 
 
-        // &:first-of-type{
-        //   margin-bottom: 65.5vw;
-        //   @include responsive(tablet-screens) {
-        //   margin-bottom:  clamp( 400px,30.5vw,500px );
+        &:first-of-type{
+          margin-bottom: min(56.5vw,330px);
+          @include responsive(tablet-screens) {
+          margin-bottom: min(40.5vw,430px);;
+          }
 
-
-        //   }
-        // }
+          @include responsive(pc-screens) {
+            margin-bottom: min(56.5vw,430px);;
+          }
+        }
   
         &__card{
           position: relative;
-          width: 23.4375vw;
-          height: 30.3125vw;
+          // width: 23.4375vw;
+          // height: 30.3125vw;
+          width: 18.7500vw;
+          height: 26.5250vw;
+          max-width: 110px;
+          max-height: 150px;
           background-color: #fff;
           line-height : 100%;
           text-align: center;
           box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.78);
-          border-radius: 4.6875vw;
+          border-radius: min(3.8vw,15px);
           overflow: hidden;
-          // 150 / 200 
-
           transform-style: preserve-3d;
           transform: perspective(4000px) rotateY(180deg) translateX(100vw);
+          margin: 0 min(1.5625vw,8px);
+
           @include responsive(tablet-screens) {
-            // margin: 0 10px;
+            margin: 0 10px;
             // border-radius: 20px;
-            // max-width: 140px;
-            // max-height: 170px;
-            // justify-content: center;
+            max-width: 150px;
+            max-height: 200px;
             width: 14.2857vw;
             height: 18.9286vw;
             max-width: 150px;
             max-height: 200px;
-            border-radius: 2.1429vw;
+            border-radius: min(2.1429vw,30px);
           }
 
 
@@ -527,16 +536,15 @@ header{
             position: absolute;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            backface-visibility: hidden;
+            // overflow: hidden;
             align-items: center;
             justify-content: center;
+            backface-visibility: hidden;
 
             @include responsive(tablet-screens) {
             border-radius: 2.1429vw;
             }
           
-            
   
             img{
               display: inline-block;
@@ -545,22 +553,25 @@ header{
             }
           }
           &--front{
-            background-color: #fff;
+            z-index: -1;
+            flex-direction: column;
+            align-items: center;
+      
+            // background-color: #fff;
             // overflow: hidden;
-            .cards__card--wave1{
-
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              background-color: red;
-              transform: scale(1.5);
-              border-radius: 0%;
+            p{
+              margin-top: 10px;
+              font-size: 20px;
+              font-weight: 600;
+              color: #171e40;
             }
+
+           
           }
           &--back{
             transform: rotateY(180deg);
             background-color: #fff;
-
+            z-index: 1000;
             @include responsive(tablet-screens) {
             border-radius: 20px;
             }
