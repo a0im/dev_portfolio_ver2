@@ -1,29 +1,65 @@
-      // setTimeout(()=> scrollTo(0,0),100)
+      //DOM
+      const $skill_contain = document.querySelector('.skill__contain')
+      const $skill_sticky = document.querySelector('.skill__sticky')
+      const $skill_cards = document.querySelectorAll('.cards')
 
-      //nav
+      const $work = document.querySelector('.work')
+      const $work_sticky = document.querySelector('.work__sticky')
+
       const $gnb = document.querySelector('.gnb')
+      const $gnbList = Array.from(document.querySelectorAll('.gnb > li'))
+
+      const $section = document.querySelectorAll('section')
+      const $main = document.querySelector('.banner')
+      const $contect = document.querySelector('.contect')
+      
+      let observeArr = Array.from($section)
+      observeArr.push($contect)
+      observeArr.unshift($main)
+
       let lastMenu = 0 //대소비교 
+      let setTime
+
+      // setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
 
       //nav animation 
-      let navAnimate = (e) => {
-        e.preventDefault()
+      let navAnimate = (el , time = 300) => {
+        const targetMap = {
+          LI : el,
+          A : el.parentElement
+        }
+
+        let li =  targetMap[el.tagName]; 
+        const list = [...$gnb.children]
+        if (!li) return 
+        
+        list.forEach(e => e.classList = '') //reset 
+
+        let direct = lastMenu > list.indexOf(li) ? '--reverse' : '';
+        li.classList.add('gnb-start' + direct)
+        setTime =  setTimeout(()=>{
+          li.classList = 'gnb-end' +  direct
+        },time)
+        lastMenu = list.indexOf(li)
+      }
+
+      let scrollInToNav = (e) => {
         const targetMap = {
           LI : e.target,
           A : e.target.parentElement
         }
-
         let li =  targetMap[e.target.tagName]; 
         if (!li) return 
+        let idx = $gnbList.indexOf(li)
 
-        const list = [...$gnb.children]
-        list.forEach(e => e.classList = '') //reset 
-        let direct = lastMenu > list.indexOf(li) ? '--reverse' : '';
-        li.classList.add('gnb-start' + direct)
-        setTimeout(()=> li.classList = 'gnb-end' +  direct,300)
-        lastMenu = list.indexOf(li)
+        observeArr[idx].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
       }
 
-      $gnb.addEventListener('click',navAnimate)
+      $gnb.addEventListener('click', e =>{
+        e.preventDefault()
+        navAnimate(e.target)
+        scrollInToNav(e)
+      })
 
 
 
@@ -99,9 +135,7 @@
         }
       }
 
-      const $skill_contain = document.querySelector('.skill__contain')
-      const $skill_sticky = document.querySelector('.skill__sticky')
-      const $skill_cards = document.querySelectorAll('.cards')
+
       const cardFlipOnScroll1 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[0])
       const cardFlipOnScroll2 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[1])
       const cardFlipOnScroll3 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[2])
@@ -241,12 +275,12 @@
     }
     // translateX(-${100 - (this.end - sclY) / (this.step  * this.length) * 100}%)
 
-    const $work = document.querySelector('.work')
-    const $work_sticky = document.querySelector('.work__sticky')
+
     const slideVerticalOnScroll = new SlideVerticalOnScroll($work, $work_sticky)
     let lastScroll = 0
     slideVerticalOnScroll.init()
 
+    //scoll 
     let clearScroll = () =>{
       let checkRAF = false;
       let sclY = scrollY
@@ -255,7 +289,6 @@
       checkRAF = true
 
       const sclDirection = sclY < lastScroll ? "UP" : "DN"
-      console.log(sclDirection);
       lastScroll = sclY
 
       requestAnimationFrame(()=>{
@@ -271,6 +304,7 @@
 
     window.addEventListener('scroll', clearScroll)
 
+    //resize
     window.addEventListener('resize', ()=>{
       bannerRotateOnScroll.init()
       cardFlipOnScroll1.init()
@@ -280,3 +314,33 @@
       slideVerticalOnScroll.scroll(scrollY)
       console.log("ss");
     })
+
+
+    //observer
+    const option = {
+      root : null,
+      rootMargin: '0px',
+      threshold: 0
+    }
+
+    const isObserver = (entries, observer) => {
+      console.log(entries , '---' , observer);
+
+      entries.forEach( entry => {
+        if (entry.isIntersecting) {
+          let idx = observeArr.indexOf(entry.target)
+          navAnimate($gnbList[idx]) //nav animation
+        }
+        console.log(entries);
+        if (entry.isIntersecting && entry.target.className === 'banner') {
+         $gnb.classList.add('inBanner') 
+        } 
+        else if(entry.isIntersecting && entry.target.className !== 'banner'){
+         $gnb.classList.remove('inBanner') 
+        }
+      })
+    }
+
+    const io = new IntersectionObserver(isObserver,option)
+    observeArr.forEach(dom => io.observe(dom))
+  
