@@ -3,6 +3,13 @@
       const $skill_sticky = document.querySelector('.skill__sticky')
       const $skill_cards = document.querySelectorAll('.cards')
 
+      const $modal_circle = document.querySelector('.modal__circle')
+      const $modal_wrap = document.querySelector('.modal')
+
+      const $body = document.querySelector('body')
+
+
+
       const $work = document.querySelector('.work')
       const $work_sticky = document.querySelector('.work__sticky')
 
@@ -12,6 +19,8 @@
       const $section = document.querySelectorAll('section')
       const $main = document.querySelector('.banner')
       const $contect = document.querySelector('.contect')
+
+     
       
       let observeArr = Array.from($section)
       observeArr.push($contect)
@@ -32,12 +41,16 @@
         let li =  targetMap[el.tagName]; 
         const list = [...$gnb.children]
         if (!li) return 
-        
-        list.forEach(e => e.classList = '') //reset 
+
+        // list.forEach(e => e.classList = '') 
+        //reset 
 
         let direct = lastMenu > list.indexOf(li) ? '--reverse' : '';
         li.classList.add('gnb-start' + direct)
+
+        
         setTime =  setTimeout(()=>{
+          list.forEach(e => e.classList = '') 
           li.classList = 'gnb-end' +  direct
         },time)
         lastMenu = list.indexOf(li)
@@ -72,11 +85,12 @@
           this.end = 0
           this.step = 0
           this.cards = cards.querySelectorAll('.cards__card')
-          this.length = this.cards.length
+          this.length = this.cards.length 
         }       
         init(option = 0){
+          //animate
             this.start = this.wrapper.offsetTop
-            this.end = this.wrapper.offsetTop + this.wrapper.offsetHeight - innerHeight * 1.2
+            this.end = this.wrapper.offsetTop + this.wrapper.offsetHeight - innerHeight * 1.4
             this.step = (this.end - this.start) / (this.length * 2) + option
         }
         animate(sclY){
@@ -113,41 +127,89 @@
             }
           });
         }
-
-        hover(){
-          this.cards.forEach((card)=>{
-            card.addEventListener('mouseover',(e)=>{
-              let setTarget = {
-                'cards__card--front' : e.target , 
-                'cards__card--img' : e.target.parentElement
-              }
-          
-              console.log(setTarget[e.target.className]);
-              
-
-            })
-            card.addEventListener('mouseout',(e)=>{
-              // console.log("ss");
-            })
-
-            
-          })
-        }
       }
 
+
+      // this.body = document.querySelector('body')
+      // this.modal = 
 
       const cardFlipOnScroll1 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[0])
       const cardFlipOnScroll2 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[1])
       const cardFlipOnScroll3 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[2])
 
+      class HoverCardOnModal{
+          constructor(body  ,sticky ,  modal , cards){
+            this.body = body
+            this.sticky = sticky
+            this.modal = modal
+            this.cards = cards.querySelectorAll('.cards__card')
+            this.boxHeight = 0
+            this.cardsPos = 0
+          }
+
+          init(){
+            this.stickyCenter  = this.sticky.offsetHeight / 2 
+            this.boxHeight = this.cards[0].parentElement
+            this.cardsPos = this.boxHeight.offsetTop +  this.boxHeight.offsetHeight / 2 
+          }      
+
+          hover(){
+            this.cards.forEach((card)=>{
+              
+              card.addEventListener('mouseover',(e)=>{
+                console.log(e.target.className);
+                let onCard = {
+                  'cards__card--front' : e.target , 
+                  'cards__card--img' : e.target.parentElement,
+                  'cards__card--name' : e.target.parentElement
+                }[e.target.className]
+                this.body.style.overflow = 'hidden'
+                  this.modal.classList = 'modal'
+                 if(this.cardsPos <= this.stickyCenter){
+                    this.modal.classList.add('modal--open-t')
+                  } 
+                  else {
+                    this.modal.classList.add('modal--open-b')
+                  }
+                  onCard.style.background = "#bbbee9"
+              })
+  
+              card.addEventListener('mouseout',(e)=>{
+                let onCard = {
+                  'cards__card--front' : e.target , 
+                  'cards__card--img' : e.target.parentElement,
+                  'cards__card--name' : e.target.parentElement
+                }[e.target.className]
+                  this.modal.classList = 'modal'
+                if(this.cardsPos <= this.stickyCenter){
+                  this.modal.classList.add('modal--close-t')
+                }
+                else {
+                  this.modal.classList.add('modal--close-b')
+                }
+                this.body.style.overflow = 'visible'
+                onCard.style.background = "#fff"
+              })
+            })
+          }
+      }
+
+     const hoverCardOnModal1 = new HoverCardOnModal($body , $skill_sticky , $modal_wrap , $skill_cards[0])
+     const hoverCardOnModal2 = new HoverCardOnModal($body , $skill_sticky ,$modal_wrap , $skill_cards[1])
+     const hoverCardOnModal3 = new HoverCardOnModal($body , $skill_sticky , $modal_wrap, $skill_cards[2])
+
+     
       cardFlipOnScroll1.init()
       cardFlipOnScroll2.init(20)
       cardFlipOnScroll3.init(10)
-      cardFlipOnScroll1.hover()
-      cardFlipOnScroll2.hover()
-      cardFlipOnScroll3.hover()
+      hoverCardOnModal1.init()
+      hoverCardOnModal2.init()
+      hoverCardOnModal3.init()
+      hoverCardOnModal1.hover()
+      hoverCardOnModal2.hover()
+      hoverCardOnModal3.hover()
 
-
+      
       class BannerRotateOnScroll {
         constructor(wrapper , sticky){
           this.wrapper = wrapper
@@ -338,6 +400,9 @@
         else if(entry.isIntersecting && entry.target.className !== 'banner'){
          $gnb.classList.remove('inBanner') 
         }
+
+
+
       })
     }
 

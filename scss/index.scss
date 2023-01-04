@@ -9,6 +9,20 @@
 //            - image
 //            - css 등 
 //리엑트는 하이퍼링크 
+
+body{
+  // position: fixed ;
+  // height: 100%;
+  // touch-action: none;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .grid{
   //  width: 89.74358974358974%;
   width: 87.5vw;
@@ -26,26 +40,26 @@ section > h2{
 header{
   nav {
     .gnb{
-      z-index: 10000;
       display: flex;
-      justify-content: center;
+      z-index: 10000;
       // align-items: center;
       width: 100%;
+      justify-content: center;
       background-color: rgba(0,0,0,0.7);
       border-bottom: #ae29f6 1.5px solid;
 
       li{
+        position: relative;
         width: 15%;
         text-align: center;
-        position: relative;
         overflow: hidden;
 
         
         a{
+          width: 100%;
           height: 25px;
           line-height: 25px;
           color: #5a5753;
-          width: 100%;
           font-weight: 600;
       
           &:hover{
@@ -55,11 +69,11 @@ header{
           &::before{
             content: "";
             display: block;
-            background-color: #ae29f6;
             position: absolute;
             top: 0;
             width: 0%;
             height: 100%;
+            background-color: #ae29f6;
           }
 
         }
@@ -85,9 +99,9 @@ header{
           text-shadow: 0 0 20px #4df9ffd2;
           color: #ae29f6;
           &::before {
+            width: 100%;
             transition: all 330ms ease;
             color: #ae29f6;
-            width: 100%;
             font-weight: 600;
             transform : translateX(110%) scale(1.2);
             transition-delay: 300ms;
@@ -303,6 +317,7 @@ header{
   position: relative;
   height: 200vh;
   padding-top: 500px;
+  margin-bottom: 400px;
   background-color: #171e40;
   background: linear-gradient(180deg,  #5f3f8e 0%,#171e40 55%);
   color: #fff;
@@ -419,10 +434,111 @@ header{
     }
   }
 }
+
 .skill{
   width: 100vw;
+  margin: 100px 0;
   background: #171e40;
   // margin-bottom: 100px;
+  // position: fixed ;
+  // height: 100vh;
+  // touch-action: none;
+
+  .modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+
+    &__box{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 101;
+      width: 500px;
+      height: 500px;
+      border: #ae29f6 1.5px solid;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 1s ease;
+      transition-delay: 200ms;
+      text-align: center;
+      color: #fff;
+
+      img{
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 100px;
+      }
+      p{
+        margin-top: 20px;
+      }
+    }
+
+
+    &__circle{
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: rgba(0,0,0,0.7);
+      transition-property: width, height;
+      transition-timing-function: ease;
+      transition-duration: 2s;
+    }
+  }
+
+  .modal--open-t{
+    .modal__circle{
+      top: 0;
+      left: 0;
+      width: 300vw;
+      height: 300vh;
+      transform : translate(-50% , -50%);
+    }
+
+    .modal__box{
+      opacity: 1;
+    }
+  }
+
+  .modal--open-b{
+    .modal__circle{
+      right: 0;
+      bottom: 0;
+      width: 300vw;
+      height: 300vh;
+      transform : translate(50% , 50%);
+    }
+
+    .modal__box{
+      opacity: 1;
+    }
+  }
+
+  .modal--close-t{
+    .modal__circle{
+      top: 0;
+      left: 0;
+      width: 0vw;
+      height: 0vh;
+      transform : translate(-50% , -50%);
+    }
+  }
+
+  .modal--close-b{
+    .modal__circle{
+      right: 0;
+      bottom: 0;
+      width: 0vw;
+      height: 0vh;
+      transform : translate(50% , 50%);
+    }
+  }
 
   &__contain{
     position: relative;
@@ -440,6 +556,7 @@ header{
       overflow: hidden;
       align-items: center;
       align-content: space-around;
+
 
       &::before{
         content: "SKILL";
@@ -503,6 +620,7 @@ header{
           // height: 30.3125vw;
           width: 18.7500vw;
           height: 26.5250vw;
+          margin: 0 min(1.5625vw,8px);
           max-width: 110px;
           max-height: 150px;
           background-color: #fff;
@@ -513,15 +631,14 @@ header{
           overflow: hidden;
           transform-style: preserve-3d;
           transform: perspective(4000px) rotateY(180deg) translateX(100vw);
-          margin: 0 min(1.5625vw,8px);
 
           @include responsive(tablet-screens) {
+            width: 14.2857vw;
+            height: 18.9286vw;
             margin: 0 10px;
             // border-radius: 20px;
             max-width: 150px;
             max-height: 200px;
-            width: 14.2857vw;
-            height: 18.9286vw;
             max-width: 150px;
             max-height: 200px;
             border-radius: min(2.1429vw,30px);
@@ -569,9 +686,9 @@ header{
            
           }
           &--back{
+            z-index: 1000;
             transform: rotateY(180deg);
             background-color: #fff;
-            z-index: 1000;
             @include responsive(tablet-screens) {
             border-radius: 20px;
             }
@@ -871,3 +988,5 @@ header{
     }
   }
 }
+
+
