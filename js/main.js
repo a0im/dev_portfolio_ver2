@@ -157,6 +157,7 @@
             this.cards.forEach((card)=>{
               
               card.addEventListener('mouseover',(e)=>{
+                console.log("aaa");
                 console.log(e.target.className);
                 let onCard = {
                   'cards__card--front' : e.target , 
@@ -175,6 +176,7 @@
               })
   
               card.addEventListener('mouseout',(e)=>{
+
                 let onCard = {
                   'cards__card--front' : e.target , 
                   'cards__card--img' : e.target.parentElement,
@@ -372,6 +374,9 @@
       cardFlipOnScroll1.init()
       cardFlipOnScroll2.init(20)
       cardFlipOnScroll3.init(10)
+      hoverCardOnModal1.init()
+      hoverCardOnModal2.init()
+      hoverCardOnModal3.init()
       slideVerticalOnScroll.init()
       slideVerticalOnScroll.scroll(scrollY)
       console.log("ss");

@@ -33,13 +33,12 @@ body::-webkit-scrollbar {
 section > h2{
   display: none;
 }
-.gnb{
-  position: fixed;
-  color: #fff;
-}
+
 header{
   nav {
     .gnb{
+      position: fixed;
+      color: #fff;
       display: flex;
       z-index: 10000;
       // align-items: center;
@@ -54,8 +53,8 @@ header{
         text-align: center;
         overflow: hidden;
 
-        
         a{
+          font-size: 14px;
           width: 100%;
           height: 25px;
           line-height: 25px;
@@ -458,8 +457,7 @@ header{
       top: 50%;
       left: 50%;
       z-index: 101;
-      width: 500px;
-      height: 500px;
+      height: 87.5vw;
       border: #ae29f6 1.5px solid;
       transform: translate(-50%, -50%);
       opacity: 0;
@@ -467,15 +465,65 @@ header{
       transition-delay: 200ms;
       text-align: center;
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @include responsive(tablet-screens) {
+       margin: 0 auto;
+        max-height: 450px;
+       max-width: 450px;
+      }
+
+      @include responsive(pc-screens) {
+        max-height: 490px;
+        max-width: 490px;
+       }
 
       img{
-        width: 200px;
+        width: 28.125vw;
         margin: 0 auto;
-        margin-top: 100px;
+        // margin-top: 100px;
+
+        @include responsive(tablet-screens) {
+          max-width: 140px;
+         }
+
+         @include responsive(pc-screens) {
+          max-width: 150px;
+         }
+  
       }
-      p{
-        margin-top: 20px;
+ 
+      p:nth-of-type(1){
+        font-size: min(6.25vw,38px);
+        font-weight: 500;
+        margin-top: min(3.125vw,20px);
+        position: relative;
+
+        &::before{
+          content: "";
+          position: absolute;
+          display: block;
+          width: min(6.2500vw,25px);
+          height: min(0.6250vw,4px);
+          background-color: #ae29f6;
+          left: 50%;
+          bottom: max(-3.1250vw , -11px);
+          transform: translateX(-50%);
+
+          @include responsive(tablet-screens) {
+          bottom: max(-3.1250vw,-19px);
+         }
+
+        }
       }
+
+      p:nth-of-type(2){
+        font-size: min(5vw,22px);
+        margin-top: min(6.25vw,40px);
+      }
+
     }
 
 
@@ -488,7 +536,7 @@ header{
       background-color: rgba(0,0,0,0.7);
       transition-property: width, height;
       transition-timing-function: ease;
-      transition-duration: 2s;
+      transition-duration: 1s;
     }
   }
 
@@ -581,7 +629,7 @@ header{
         display: flex;
         position: absolute;
         width: 95vw; ///s
-        height: 30vh;
+        height: fit-content;
         // justify-content: space-evenly;
         justify-content: center;
         align-items: center;
@@ -598,7 +646,7 @@ header{
           }
 
           @include responsive(pc-screens) {
-            margin-bottom: min(56.5vw,430px);;
+            margin-top: min(56.5vw,430px);;
           }
         }
 
@@ -677,10 +725,16 @@ header{
             // background-color: #fff;
             // overflow: hidden;
             p{
-              margin-top: 10px;
-              font-size: 20px;
+
+              margin-top: min(1.2500vw,13px);
+              font-size: min(3.1250vw,20px);
+              
               font-weight: 600;
               color: #171e40;
+
+              @include responsive(pc-screens) {
+                font-size: min(3.4375vw,22px);
+                }
             }
 
            

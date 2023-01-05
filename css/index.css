@@ -53,12 +53,9 @@ section > h2 {
   display: none;
 }
 
-.gnb {
+header nav .gnb {
   position: fixed;
   color: #fff;
-}
-
-header nav .gnb {
   display: flex;
   z-index: 10000;
   width: 100%;
@@ -73,6 +70,7 @@ header nav .gnb li {
   overflow: hidden;
 }
 header nav .gnb li a {
+  font-size: 14px;
   width: 100%;
   height: 25px;
   line-height: 25px;
@@ -410,8 +408,7 @@ header .outer-img__half {
   top: 50%;
   left: 50%;
   z-index: 101;
-  width: 500px;
-  height: 500px;
+  height: 87.5vw;
   border: #ae29f6 1.5px solid;
   transform: translate(-50%, -50%);
   opacity: 0;
@@ -419,14 +416,62 @@ header .outer-img__half {
   transition-delay: 200ms;
   text-align: center;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .skill .modal__box {
+    margin: 0 auto;
+    max-height: 450px;
+    max-width: 450px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .skill .modal__box {
+    max-height: 490px;
+    max-width: 490px;
+  }
 }
 .skill .modal__box img {
-  width: 200px;
+  width: 28.125vw;
   margin: 0 auto;
-  margin-top: 100px;
 }
-.skill .modal__box p {
-  margin-top: 20px;
+@media screen and (min-width: 768px) {
+  .skill .modal__box img {
+    max-width: 140px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .skill .modal__box img {
+    max-width: 150px;
+  }
+}
+.skill .modal__box p:nth-of-type(1) {
+  font-size: min(6.25vw, 38px);
+  font-weight: 500;
+  margin-top: min(3.125vw, 20px);
+  position: relative;
+}
+.skill .modal__box p:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: min(6.25vw, 25px);
+  height: min(0.625vw, 4px);
+  background-color: #ae29f6;
+  left: 50%;
+  bottom: max(-3.125vw, -11px);
+  transform: translateX(-50%);
+}
+@media screen and (min-width: 768px) {
+  .skill .modal__box p:nth-of-type(1)::before {
+    bottom: max(-3.125vw, -19px);
+  }
+}
+.skill .modal__box p:nth-of-type(2) {
+  font-size: min(5vw, 22px);
+  margin-top: min(6.25vw, 40px);
 }
 .skill .modal__circle {
   position: absolute;
@@ -437,7 +482,7 @@ header .outer-img__half {
   background-color: rgba(0, 0, 0, 0.7);
   transition-property: width, height;
   transition-timing-function: ease;
-  transition-duration: 2s;
+  transition-duration: 1s;
 }
 .skill .modal--open-t .modal__circle {
   top: 0;
@@ -500,7 +545,9 @@ header .outer-img__half {
   display: flex;
   position: absolute;
   width: 95vw;
-  height: 30vh;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   justify-content: center;
   align-items: center;
 }
@@ -519,7 +566,7 @@ header .outer-img__half {
 }
 @media screen and (min-width: 1400px) {
   .skill__contain .skill__sticky .cards:last-of-type {
-    margin-bottom: min(56.5vw, 430px);
+    margin-top: min(56.5vw, 430px);
   }
 }
 .skill__contain .skill__sticky .cards:first-of-type {
@@ -589,10 +636,15 @@ header .outer-img__half {
   align-items: center;
 }
 .skill__contain .skill__sticky .cards__card--front p {
-  margin-top: 10px;
-  font-size: 20px;
+  margin-top: min(1.25vw, 13px);
+  font-size: min(3.125vw, 20px);
   font-weight: 600;
   color: #171e40;
+}
+@media screen and (min-width: 1400px) {
+  .skill__contain .skill__sticky .cards__card--front p {
+    font-size: min(3.4375vw, 22px);
+  }
 }
 .skill__contain .skill__sticky .cards__card--back {
   z-index: 1000;
