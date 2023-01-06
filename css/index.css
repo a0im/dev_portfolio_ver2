@@ -255,6 +255,8 @@ header .banner__img .banner__obj-box.planet .banner__obj-box--planet-blue {
   }
 }
 header .outer-img {
+  width: 100vw;
+  overflow: hidden;
   position: relative;
   height: 250px;
   background: #5f3f8e;
@@ -281,6 +283,7 @@ header .outer-img__half {
 .about > img {
   position: absolute;
   bottom: 0;
+  display: none;
 }
 .about h4 {
   font-size: 22px;
@@ -303,6 +306,9 @@ header .outer-img__half {
 .about-top__img {
   padding: 10px;
   border: 1px solid #ae29f6;
+  position: relative;
+  height: fit-content;
+  overflow: hidden;
 }
 @media screen and (min-width: 768px) {
   .about-top__img {
@@ -310,8 +316,21 @@ header .outer-img__half {
     max-width: 640px;
   }
 }
-.about-top__img img {
+.about-top__img--laptop {
   width: 100%;
+}
+.about-top__img--chair, .about-top__img--drop {
+  width: 35%;
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+}
+.about-top__img--drop {
+  position: absolute;
+  width: 40%;
+  right: 8%;
+  bottom: 100%;
+  transition: bottom 600ms cubic-bezier(0.55, 0, 1, 0.45);
 }
 @media screen and (min-width: 768px) {
   .about-top__txt {
@@ -575,13 +594,11 @@ header .outer-img__half {
   max-width: 110px;
   max-height: 150px;
   background-color: #fff;
-  line-height: 100%;
   text-align: center;
   box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.78);
   border-radius: min(3.8vw, 15px);
-  overflow: hidden;
-  transform-style: preserve-3d;
   transform: perspective(4000px) rotateY(180deg) translateX(100vw);
+  transform-style: preserve-3d;
 }
 @media screen and (min-width: 768px) {
   .skill__contain .skill__sticky .cards__card {
@@ -600,9 +617,11 @@ header .outer-img__half {
   position: absolute;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
   backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 @media screen and (min-width: 768px) {
   .skill__contain .skill__sticky .cards__card--front, .skill__contain .skill__sticky .cards__card--back {
@@ -615,9 +634,10 @@ header .outer-img__half {
   width: 50%;
 }
 .skill__contain .skill__sticky .cards__card--front {
-  z-index: -1;
+  z-index: 0;
   flex-direction: column;
   align-items: center;
+  background-color: #fff;
 }
 .skill__contain .skill__sticky .cards__card--front p {
   margin-top: min(1.25vw, 13px);
@@ -631,7 +651,7 @@ header .outer-img__half {
   }
 }
 .skill__contain .skill__sticky .cards__card--back {
-  z-index: 1000;
+  z-index: -1;
   transform: rotateY(180deg);
   background-color: #fff;
 }
@@ -653,7 +673,7 @@ header .outer-img__half {
 
 .work {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 600vh;
   color: #fff;
 }
@@ -713,6 +733,9 @@ header .outer-img__half {
   z-index: 100;
   flex-direction: column;
   align-items: center;
+  margin-top: 300px;
+  opacity: 0;
+  transition: all 400ms linear;
 }
 @media screen and (min-width: 768px) {
   .work__sticky .work__abs-box .work-list .work-des {
@@ -770,6 +793,7 @@ header .outer-img__half {
   }
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain small {
+  position: relative;
   padding-top: 30px;
   border-top: #ae29f6 1.5px solid;
   font-size: clamp(14px, 1.5714vw, 22px);
@@ -813,6 +837,16 @@ header .outer-img__half {
     max-width: 140px;
     max-height: 45px;
   }
+}
+.work__sticky .work__abs-box .work-list .work-des__lf-contain--show:first-child {
+  background-color: #ae29f6;
+}
+.work__sticky .work__abs-box .work-list .work-des__lf-contain--show h3 {
+  background-color: #ae29f6;
+}
+.work__sticky .work__abs-box .work-list .work-des--focuse {
+  margin-top: 0;
+  opacity: 1;
 }
 
 .contect {
