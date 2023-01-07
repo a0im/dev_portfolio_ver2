@@ -349,7 +349,7 @@ header{
     }
 
     &__img{
-      padding: 10px;
+      padding: 20px;
       border:  1px solid #ae29f6;
       position: relative;
       height: fit-content;
@@ -362,6 +362,8 @@ header{
       
       &--laptop{
         width: 100%;
+        padding: 2%;
+        padding-bottom: 0;
       }
       
       &--chair,
@@ -369,15 +371,65 @@ header{
         width: 35%;
         position: absolute;
         bottom: 10%;
-        right: 10%;
+        right: 20%;
+        z-index: 10;
       }
 
       &--drop{
         position: absolute;
         width: 40%;
-        right: 8%;
+        right: 17%;
         bottom: 100%;
         transition: bottom 600ms cubic-bezier(0.55, 0, 1, 0.45);
+      }
+
+      &--css,
+      &--git,
+      &--html,
+      &--jquery,
+      &--js,
+      &--react,
+      &--scss
+      {
+        transform: translate(-50% ,-50%);
+        position: absolute;
+      }
+
+      &--css{
+        width: 20%;
+        left: 50%;
+        top: 40%;
+      }
+      &--jquery{
+        width: 20%;
+        left: 75%;
+        top: 35%;
+      }
+      &--html{
+        width: 13%;
+        top: 11.5%;
+        left: 60%;
+      }
+      &--scss{
+        width: 14%;
+        top: 12.5%;
+        left: 37%;
+      }
+      &--js{
+        width: 17%;
+        top: 40%;
+        left: 25%;
+      }
+      &--git{
+        width: 12%;
+        top: 65%;
+        left: 35%;
+      }
+
+      &--react{
+        width: 12%;
+        top: 63%;
+        left: 65%;
       }
     }
 
@@ -923,6 +975,14 @@ header{
               flex-direction: column;
             }
 
+            & > :nth-child(1n + 2){
+              position: relative;
+              top : 100px;
+              opacity: 0;
+              transition-property: opacity top;
+              transition-duration: 600ms;
+              transition-delay: 300ms;
+            }
             
          
             h3{
@@ -996,28 +1056,19 @@ header{
             
           }
 
-          &__lf-contain--show{
-            &:first-child{
-
-              background-color: #ae29f6;
-            }
-
-            h3{
-              background-color: #ae29f6;
-
-            }
-
-          }
-
-          &__lf-contain--show{
-            // background: #5a5753;
-          }
 
         } //work-des
 
         .work-des--focuse{
           margin-top: 0;
           opacity: 1;
+
+          .work-des__lf-contain :nth-child(1n + 2){
+            // background-color: red;
+            position: relative;
+            top: 0px;
+            opacity: 1;
+          }
         }
 
       } //work-list

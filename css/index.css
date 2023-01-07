@@ -304,7 +304,7 @@ header .outer-img__half {
   }
 }
 .about-top__img {
-  padding: 10px;
+  padding: 20px;
   border: 1px solid #ae29f6;
   position: relative;
   height: fit-content;
@@ -318,19 +318,61 @@ header .outer-img__half {
 }
 .about-top__img--laptop {
   width: 100%;
+  padding: 2%;
+  padding-bottom: 0;
 }
 .about-top__img--chair, .about-top__img--drop {
   width: 35%;
   position: absolute;
   bottom: 10%;
-  right: 10%;
+  right: 20%;
+  z-index: 10;
 }
 .about-top__img--drop {
   position: absolute;
   width: 40%;
-  right: 8%;
+  right: 17%;
   bottom: 100%;
   transition: bottom 600ms cubic-bezier(0.55, 0, 1, 0.45);
+}
+.about-top__img--css, .about-top__img--git, .about-top__img--html, .about-top__img--jquery, .about-top__img--js, .about-top__img--react, .about-top__img--scss {
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.about-top__img--css {
+  width: 20%;
+  left: 50%;
+  top: 40%;
+}
+.about-top__img--jquery {
+  width: 20%;
+  left: 75%;
+  top: 35%;
+}
+.about-top__img--html {
+  width: 13%;
+  top: 11.5%;
+  left: 60%;
+}
+.about-top__img--scss {
+  width: 14%;
+  top: 12.5%;
+  left: 37%;
+}
+.about-top__img--js {
+  width: 17%;
+  top: 40%;
+  left: 25%;
+}
+.about-top__img--git {
+  width: 12%;
+  top: 65%;
+  left: 35%;
+}
+.about-top__img--react {
+  width: 12%;
+  top: 63%;
+  left: 65%;
 }
 @media screen and (min-width: 768px) {
   .about-top__txt {
@@ -783,6 +825,14 @@ header .outer-img__half {
     flex-direction: column;
   }
 }
+.work__sticky .work__abs-box .work-list .work-des__lf-contain > :nth-child(1n+2) {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  transition-property: opacity top;
+  transition-duration: 600ms;
+  transition-delay: 300ms;
+}
 .work__sticky .work__abs-box .work-list .work-des__lf-contain h3 {
   margin: 20px 0;
   font-size: clamp(20px, 3.4286vw, 48px);
@@ -838,14 +888,13 @@ header .outer-img__half {
     max-height: 45px;
   }
 }
-.work__sticky .work__abs-box .work-list .work-des__lf-contain--show:first-child {
-  background-color: #ae29f6;
-}
-.work__sticky .work__abs-box .work-list .work-des__lf-contain--show h3 {
-  background-color: #ae29f6;
-}
 .work__sticky .work__abs-box .work-list .work-des--focuse {
   margin-top: 0;
+  opacity: 1;
+}
+.work__sticky .work__abs-box .work-list .work-des--focuse .work-des__lf-contain :nth-child(1n+2) {
+  position: relative;
+  top: 0px;
   opacity: 1;
 }
 

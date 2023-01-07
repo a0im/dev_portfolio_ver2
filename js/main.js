@@ -255,9 +255,9 @@
       clickCardOnModal1.init()
       clickCardOnModal2.init()
       clickCardOnModal3.init()
-      // clickCardOnModal1.hover()
-      // clickCardOnModal2.hover()
-      // clickCardOnModal3.hover()
+      clickCardOnModal1.hover()
+      clickCardOnModal2.hover()
+      clickCardOnModal3.hover()
 
       
       class BannerRotateOnScroll {
@@ -439,9 +439,9 @@
       cardFlipOnScroll1.init()
       cardFlipOnScroll2.init(20)
       cardFlipOnScroll3.init(10)
-      hoverCardOnModal1.init()
-      hoverCardOnModal2.init()
-      hoverCardOnModal3.init()
+      clickCardOnModal1.init()
+      clickCardOnModal2.init()
+      clickCardOnModal3.init()
       slideVerticalOnScroll.init()
       slideVerticalOnScroll.scroll(scrollY)
     })
