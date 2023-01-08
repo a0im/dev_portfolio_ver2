@@ -23,7 +23,6 @@
       const $about_topImgBox = document.querySelector('.about-top__img')
       const $about_chair = document.querySelector('.about-top__img--chair')
       const $about_peple = document.querySelector('.about-top__img--drop')
-      const peple = document.querySelector('.about-top__img--drop')
       
       /*
       0.어바웃 컨텐츠 수정하기
@@ -98,32 +97,7 @@
       })
 
 
-      let dropAni = () => {
-        
-      }
-      dropAni()
-      //about
-      //쿠션 - 이미지 박스 - about 요소 - outer요소
-      //scroll + h/2 기준
-      //끝 쿠션 
 
-
-      // class DropTolapTopOnScroll{
-      //   constructor(outerBox , imgBox , chair){
-      //     this.outerBox = outerBox
-      //     this.imgBox = imgBox
-      //     this.chair = chair
-      //     this.height = 0          
-      //   }
-
-      //   init() {
-      //     // this.height = this.chair.offsetHeight/2 + this.chair.offsetTop + this.imgBox.offsetTop + this.imgBox.offsetHeight
-      //     console.log(this.height);
-
-      //   }
-      // }
-      // const dropTolapTopOnScroll =  new DropTolapTopOnScroll($outerBox, $about_topImgBox, $about_chair)
-      // dropTolapTopOnScroll.init()
       
       //skill
       class CardFlipOnScroll{
@@ -202,7 +176,7 @@
             this.cardsPos = this.boxHeight.offsetTop +  this.boxHeight.offsetHeight / 2 
           }      
 
-          hover(){
+        clickEvnt(){
             this.cards.forEach((card)=>{
               
               card.addEventListener('click',(e)=>{
@@ -212,6 +186,9 @@
                   'cards__card--img' : e.target.parentElement,
                   'cards__card--name' : e.target.parentElement
                 }[e.target.className]
+
+                if (!onCard) return
+
                 this.body.style.overflow = 'hidden'
                   this.modal.classList = 'modal'
                   if(this.cardsPos <= this.stickyCenter){
@@ -230,7 +207,12 @@
                   'cards__card--img' : e.target.parentElement,
                   'cards__card--name' : e.target.parentElement
                 }[e.target.className]
-                  this.modal.classList = 'modal'
+
+                if (!onCard) return
+                
+
+                this.modal.classList = 'modal'
+                
                 if(this.cardsPos <= this.stickyCenter){
                   this.modal.classList.add('modal--close-t')
                 }
@@ -238,7 +220,7 @@
                   this.modal.classList.add('modal--close-b')
                 }
                 this.body.style.overflow = 'visible'
-                onCard.style.background = "#fff"
+                onCard.style.blackground = "#fff"
               })
             })
           }
@@ -255,9 +237,9 @@
       clickCardOnModal1.init()
       clickCardOnModal2.init()
       clickCardOnModal3.init()
-      clickCardOnModal1.hover()
-      clickCardOnModal2.hover()
-      clickCardOnModal3.hover()
+      clickCardOnModal1.clickEvnt()
+      clickCardOnModal2.clickEvnt()
+      clickCardOnModal3.clickEvnt()
 
       
       class BannerRotateOnScroll {
@@ -420,7 +402,6 @@
       lastScroll = sclY
 
       requestAnimationFrame(()=>{
-        console.log("svvv");
         bannerRotateOnScroll.animate(sclY)
         cardFlipOnScroll1.animate(sclY)
         cardFlipOnScroll2.animate(sclY)
@@ -470,7 +451,8 @@
         } 
         else if(entry.isIntersecting && entry.target.className !== 'banner'){
           $gnb.classList.remove('inBanner') 
-        peple.style.bottom = '8%';
+          $about_peple.style.bottom = '11%';
+          $about_chair.style.bottom = '10%';
 
 
         
@@ -489,4 +471,6 @@
 
     const io = new IntersectionObserver(isObserver,option)
     observeArr.forEach(dom => io.observe(dom))
+
+
   

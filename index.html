@@ -67,8 +67,7 @@
   <main>
     <section class="about">
       <h2>About</h2>
-      <img src="./images/about/큰해초.png" alt="object1">
-      <img src="./images/about/해초.png" alt="osbject2">
+  
       <div class="about-top grid">
         <div class="about-top__img">
           <img class="about-top__img--laptop" src="./images/about/노트북.png" alt="노트북">
@@ -108,10 +107,19 @@
 
       <div class="about-btm grid">
         <div class="about-btm__img">
-          <img src="./images/about/사람.png" alt="다이버">
+          <svg class="about-btm__img--buble" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 72.98"><defs><style>.cls-1{fill:#8ec6ec;}</style></defs><g id="레이어_2" data-name="레이어 2"><g id="레이어_1-2" data-name="레이어 1">
+            <path class="cls-1" d="M29,67.93c-1,2.19-2.87,4.46-5,4.6-.54,0-1.09-.1-1.62,0s-1.2.45-1.83.47a2.57,2.57,0,0,1-1.68-.71c-1.26-1.06-1.72-2.58-2.64-3.89s-2-2.42-2.26-4a7,7,0,0,1,.67-3.94,8.83,8.83,0,0,1,3.45-4.38,5,5,0,0,1,5.77.45c1,.9,1.53,2.23,2.54,3.1.47.41,1,.7,1.5,1.1a5.61,5.61,0,0,1,1.76,5.07A8.25,8.25,0,0,1,29,67.93Z"/>
+            <path class="cls-1" d="M11.31,46.66a4.55,4.55,0,0,1-.41,5.12,2.22,2.22,0,0,1-2.23,1c-.93-.23-1.45-1.18-1.87-2A8,8,0,0,1,5.87,48c-.29-3.67,2.91-4.94,5-2Z"/>
+            <path class="cls-1" d="M23.78,39.73a2.68,2.68,0,0,1-.33.18A15.21,15.21,0,0,0,21.17,41c-.82.61-1.27,1.63-2.15,2.16a3.06,3.06,0,0,1-3.56-.57,5.82,5.82,0,0,1-1.56-3.47c-.47-3.41.51-8.42,4.09-9.93s8.18,3.51,8,6.87A4.74,4.74,0,0,1,23.78,39.73Z"/>
+            <path class="cls-1" d="M5.23,22.25l-.32-.11C1.52,21.29-.51,17,.11,13.3A5.16,5.16,0,0,1,1.8,10.12a3.27,3.27,0,0,1,3.43-.53,6.29,6.29,0,0,1,1.94,1.87c.88,1.06,1.88,2,2.7,3.11a6.77,6.77,0,0,1,1.5,3.77c.05,2.46-3.06,5.24-5.53,4.2Z"/>
+            <path class="cls-1" d="M13.11,5.55l-.21-.08c-.26-.06-.54,0-.8-.07A1.66,1.66,0,0,1,11,4.47,3.85,3.85,0,0,1,10.65,3a3.91,3.91,0,0,1,.13-1.56c.78-2.25,4.06-1.57,5.11,0a3.6,3.6,0,0,1-.23,3.84,2,2,0,0,1-2.15.42Z"/>
+          </g></g></svg>
+          <img class="about-btm__img--scuba" src="./images/about/스쿠버.png" alt="다이버">
+          <img class="about-btm__img--left-img" src="./images/about/큰해초.png" alt="object1">
+
         </div>
         <div class="about-btm__txt">
-          <div class="about-bㅖtm__txt-first">
+          <div class="about-btm__txt-first">
             <h4>📚 어떤 개발자가 되고 싶은가요?</h4>
             <p>
               세상과 소통하는 개발자가 되고 싶습니다.
@@ -127,12 +135,16 @@
           <div class="about-btm__txt-last">
             <h4>🏢 경력사항</h4>
             <p>
-              <!--여기 이미지 채워야해야함-->
+              세상과 소통하는 개발자가 되고 싶습니다. 웹개발자의 주요 덕목 중 하나는 ‘소통’이라고 생각합니다. 디자이너와 백엔드 개발자의 서로 다른 포지션에서 트러블이 발생할 수 있습니다. 이 점을 중간에서 해소해주는 역할을 해야한다고 생각합니다. 더 나아가 세상에서 나오는 불만이라는 피드백을 취합하여 반영할 수 있는 개발자가 되고 싶습니다.
             </p>
           </div>
         </div>
+      </div><!--about__btm-contain-->
+
+      <div class="about__bg grid">
+        <img class="about__bg--left-img" src="./images/about/큰해초.png" alt="object1">
+        <img class="about__bg--right-img" src="./images/about/해초.png" alt="osbject2">
       </div>
-      <!--about__btm-contain-->
     </section> <!-- about -->
 
 
@@ -258,7 +270,7 @@
                 </div>
               </div>
 
-              <div class="work-des__lf-contain work-des__lf-contain--show">
+              <div class="work-des__lf-contain">
                 <h3>Fairmond Hotel Renewal Page</h3>
                 <small>4인 팀 프로젝트</small>
                 <strong>페이몬드 호텔 리뉴얼 페이지 프로젝트</strong>
@@ -279,7 +291,6 @@
 
           <div class="work-list">
             <div class="work-list__bg"><img src="./images/work/matrix.jpg"></div>
-
             <div class="work-des grid">
               <div class="work-des__rf-contain ">
                 <div class="work-des__rf-contain--border">

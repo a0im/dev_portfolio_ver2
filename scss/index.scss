@@ -316,18 +316,58 @@ header{
 
 .about{
   position: relative;
-  height: 200vh;
+  // height: 200vh;
   padding-top: 500px;
+  // padding-bottom: 23%;
   margin-bottom: 400px;
   background-color: #171e40;
   background: linear-gradient(180deg,  #5f3f8e 0%,#171e40 55%);
   color: #fff;
+  z-index: -2;
 
-  & > img{
+  &__bg{
     position: absolute;
-    bottom: 0;
+    bottom: min(27% , 700px);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: -1;
+    width: 100vw;
+    height: fit-content;
+    left: 50%;
+    transform: translateX(-50%);
     display: none;
+
+    
+    @include responsive(tablet-screens) {
+     bottom: 0 ;
+    }
+    &--left-img{
+      // width: 50%;
+    // position: absolute;
+  
+    //   top: -700px;
+      position: relative;
+      width: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+    //   height: fit-content;
+      @include responsive(tablet-screens) {
+        width: 50%;
+        max-width: 550px;
+        top: 0;
+        transform: translateX(0%);
+        left: 0;
+      }
+    }
+
+    &--right-img{
+      display: none;
+      width: 20%;
+      height: fit-content;
+    }
   }
+ 
 
   h4{
     font-size: 22px;
@@ -340,17 +380,16 @@ header{
 
   &-top{
     margin-bottom: 60px;
-
     @include responsive(tablet-screens) {
       display: flex;
       flex-direction: row-reverse;
       margin-bottom: 200px;
       justify-content: space-between;
+      align-items: center;
     }
 
     &__img{
-      padding: 20px;
-      border:  1px solid #ae29f6;
+      // border:  1px solid #ae29f6;
       position: relative;
       height: fit-content;
       overflow: hidden;
@@ -358,6 +397,8 @@ header{
       @include responsive(tablet-screens) {
         width: 44.4444vw;
         max-width: 640px;
+      // padding: 20px;
+
       }
       
       &--laptop{
@@ -370,17 +411,20 @@ header{
       &--drop{
         width: 35%;
         position: absolute;
-        bottom: 10%;
         right: 20%;
         z-index: 10;
+        bottom: 100%;
+        transition: bottom 600ms cubic-bezier(0.55, 0, 1, 0.45);
+      }
+
+      &--chair{
+        transition-delay: 300ms;
       }
 
       &--drop{
-        position: absolute;
         width: 40%;
         right: 17%;
-        bottom: 100%;
-        transition: bottom 600ms cubic-bezier(0.55, 0, 1, 0.45);
+        transition-delay: 1s;
       }
 
       &--css,
@@ -391,45 +435,65 @@ header{
       &--react,
       &--scss
       {
-        transform: translate(-50% ,-50%);
+        transform: scale(0.8) translate(-50% ,-50%);
         position: absolute;
+        animation: scaleSkills alternate infinite;
+        transform-origin: 50% 50%;
       }
 
       &--css{
         width: 20%;
         left: 50%;
         top: 40%;
+        animation-duration: 3s;
       }
       &--jquery{
         width: 20%;
         left: 75%;
         top: 35%;
+        animation-duration: 2s;
+
       }
       &--html{
         width: 13%;
         top: 11.5%;
         left: 60%;
+        animation-duration: 2.5s;
+
       }
       &--scss{
         width: 14%;
         top: 12.5%;
         left: 37%;
+        animation-duration: 1.7s;
+        animation-delay: 300ms;
+
       }
       &--js{
         width: 17%;
         top: 40%;
         left: 25%;
+        animation-duration: 4s;
       }
       &--git{
         width: 12%;
         top: 65%;
         left: 35%;
+        animation-duration: 2.3s;
       }
 
       &--react{
         width: 12%;
         top: 63%;
         left: 65%;
+        animation-duration: 2.7s;
+      }
+
+      @keyframes scaleSkills {
+        100%{
+          transform: scale(1)  translate(-50% ,-50%);
+          transform-origin: 50% 50%;
+        }
       }
     }
 
@@ -442,11 +506,12 @@ header{
 
 
       &-first{
+
         width: 100%;
         margin-bottom: 60px;
         h3{
-          margin: 30px 0;
           font-size: 16px;
+          margin: 30px 0 ;
           strong{
             display: inline-block;
             position: relative;
@@ -475,30 +540,119 @@ header{
   }
   
   &-btm{
+
     @include responsive(tablet-screens) {
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     &__img{
+      position: relative;
       width: 100%;
       padding: 10px;
-      border: #ae29f6 1px solid;
+      margin-bottom: 20%;
+      // border: #ae29f6 1px solid;
+      height: fit-content;
+
       @include responsive(tablet-screens) {
         width: 44.4444vw;
-        // max-width: 640px;
+        margin-bottom: 0;
       }
 
-      img{
-        width: 50%;
+      &--scuba{
+        padding-top : 22%;
+        width: 60%;
+        z-index: 1000;
         margin: 0 auto;
-        // height: 100%;
-        // object-fit: contain;
+        transform: translate(0% 0%);
+        animation: moveScuba 3s alternate infinite;
+
+        @include responsive(tablet-screens) {
+          width: 75%;
+          max-width: 200px;
+        }
+
+
+
+        @keyframes moveScuba {
+          50% {
+            transform: translateY(-2%);
+          }
+          100% {
+            transform: translateY(3%);
+          }
+        }
+      }
+
+      &--buble{
+        position: absolute;
+        width: 7%;
+
+    
+        // margin-top: auto;
+        left: 50%;
+        z-index: 1000;
+
+        .cls-1{
+          opacity: 0;
+          fill: aqua;
+          transition: all 1s;
+          animation-duration: 4s;
+          animation-iteration-count: infinite;
+        }
+
+        .cls-1:nth-of-type(1){
+          animation-name: fade1;
+        }
+        .cls-1:nth-of-type(2){
+          animation-name: fade2;
+        }
+        .cls-1:nth-of-type(3){
+          animation-name: fade3;
+        }
+        .cls-1:nth-of-type(4){
+          animation-name: fade4;
+        }
+        .cls-1:nth-of-type(5){
+          animation-name: fade5;
+        }
+
+        @keyframes fade1 {
+          20%{opacity: 1;}
+        }
+        @keyframes fade2 {
+          20% {opacity: 0;} 
+          40%{opacity: 1;}
+        }
+        @keyframes fade3 {
+          40% {opacity: 0;} 
+          60%{opacity: 1;}
+        }
+        @keyframes fade4 {
+          60% {opacity: 0;} 
+          80%{opacity: 1;}
+        }
+        @keyframes fade5 {
+          80% {opacity: 0;} 
+          100%{opacity: 1;}
+        }
+      }
+
+      &--left-img{
+        width: 130%;
+        position: absolute;
+        bottom: -20%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+        @include responsive(tablet-screens) {
+          width: 100%;
+        }
       }
     }
 
     &__txt{
-
       @include responsive(tablet-screens) {
         width: 40vw;
         max-width: 530px;
@@ -507,6 +661,7 @@ header{
       &-first,
       &-last{
         margin-bottom: 60px;
+
       }
     }
   }
@@ -601,7 +756,6 @@ header{
         font-size: min(5vw,22px);
         margin-top: min(6.25vw,40px);
       }
-
     }
 
 
@@ -808,10 +962,8 @@ header{
 
       
             p{
-
               margin-top: min(1.2500vw,13px);
               font-size: min(3.1250vw,20px);
-              
               font-weight: 600;
               color: #171e40;
 
@@ -819,19 +971,15 @@ header{
                 font-size: min(3.4375vw,22px);
                 }
             }
-
-           
           }
           
           &--back{
             z-index: -1;
             transform: rotateY(180deg);
             background-color: #fff;
-
             @include responsive(tablet-screens) {
             border-radius: 20px;
             }
-
 
             &::before{
               content: "";
@@ -925,9 +1073,9 @@ header{
           z-index: 100;
           flex-direction: column;
           align-items: center;
-          margin-top: 300px;
+          margin-top: 50px;
           opacity: 0;
-          transition: all 400ms linear;
+          transition: all 400ms  cubic-bezier(0.61, 1, 0.88, 1);
 
           
           @include responsive(tablet-screens) {
@@ -943,11 +1091,13 @@ header{
               line-height: 100vh;
               border: 1.5px solid #ae29f6;
               max-height: 400px;
-               min-height: 330px;
+              min-height: 330px;
       
               @include responsive(tablet-screens) {
                 width: 45%;
                 padding: 15px;
+                border: 2px solid #ae29f6;
+
               }
       
               &--border {
@@ -977,19 +1127,25 @@ header{
 
             & > :nth-child(1n + 2){
               position: relative;
-              top : 100px;
+              top : 30px;
               opacity: 0;
               transition-property: opacity top;
-              transition-duration: 600ms;
-              transition-delay: 300ms;
+              transition-duration: 400ms;
+              transition-delay: 400ms;
+              transition-timing-function:  cubic-bezier(0.61, 1, 0.88, 1);
+
+              // transition-delay: 100ms;
             }
             
-         
             h3{
               margin: 20px 0;
-              font-size: clamp(20px , 3.4286vw , 48px);
+              font-size: clamp(20px , 3.4286vw , 38px);
+              border-bottom: #ae29f6 1.5px solid;
+
               @include responsive(tablet-screens) {
-                margin:  0 0 20px 0;
+                padding:  0 0 20px 0;
+              border-bottom: #ae29f6 2px solid;
+
 
               }
             }
@@ -997,8 +1153,7 @@ header{
             small{
               position: relative;
               // top: 100px;
-              padding-top: 30px;
-              border-top: #ae29f6 1.5px solid;
+              // padding-top: 30px;
               font-size:clamp(14px , 1.5714vw , 22px);
               color: #c6c6c6;
             }
@@ -1048,6 +1203,8 @@ header{
                   height: 4.1429vw;
                   max-width: 140px;
                   max-height: 45px;
+                  border: 2px solid #ae29f6;
+
                 }
               }
             }
@@ -1064,11 +1221,16 @@ header{
           opacity: 1;
 
           .work-des__lf-contain :nth-child(1n + 2){
-            // background-color: red;
             position: relative;
             top: 0px;
             opacity: 1;
           }
+
+          .work__btns{
+            transition-delay: 800ms;
+            // background-color: red;
+          }
+          
         }
 
       } //work-list
