@@ -10,6 +10,7 @@ const $body = document.querySelector('body')
 
 const $work = document.querySelector('.work')
 const $work_sticky = document.querySelector('.work__sticky')
+const $workDes = document.querySelectorAll('.work-des') 
 
 const $gnb = document.querySelector('.gnb')
 const $gnbList = Array.from(document.querySelectorAll('.gnb > li'))
@@ -80,6 +81,7 @@ const $about_peple = document.querySelector('.about-top__img--drop')
       }
 
       let scrollInToNav = (e) => {
+        e.preventDefault()
         const targetMap = {
           LI : e.target,
           A : e.target.parentElement
@@ -88,7 +90,9 @@ const $about_peple = document.querySelector('.about-top__img--drop')
         if (!li) return 
         let idx = $gnbList.indexOf(li)
 
+        observeArr[idx].className == 'work' && setTimeout(()=>$workDes[0].classList.add('work-des--focuse'),400)
         observeArr[idx].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        
       }
 
       $gnb.addEventListener('click', e =>{
@@ -320,25 +324,28 @@ class SlideVerticalOnScroll {
     this.vertivalBox = sticky.querySelector('.work__abs-box')
     this.length = this.vertivalBox.querySelectorAll('.work-list').length
     this.workDes = contentBox
+    this.scrollFn
   }
 
   init(){
-    this.start = this.wrapper.offsetTop
+    this.start = this.wrapper.offsetTop * 1.02
     this.end = (this.wrapper.offsetTop +this. wrapper.offsetHeight - innerHeight)
     this.step = (this.end - this.start) / this.length
     this.width = this.vertivalBox.offsetWidth 
   }
 
-  scroll(sclY , direction){
+  scroll(sclY  , direction){
+    console.log(direction);
 
-    if (sclY  <= this.start ) {
+    if (sclY  <= this.start) {
       this.vertivalBox.style.transform = `translateX(0)`
-      this.workDes[0].classList.remove('work-des--focuse')
+      direction == "UP" && this.workDes[0].classList.remove('work-des--focuse')
+
       return
     } 
 
     for (let i = 0; i < this.length - 1; i++) {
-      let s = this.start + this.step * i
+      let s = this.start + (this.step * i)
       let e = s + this.step * this.breakPoint;
 
       const directX = { 
@@ -353,14 +360,16 @@ class SlideVerticalOnScroll {
       }
 
       if(sclY > s && sclY <= e){
+        console.log("asss");
         //객체(directX)에서 스크롤 방향에 맞는 속성 실행
         this.vertivalBox.style.transform = `
         translateX(${directX[direction == 'UP' ? 'BUP' : 'UP']}%)
         ` 
 
+
         //스크롤 방향에 맞는 스타일 변경 함수(contentStyle) 실행
-        direction == 'UP' 
-          ?contentStyle(i) : this.workDes[0].classList.add('work-des--focuse');
+        contentStyle(i)
+    
       } 
 
       else if ( sclY > e  && sclY <= s + this.step) {
@@ -368,18 +377,21 @@ class SlideVerticalOnScroll {
         translateX(${directX[direction]}%)
         ` 
 
-        direction =='DN' 
-          ? contentStyle(i + 1) : this.workDes[this.length - 1].classList.add('work-des--focuse');
+        contentStyle(i + 1)
       } 
     }
     
-    if (sclY >= this.end ) this.vertivalBox.style.transform = `translateX(-${80}%)` 
+    if (sclY >= this.end){
+      this.vertivalBox.style.transform = `translateX(-${80}%)` 
+      this.workDes[this.length - 1].classList.remove('work-des--focuse')
+
+    }
     
   }
 }
     // translateX(-${100 - (this.end - sclY) / (this.step  * this.length) * 100}%)
 
-  const $workDes = document.querySelectorAll('.work-des') 
+
   const slideVerticalOnScroll = new SlideVerticalOnScroll($work, $work_sticky ,$workDes)
   let lastScroll = 0
   slideVerticalOnScroll.init()
@@ -424,11 +436,12 @@ class SlideVerticalOnScroll {
     const option = {
       root : null,
       rootMargin: '0px',
-      threshold: 0
+      threshold: [0]
     }
 
     let scrollEvt
     let initAbout
+    let test
 
     const isObserver = (entries, observer) => {
       let $div
@@ -437,6 +450,7 @@ class SlideVerticalOnScroll {
       let offsetT
       let topSecH
       let btmSecH
+
 
       entries.forEach( entry => {
         let onArea = entry.isIntersecting
@@ -462,7 +476,7 @@ class SlideVerticalOnScroll {
           topSecH = $div[0].offsetTop
           btmSecH = $div[1].offsetTop
          }
-         
+
          initAbout()
 
          scrollEvt = () => {
@@ -493,8 +507,15 @@ class SlideVerticalOnScroll {
         }
 
         if (onArea && onClass === 'skill') {
-          // window.removeEventListener('scroll',scrollEvt)
+          //요소가 1이될때
+          console.log('skill');
         }
+
+    
+        if (onArea && onClass === "contect") {
+          scrollTo(0 , $body.offsetHeight)
+        }
+
       })
     }//isObserver
 

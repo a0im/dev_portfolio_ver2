@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-size: 16px;
   width: 100vw;
@@ -942,7 +946,7 @@ header .outer-img__half {
 .work__sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 0px;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
