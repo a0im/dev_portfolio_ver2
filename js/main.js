@@ -1,50 +1,36 @@
-      //DOM
+  //DOM
 const $skill_contain = document.querySelector('.skill__contain')
 const $skill_sticky = document.querySelector('.skill__sticky')
 const $skill_cards = document.querySelectorAll('.cards')
-
 const $modal_circle = document.querySelector('.modal__circle')
 const $modal_wrap = document.querySelector('.modal')
-
 const $body = document.querySelector('body')
-
 const $work = document.querySelector('.work')
 const $work_sticky = document.querySelector('.work__sticky')
 const $workDes = document.querySelectorAll('.work-des') 
-
 const $gnb = document.querySelector('.gnb')
 const $gnbList = Array.from(document.querySelectorAll('.gnb > li'))
-
 const $section = document.querySelectorAll('section')
 const $main = document.querySelector('.banner')
 const $contect = document.querySelector('.contect')
-
 const $outerBox = document.querySelector('.outer-img')
 const $about_topImgBox = document.querySelector('.about-top__img')
-const $about_chair = document.querySelector('.about-top__img--chair')
-const $about_peple = document.querySelector('.about-top__img--drop')
-
-
+const $about_top = document.querySelector('.about-top')
+const $about_btm = document.querySelector('.about-btm')
+const $contect_sns = document.querySelector('.contect__sns')
+const $banner_starrySky = document.querySelector('.starry-sky')
 
       /*
-      0.어바웃 컨텐츠 수정하기
-      1. laptop img 분리해서 이미지 받기
       2. 글자 애니메이션
-      3. 베너 별추가
-      4. 베너 행성 구름 위치조정 pc
       5. 베너 달 아래쪽 수정
 
-      6. 네비 베너에 있을때는 색상 변경
-      7. 카드 버튼으로 변경하기
-      8. work 모달추가
       9.content animation // 링크연결
-
       10 베너 어바웃 사이에 컨텐츠 넣기
-
       11 자격사항 체워넣기
       12 버튼 호버 에니메이션 추가 //호버하면 클릭 버튼 나오게하기 
       12 디자인 가이드 작성
       13 시간나면 아래 하단에 나래이션 추가
+      14. 어바웃 위치조정 
       */
       let observeArr = Array.from($section)
       observeArr.push($contect)
@@ -66,13 +52,9 @@ const $about_peple = document.querySelector('.about-top__img--drop')
         const list = [...$gnb.children]
         if (!li) return 
 
-        // list.forEach(e => e.classList = '') 
-        //reset 
-
         let direct = lastMenu > list.indexOf(li) ? '--reverse' : '';
         li.classList.add('gnb-start' + direct)
 
-        
         setTime =  setTimeout(()=>{
           list.forEach(e => e.classList = '') 
           li.classList = 'gnb-end' +  direct
@@ -101,10 +83,8 @@ const $about_peple = document.querySelector('.about-top__img--drop')
         scrollInToNav(e)
       })
 
-
-
       
-      //skill
+//skill
 class CardFlipOnScroll{
   constructor(wrapper , sticky , cards){
     this.wrapper = wrapper
@@ -158,8 +138,7 @@ class CardFlipOnScroll{
 }
 
 
-      // this.body = document.querySelector('body')
-      // this.modal = 
+ 
 
 const cardFlipOnScroll1 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[0])
 const cardFlipOnScroll2 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[1])
@@ -173,6 +152,9 @@ class ClickCardOnModal{
     this.cards = cards.querySelectorAll('.cards__card')
     this.boxHeight = 0
     this.cardsPos = 0
+    this.closeBtn = modal.querySelector(".modal__box--close")
+    this.img = modal.querySelector(".modal__box--skill")
+    this.skillName = modal.querySelector(".modal__box--title")
   }
 
   init(){
@@ -189,41 +171,26 @@ class ClickCardOnModal{
           'cards__card--img' : e.target.parentElement,
           'cards__card--name' : e.target.parentElement
         }[e.target.className]
-
         if (!onCard) return
+
+        //모달 skill 이미지 넣기
+        let skillImg = onCard.children[0].getAttribute('src')
+        let skillN = onCard.children[1].textContent
+
+
+        this.img.setAttribute('src',skillImg)
+        this.skillName.textContent = skillN
 
         this.body.style.overflow = 'hidden'
         this.modal.classList = 'modal'
-
-        if(this.cardsPos <= this.stickyCenter){
-          this.modal.classList.add('modal--open-t')
-        } 
-        else {
-          this.modal.classList.add('modal--open-b')
-        }
-        onCard.style.background = "#bbbee9"
+        this.modal.classList.add('modal--open')
       })
 
-      card.addEventListener('mouseout',(e)=>{
-        let onCard = {
-          'cards__card--front' : e.target , 
-          'cards__card--img' : e.target.parentElement,
-          'cards__card--name' : e.target.parentElement
-        } [e.target.className]
-
-        if (!onCard) return
-        
-        this.modal.classList = 'modal'
-        
-        if(this.cardsPos <= this.stickyCenter){
-          this.modal.classList.add('modal--close-t')
-        }
-        else {
-          this.modal.classList.add('modal--close-b')
-        }
-        this.body.style.overflow = 'visible'
-        onCard.style.blackground = "#fff"
+      this.closeBtn.addEventListener('click',()=>{  
+        this.modal.classList.remove('modal--open')
+        this.body.style.overflow = 'visible'      
       })
+      
     })
   }
 }
@@ -232,7 +199,7 @@ const clickCardOnModal1 = new ClickCardOnModal($body , $skill_sticky , $modal_wr
 const clickCardOnModal2 = new ClickCardOnModal($body , $skill_sticky ,$modal_wrap , $skill_cards[1])
 const clickCardOnModal3 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap, $skill_cards[2])
 
-     
+
 cardFlipOnScroll1.init()
 cardFlipOnScroll2.init(20)
 cardFlipOnScroll3.init(10)
@@ -335,7 +302,6 @@ class SlideVerticalOnScroll {
   }
 
   scroll(sclY  , direction){
-    console.log(direction);
 
     if (sclY  <= this.start) {
       this.vertivalBox.style.transform = `translateX(0)`
@@ -416,20 +382,52 @@ class SlideVerticalOnScroll {
       })
     }
 
-    window.addEventListener('scroll', clearScroll)
 
-    //resize
-    window.addEventListener('resize', ()=>{
-      bannerRotateOnScroll.init()
-      cardFlipOnScroll1.init()
-      cardFlipOnScroll3.init(10)
-      cardFlipOnScroll2.init(20)
-      clickCardOnModal1.init()
-      clickCardOnModal2.init()
-      clickCardOnModal3.init()
-      slideVerticalOnScroll.init()
-      slideVerticalOnScroll.scroll(scrollY)
+
+    //banner - 별생성
+    let counter = 50 //별갯수
+    let styleProps = [
+      "width", 
+      "height" ,
+      "animation-duration" ,
+      "top" ,
+      "left"
+    ]
+
+    let printStarrySky = () => { 
+      for (let i = 0; i < counter; i++) {
+        let ofsetH =  $banner_starrySky.offsetHeight
+        let ofsetY =  $banner_starrySky.offsetWidth
+        let size = Math.floor(Math.random() * 3) + 3 + "px"
+
+        let styles = {
+          "width" : size,
+          "height": size,
+          "animation-duration" : (Math.random() * 3)  + 1 + "s",
+          "top" : Math.floor(Math.random() * ofsetH) + 1 + "px",
+          "left": Math.floor(Math.random() * ofsetY) + 1 + "px"
+        }
+        
+        let $star = document.createElement('div')
+        $star.classList.add('star')
+        $banner_starrySky.appendChild($star)
+        styleProps.forEach( prop => $star.style.setProperty(prop ,  styles[prop]))
+      }
+
+    }
+
+    printStarrySky()
+
+  let resizeStars = () => {
+    let stars= document.querySelectorAll('.star')
+
+    stars.forEach( star => {
+      let t =  Math.floor(Math.random() * $banner_starrySky.offsetHeight) + 1
+      let l =  Math.floor(Math.random() * $banner_starrySky.offsetWidth) + 1
+      star.style.setProperty("top" , t + "px") 
+      star.style.setProperty("left" , l + "px") 
     })
+  } 
 
 
     //observer secstion
@@ -466,32 +464,31 @@ class SlideVerticalOnScroll {
         } 
 
         if (onArea && onClass === 'about') {
-         $gnb.classList.remove('in-banner')
-         $div = entry.target.querySelectorAll('.grid')
-         $topTxt = $div[0].querySelector('.about-top__txt')
-         $btmTxt = $div[1].querySelector('.about-btm__txt')
+          $gnb.classList.remove('in-banner')
+          $div = entry.target.querySelectorAll('.grid')
+          $topTxt = $div[0].querySelector('.about-top__txt')
+          $btmTxt = $div[1].querySelector('.about-btm__txt')
 
-         initAbout = () => {
+          initAbout = () => {
           offsetT = entry.target.offsetTop 
           topSecH = $div[0].offsetTop
           btmSecH = $div[1].offsetTop
-         }
+          }
 
-         initAbout()
+          initAbout()
 
-         scrollEvt = () => {
+          scrollEvt = () => {
             //about 내의 top & bottom content scroll event
             let currenScl = scrollY - offsetT + innerHeight / 2
 
             if (currenScl > topSecH && currenScl < btmSecH) {
-              $about_peple.style.bottom = '11%';
-              $about_chair.style.bottom = '10%';
-              $topTxt.classList.add('fade-in-txt')
+              $about_top.classList.add('top--focuse')
             }
 
-            if (currenScl > btmSecH) {
-              $btmTxt.classList.add('fade-in-txt')
+            if (currenScl > btmSecH){
+              $about_btm.classList.add('btm--focuse')
             }
+            
           }
 
           window.addEventListener('resize',initAbout)
@@ -499,28 +496,45 @@ class SlideVerticalOnScroll {
         } 
         else if(!onArea && onClass === 'about') {
           //about 벗어나면 이벤트,스타일 삭제  
-          let fadeInText = entry.target.querySelectorAll('.fade-in-txt')
-          fadeInText?.forEach(e => e.classList.remove('fade-in-txt'))
-       
+          $about_top.classList.remove('top--focuse')
+          $about_btm.classList.remove('btm--focuse')
+
           window.removeEventListener('scroll',scrollEvt)
           window.removeEventListener('resize',initAbout)
         }
-
+        //skill
         if (onArea && onClass === 'skill') {
-          //요소가 1이될때
           console.log('skill');
         }
 
-    
+        //contect
         if (onArea && onClass === "contect") {
           scrollTo(0 , $body.offsetHeight)
+          $contect_sns.classList.add('focuse-contect')
+        }
+        else if (!onArea && onClass === "contect"){
+          $contect_sns.classList.remove('focuse-contect')
         }
 
       })
     }//isObserver
 
-    const io = new IntersectionObserver(isObserver , option)
-    observeArr.forEach(dom => io.observe(dom))
+const io = new IntersectionObserver(isObserver , option)
+observeArr.forEach(dom => io.observe(dom))
 
+window.addEventListener('scroll', clearScroll)
 
-  
+//resize
+window.addEventListener('resize', ()=>{
+  bannerRotateOnScroll.init()
+  cardFlipOnScroll1.init()
+  cardFlipOnScroll3.init(10)
+  cardFlipOnScroll2.init(20)
+  clickCardOnModal1.init()
+  clickCardOnModal2.init()
+  clickCardOnModal3.init()
+  slideVerticalOnScroll.init()
+  slideVerticalOnScroll.scroll(scrollY)
+  resizeStars()
+})
+
