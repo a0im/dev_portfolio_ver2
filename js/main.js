@@ -14,6 +14,7 @@ const $section = document.querySelectorAll('section')
 const $main = document.querySelector('.banner')
 const $contect = document.querySelector('.contect')
 const $outerBox = document.querySelector('.outer-img')
+const $about = document.querySelector('.about')
 const $about_topImgBox = document.querySelector('.about-top__img')
 const $about_top = document.querySelector('.about-top')
 const $about_btm = document.querySelector('.about-btm')
@@ -23,7 +24,6 @@ const $banner_starrySky = document.querySelector('.starry-sky')
       /*
       2. 글자 애니메이션
       5. 베너 달 아래쪽 수정
-
       9.content animation // 링크연결
       10 베너 어바웃 사이에 컨텐츠 넣기
       11 자격사항 체워넣기
@@ -32,15 +32,15 @@ const $banner_starrySky = document.querySelector('.starry-sky')
       13 시간나면 아래 하단에 나래이션 추가
       14. 어바웃 위치조정 
       */
-      let observeArr = Array.from($section)
-      observeArr.push($contect)
-      observeArr.unshift($main)
+      let secstions = Array.from($section)
+      secstions.push($contect)
+      secstions.unshift($main)
 
+      
+      // setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
+      
       let lastMenu = 0 //대소비교 
       let setTime
-
-      // setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
-
       //nav animation 
       let navAnimate = (el , time = 300) => {
         const targetMap = {
@@ -72,9 +72,8 @@ const $banner_starrySky = document.querySelector('.starry-sky')
         if (!li) return 
         let idx = $gnbList.indexOf(li)
 
-        observeArr[idx].className == 'work' && setTimeout(()=>$workDes[0].classList.add('work-des--focuse'),400)
-        observeArr[idx].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-        
+        secstions[idx].className == 'work' && setTimeout(()=>$workDes[0].classList.add('work-des--focuse'),400)
+        secstions[idx].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
       }
 
       $gnb.addEventListener('click', e =>{
@@ -124,8 +123,6 @@ class CardFlipOnScroll{
         translateX(${100 - (sclY - s) / (e - s)*100}vw)
         rotateY(${180 - (sclY - (e - this.step)) / this.step * 180}deg)
         `
-        // console.log(180 - (sclY - (e - this.step)) / this.step * 180);
-
       } else if (sclY > e){ //도착
         card.style.transform = `
         perspective(100vw)
@@ -137,8 +134,6 @@ class CardFlipOnScroll{
   }
 }
 
-
- 
 
 const cardFlipOnScroll1 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[0])
 const cardFlipOnScroll2 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[1])
@@ -155,6 +150,7 @@ class ClickCardOnModal{
     this.closeBtn = modal.querySelector(".modal__box--close")
     this.img = modal.querySelector(".modal__box--skill")
     this.skillName = modal.querySelector(".modal__box--title")
+    this.skillDescription = modal.querySelector(".modal__box--des")
   }
 
   init(){
@@ -164,36 +160,51 @@ class ClickCardOnModal{
   }      
 
   clickEvnt(){
-    this.cards.forEach((card) => {
-      card.addEventListener('click',(e)=>{
-        let onCard = {
-          'cards__card--front' : e.target , 
-          'cards__card--img' : e.target.parentElement,
-          'cards__card--name' : e.target.parentElement
-        }[e.target.className]
-        if (!onCard) return
+    const skillDes = {
+      html : "html임",
+      css : "css임",
+      javascript : "javascript임",
+      react : "react임",
+      tailwind : "tailwind임",
+      bootstrap : "bootstrap임",
+      jquery : "jquery임",
+    } 
 
-        //모달 skill 이미지 넣기
-        let skillImg = onCard.children[0].getAttribute('src')
-        let skillN = onCard.children[1].textContent
+    const openModal = (e) => {
+      let onCard = {
+        'cards__card--front' : e.target , 
+        'cards__card--img' : e.target.parentElement,
+        'cards__card--name' : e.target.parentElement
+      }[e.target.className]
+      if (!onCard) return
+
+      //modal skill content push
+      let skillImg = onCard.firstElementChild.getAttribute('src')
+      let skillN = onCard.lastElementChild.textContent
+      let skillmsg = skillDes[skillN.toLowerCase()]
+
+      this.img.setAttribute('src',skillImg)
+      this.skillName.textContent = skillN
+      this.skillDescription.textContent = skillmsg
+
+      this.body.style.overflow = 'hidden'
+      this.modal.classList = 'modal'
+      this.modal.classList.add('modal--open')
+    }
 
 
-        this.img.setAttribute('src',skillImg)
-        this.skillName.textContent = skillN
+    this.cards.forEach( card  => {
+      card.addEventListener('click',openModal)
+    })
 
-        this.body.style.overflow = 'hidden'
-        this.modal.classList = 'modal'
-        this.modal.classList.add('modal--open')
-      })
-
-      this.closeBtn.addEventListener('click',()=>{  
-        this.modal.classList.remove('modal--open')
-        this.body.style.overflow = 'visible'      
-      })
-      
+    this.closeBtn.addEventListener('click',()=>{  
+      this.modal.classList.remove('modal--open')
+      this.body.style.overflow = 'visible'      
     })
   }
 }
+
+
 
 const clickCardOnModal1 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap , $skill_cards[0])
 const clickCardOnModal2 = new ClickCardOnModal($body , $skill_sticky ,$modal_wrap , $skill_cards[1])
@@ -243,7 +254,6 @@ class BannerRotateOnScroll {
     else if(sclY > e - this.step * 6 && sclY <= e - this.step * 5){
       this.obj.classList.remove('planet')
       this.obj.classList.add('cloud')
-
       this.bg.style.transform = `
       translate(-50% ,-50%) 
       rotate(180deg) 
@@ -257,7 +267,6 @@ class BannerRotateOnScroll {
     } 
     else if (sclY > e - this.step * 2 && sclY <= e - this.step * 1){
       this.obj.classList.remove('cloud')
-
       this.obj.classList.add('planet')
       this.bg.style.transform = `
       translate(-50% ,-50%) 
@@ -306,7 +315,6 @@ class SlideVerticalOnScroll {
     if (sclY  <= this.start) {
       this.vertivalBox.style.transform = `translateX(0)`
       direction == "UP" && this.workDes[0].classList.remove('work-des--focuse')
-
       return
     } 
 
@@ -320,9 +328,9 @@ class SlideVerticalOnScroll {
         BUP : - 100 / this.length * i
       }
 
-      const contentStyle = (idx) => {
+      const contentStyle = (idx) => { 
         this.workDes.forEach(e => e.classList.remove('work-des--focuse'))
-        this.workDes[idx].classList.add('work-des--focuse') //나누는식 공부
+        this.workDes[idx].classList.add('work-des--focuse')
       }
 
       if(sclY > s && sclY <= e){
@@ -335,99 +343,72 @@ class SlideVerticalOnScroll {
 
         //스크롤 방향에 맞는 스타일 변경 함수(contentStyle) 실행
         contentStyle(i)
-    
       } 
 
       else if ( sclY > e  && sclY <= s + this.step) {
         this.vertivalBox.style.transform = `
         translateX(${directX[direction]}%)
         ` 
-
         contentStyle(i + 1)
       } 
     }
     
     if (sclY >= this.end){
-      this.vertivalBox.style.transform = `translateX(-${80}%)` 
+      // this.vertivalBox.style.transform = `translateX(-${80}%)` 
       this.workDes[this.length - 1].classList.remove('work-des--focuse')
-
     }
-    
   }
 }
-    // translateX(-${100 - (this.end - sclY) / (this.step  * this.length) * 100}%)
-
 
   const slideVerticalOnScroll = new SlideVerticalOnScroll($work, $work_sticky ,$workDes)
   let lastScroll = 0
   slideVerticalOnScroll.init()
 
-    //scoll 
-    let clearScroll = () =>{
-      let checkRAF = false;
-      if (checkRAF) return ;
-      checkRAF = true
 
-      let sclY = scrollY
-      const sclDirection = sclY < lastScroll ? "UP" : "DN"
-      lastScroll = sclY
 
-      requestAnimationFrame(()=>{
-        bannerRotateOnScroll.animate(sclY)
-        cardFlipOnScroll1.animate(sclY)
-        cardFlipOnScroll2.animate(sclY)
-        cardFlipOnScroll3.animate(sclY)
-        slideVerticalOnScroll.scroll(sclY , sclDirection)
-        checkRAF = false
-      })
+//banner - 별생성
+let counter = 70 //별갯수
+let styleProps = [
+  "width", 
+  "height" ,
+  "animation-duration" ,
+  "top" ,
+  "left"
+]
+
+let printStarrySky = () => { 
+  for (let i = 0; i < counter; i++) {
+    let ofsetH =  $banner_starrySky.offsetHeight
+    let ofsetY =  $banner_starrySky.offsetWidth
+    let size = Math.floor(Math.random() * 3) + 3 + "px"
+
+    let styles = {
+      "width" : size,
+      "height": size,
+      "animation-duration" : (Math.random() * 3)  + 1 + "s",
+      "top" : Math.floor(Math.random() * ofsetH) + 1 + "px",
+      "left": Math.floor(Math.random() * ofsetY) + 1 + "px"
     }
+    
+    let $star = document.createElement('div')
+    $star.classList.add('star')
+    $banner_starrySky.appendChild($star)
+    styleProps.forEach( prop => $star.style.setProperty(prop ,  styles[prop]))
+  }
+}
 
+printStarrySky()
 
+let resizeStars = () => {
+  let stars= document.querySelectorAll('.star')
 
-    //banner - 별생성
-    let counter = 50 //별갯수
-    let styleProps = [
-      "width", 
-      "height" ,
-      "animation-duration" ,
-      "top" ,
-      "left"
-    ]
-
-    let printStarrySky = () => { 
-      for (let i = 0; i < counter; i++) {
-        let ofsetH =  $banner_starrySky.offsetHeight
-        let ofsetY =  $banner_starrySky.offsetWidth
-        let size = Math.floor(Math.random() * 3) + 3 + "px"
-
-        let styles = {
-          "width" : size,
-          "height": size,
-          "animation-duration" : (Math.random() * 3)  + 1 + "s",
-          "top" : Math.floor(Math.random() * ofsetH) + 1 + "px",
-          "left": Math.floor(Math.random() * ofsetY) + 1 + "px"
-        }
-        
-        let $star = document.createElement('div')
-        $star.classList.add('star')
-        $banner_starrySky.appendChild($star)
-        styleProps.forEach( prop => $star.style.setProperty(prop ,  styles[prop]))
-      }
-
-    }
-
-    printStarrySky()
-
-  let resizeStars = () => {
-    let stars= document.querySelectorAll('.star')
-
-    stars.forEach( star => {
-      let t =  Math.floor(Math.random() * $banner_starrySky.offsetHeight) + 1
-      let l =  Math.floor(Math.random() * $banner_starrySky.offsetWidth) + 1
-      star.style.setProperty("top" , t + "px") 
-      star.style.setProperty("left" , l + "px") 
-    })
-  } 
+  stars.forEach( star => {
+    let t =  Math.floor(Math.random() * $banner_starrySky.offsetHeight) + 1
+    let l =  Math.floor(Math.random() * $banner_starrySky.offsetWidth) + 1
+    star.style.setProperty("top" , t + "px") 
+    star.style.setProperty("left" , l + "px") 
+  })
+} 
 
 
     //observer secstion
@@ -437,90 +418,116 @@ class SlideVerticalOnScroll {
       threshold: [0]
     }
 
-    let scrollEvt
-    let initAbout
-    let test
+const isObserver = (entries, observer) => {
+  let $div = $about.querySelectorAll('.grid')
+  let offsetT
 
-    const isObserver = (entries, observer) => {
-      let $div
-      let $topTxt
-      let $btmTxt
-      let offsetT
-      let topSecH
-      let btmSecH
+  let initAbout = () => ({
+      topSecH : $div[0].offsetTop,
+      btmSecH : $div[1].offsetTop,
+      end : $about.offsetHeight,
+  })
+  
+  let scrollEvt = () => {
+    let {topSecH,btmSecH, end} = initAbout()
+    let currenScl = scrollY - offsetT + (innerHeight / 2)
 
+    if (currenScl > topSecH && currenScl < btmSecH) {
+      $about_top.classList.add('top--focuse')
+    }
 
-      entries.forEach( entry => {
-        let onArea = entry.isIntersecting
-        let onClass = entry.target.className
+    if (currenScl > btmSecH && currenScl < end){
+      $about_btm.classList.add('btm--focuse')
+    }
+  }
 
-        if (onArea) {
-          let idx = observeArr.indexOf(entry.target)
-          navAnimate($gnbList[idx]) //nav animation
-        }
+  entries.forEach( entry => {
+    let onArea = entry.isIntersecting
+    let onClass = entry.target.className
+    offsetT = entry.target.offsetTop 
 
-        if (onArea && onClass === 'banner') {
-          $gnb.classList.add('in-banner')
-        } 
+    let inAbout = () => {
+      $gnb.classList.remove('in-banner')
+      window.addEventListener('resize',initAbout)
+      window.addEventListener('scroll',scrollEvt)
+    }
 
-        if (onArea && onClass === 'about') {
-          $gnb.classList.remove('in-banner')
-          $div = entry.target.querySelectorAll('.grid')
-          $topTxt = $div[0].querySelector('.about-top__txt')
-          $btmTxt = $div[1].querySelector('.about-btm__txt')
+    let outAbout = () =>{
+      $about_top.classList.remove('top--focuse')
+      $about_btm.classList.remove('btm--focuse')
+      window.removeEventListener('resize',initAbout)
+      window.removeEventListener('scroll',scrollEvt)
+    }
 
-          initAbout = () => {
-          offsetT = entry.target.offsetTop 
-          topSecH = $div[0].offsetTop
-          btmSecH = $div[1].offsetTop
-          }
+    let inContect = () => {      
+      scrollTo(0 , $body.offsetHeight)
+      $contect_sns.classList.add('focuse-contect')
+    }
 
-          initAbout()
+    let idx = secstions.indexOf(entry.target);
 
-          scrollEvt = () => {
-            //about 내의 top & bottom content scroll event
-            let currenScl = scrollY - offsetT + innerHeight / 2
+    if (onArea) {
+      navAnimate($gnb.children[idx])
 
-            if (currenScl > topSecH && currenScl < btmSecH) {
-              $about_top.classList.add('top--focuse')
-            }
+      switch (onClass) {
+        case 'banner': return $gnb.classList.add('in-banner')
+        case 'about': return inAbout()
+        case 'skill': return $skill_sticky.classList.add('skill--focuse')
+        case 'contect': return inContect()
+      }  
+    } 
 
-            if (currenScl > btmSecH){
-              $about_btm.classList.add('btm--focuse')
-            }
-            
-          }
-
-          window.addEventListener('resize',initAbout)
-          window.addEventListener('scroll',scrollEvt)
-        } 
-        else if(!onArea && onClass === 'about') {
-          //about 벗어나면 이벤트,스타일 삭제  
-          $about_top.classList.remove('top--focuse')
-          $about_btm.classList.remove('btm--focuse')
-
-          window.removeEventListener('scroll',scrollEvt)
-          window.removeEventListener('resize',initAbout)
-        }
-        //skill
-        if (onArea && onClass === 'skill') {
-          console.log('skill');
-        }
-
-        //contect
-        if (onArea && onClass === "contect") {
-          scrollTo(0 , $body.offsetHeight)
-          $contect_sns.classList.add('focuse-contect')
-        }
-        else if (!onArea && onClass === "contect"){
-          $contect_sns.classList.remove('focuse-contect')
-        }
-
-      })
-    }//isObserver
+    if(!onArea) {
+      switch (onClass) {
+        case 'about': return outAbout()
+        case 'skill': return $skill_sticky.classList.remove('skill--focuse')
+        case 'contect': return $contect_sns.classList.remove('focuse-contect')
+      }
+    }
+  })
+}//isObserver
 
 const io = new IntersectionObserver(isObserver , option)
-observeArr.forEach(dom => io.observe(dom))
+secstions.forEach(dom => io.observe(dom))
+
+
+let fadeTarget = secstions
+.filter( sec => ["about","skill","work"].includes(sec.className))
+
+let fadeStart = fadeTarget.map( sec => sec.offsetTop)
+
+let fadeText = sclY => {
+fadeTarget.forEach((e,i) =>{
+  if (sclY > fadeStart[i] * 0.93 && sclY < fadeStart[i] + innerHeight * 1.3) {
+    e.classList.add("fade-title")
+  } 
+  else {
+    e.classList.remove("fade-title")
+  }
+})
+}
+
+//scoll 
+let clearScroll = () =>{
+  let checkRAF = false;
+  if (checkRAF) return ;
+  checkRAF = true
+
+  let sclY = scrollY
+  const sclDirection = sclY < lastScroll ? "UP" : "DN"
+  lastScroll = sclY
+
+  requestAnimationFrame(()=>{
+    bannerRotateOnScroll.animate(sclY)
+    cardFlipOnScroll1.animate(sclY)
+    cardFlipOnScroll2.animate(sclY)
+    cardFlipOnScroll3.animate(sclY)
+    slideVerticalOnScroll.scroll(sclY , sclDirection)
+    fadeText(sclY) 
+    checkRAF = false
+  })
+}
+
 
 window.addEventListener('scroll', clearScroll)
 
@@ -536,5 +543,6 @@ window.addEventListener('resize', ()=>{
   slideVerticalOnScroll.init()
   slideVerticalOnScroll.scroll(scrollY)
   resizeStars()
+  fadeText() 
 })
 

@@ -16,7 +16,7 @@ body{
   // touch-action: none;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  // background-color: #171e40;
+  background-color: #171e40;
 }
 
 body::-webkit-scrollbar {
@@ -157,6 +157,8 @@ header{
       -0.03em 0.08em 0 rgba(174,41,246, 1),
       -0.03em 0 0 rgba(174,41,246, 1);
     }
+
+  
 
     .banner__bg {
       display: block;
@@ -346,22 +348,55 @@ header{
   }
 
 }//banner
-
-
 }
 
 
 
 .about{
-  margin-top: 100px;
   position: relative;
-  padding-top: 500px;
+  padding-top: 100vh;
   overflow: hidden;
   margin-bottom: 400px;
   background-color: #171e40;
   background: linear-gradient(180deg,  #5f3f8e 0%,#171e40 55%);
   color: #fff;
   z-index: -2;
+
+
+
+  h2{
+    position: absolute;
+    display: block;
+    top: 50vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13vw;
+    font-family: "Luckiest Guy", cursive;
+    text-shadow: 
+    0 0.1em 20px rgba(174,41,246, 1), 
+    0.05em -0.03em 0 rgba(174,41,246, 1),
+    0.05em 0.005em 0 rgba(174,41,246, 1),
+    0em 0.08em 0 rgba(174,41,246, 1),
+    0.05em 0.08em 0 rgba(174,41,246, 1), 
+    0px -0.03em 0 rgba(174,41,246, 1),
+    -0.03em -0.03em 0 rgba(174,41,246, 1), 
+    -0.03em 0.08em 0 rgba(174,41,246, 1),
+    -0.03em 0 0 rgba(174,41,246, 1);
+
+    &::before{
+      content: "";
+      position: absolute;
+      right: -5%;
+      top: -8%;
+      height: 125%;
+      width: 120%;
+
+      background: rgb(65,49,109);
+      background: linear-gradient(0deg, #473373 20%, rgba(76,54,122,1) 67%);
+      transition: 1s all;
+    }
+  }
+
 
   h4{
     font-size: 22px;
@@ -691,7 +726,6 @@ header{
         opacity: 0;
 
       }
-
     }
     .about-btm__txt{
       opacity: 1;
@@ -869,7 +903,6 @@ header{
       align-items: center;
       align-content: space-around;
 
-
       &::before{
         content: "SKILL";
         color: #fff;
@@ -885,16 +918,28 @@ header{
         -0.03em -0.03em 0 rgba(174,41,246, 1), 
         -0.03em 0.08em 0 rgba(174,41,246, 1),
         -0.03em 0 0 rgba(174,41,246, 1);
+        z-index: -2;
       }
 
-      
-      
+      &::after{
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-60%);
+        display: block;
+        width: 50%;
+        right: 25%;
+        height: 20vw;
+        z-index: -1;
+        background-color: #171e40;
+        transition: all 2s;
+      }
+
       .cards{
         display: flex;
         position: absolute;
-        width: 95vw; ///s
+        width: 95vw; 
         height: fit-content;
-        // justify-content: space-evenly;
         justify-content: center;
         align-items: center;
 
@@ -929,38 +974,36 @@ header{
   
         &__card{
           position: relative;
-          // width: 23.4375vw;
-          // height: 30.3125vw;
           width: 18.7500vw;
           height: 26.5250vw;
           margin: 0 min(1.5625vw,8px);
           max-width: 110px;
           max-height: 150px;
           background-color: #fff;
-          // line-height : 100%;
           text-align: center;
           box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.78);
-          border-radius: min(3.8vw,15px);
-          // overflow: hidden;
           transform: perspective(4000px) rotateY(180deg) translateX(100vw);
           transform-style: preserve-3d;
+
 
           @include responsive(tablet-screens) {
             width: 14.2857vw;
             height: 18.9286vw;
             margin: 0 10px;
-            // border-radius: 20px;
             max-width: 150px;
             max-height: 200px;
             max-width: 150px;
             max-height: 200px;
-            border-radius: min(2.1429vw,30px);
           }
+
+
+          border-radius: min(3.8vw,15px);
 
 
           &--front,
           &--back
           {
+
             display: flex;
             position: absolute;
             width: 100%;
@@ -970,17 +1013,13 @@ header{
             justify-content: center;
             backface-visibility: hidden;
             transform-style: preserve-3d;
-
-
-            @include responsive(tablet-screens) {
             border-radius: 2.1429vw;
-            }
-          
   
             img{
               display: inline-block;
               z-index: 100;
               width: 50%;
+              
             }
           }
           
@@ -989,7 +1028,6 @@ header{
             flex-direction: column;
             align-items: center;
             background-color: #fff;
-
       
             p{
               margin-top: min(1.2500vw,13px);
@@ -1008,7 +1046,7 @@ header{
             transform: rotateY(180deg);
             background-color: #fff;
             @include responsive(tablet-screens) {
-            border-radius: 20px;
+            // border-radius: 20px;
             }
 
             &::before{
@@ -1025,11 +1063,9 @@ header{
         }
         
       }
-  }
+    }  
   }
 } //skill
-
-
 
 
 .work{
@@ -1046,15 +1082,12 @@ header{
     height: 100vh;
     overflow: hidden;
 
-
-  
     .work__abs-box{ 
       display: flex;
       position: absolute;
       left: 0px;
       background: #171e40;
       transition: all .5s cubic-bezier(0.25, 1, 0.5, 1); /* easeInOutBack */
-
 
       .work-list{
         display: flex;
@@ -1064,8 +1097,6 @@ header{
         align-items: center;
         justify-content: center;
         background: #171e40;
-
-
 
         &__bg{
           position: absolute;
@@ -1106,12 +1137,40 @@ header{
           margin-top: 50px;
           opacity: 0;
           transition: all 400ms  cubic-bezier(0.61, 1, 0.88, 1);
-
           
           @include responsive(tablet-screens) {
             display: flex;
             flex-direction: row-reverse;
           }
+
+          &__title{
+            position: relative;
+            margin: 0 auto;
+            font-size: 15vw;
+            font-family: "Luckiest Guy", cursive;
+            text-shadow: 
+            0 0.1em 20px rgba(174,41,246, 1), 
+            0.05em -0.03em 0 rgba(174,41,246, 1),
+            0.05em 0.005em 0 rgba(174,41,246, 1),
+            0em 0.08em 0 rgba(174,41,246, 1),
+            0.05em 0.08em 0 rgba(174,41,246, 1), 
+            0px -0.03em 0 rgba(174,41,246, 1),
+            -0.03em -0.03em 0 rgba(174,41,246, 1), 
+            -0.03em 0.08em 0 rgba(174,41,246, 1),
+            -0.03em 0 0 rgba(174,41,246, 1);
+
+            &::before{
+              content: "";
+              position: absolute;
+              right: -5%;
+              top: -7%;
+              width: 120%;
+              height: 130%;
+              background-color: #171e40;
+              transition: 1s all;
+            }
+          }
+
         
           &__rf-contain{
               z-index: 100;
@@ -1184,8 +1243,6 @@ header{
       
             small{
               position: relative;
-              // top: 100px;
-              // padding-top: 30px;
               font-size:clamp(14px , 1.5714vw , 22px);
               color: #c6c6c6;
             }
@@ -1196,7 +1253,6 @@ header{
       
             }
             &--time{
-              // font-size: 14px;
               font-size:clamp(14px , 1.5714vw , 22px);
       
             }
@@ -1204,7 +1260,6 @@ header{
             &--skill{
               margin: 20px 0 50px;
               color: #c6c6c6;
-              // font-size: 14px;
               word-spacing: 10px;
               font-size:clamp(14px , 1.5714vw , 22px);
   
@@ -1285,6 +1340,15 @@ header{
           
         }
 
+        .first-des{
+          margin-top: 0; top: 0;
+          opacity: 1;
+
+
+    
+        }
+
+
       } //work-list
     }
   }
@@ -1295,6 +1359,7 @@ header{
   width: 100vw;
   height: 100vh;
   padding: 80px 0;
+  margin-top: 100px;
   background-color: #171e40;
   // align-items: center;
   justify-content: center;
@@ -1386,11 +1451,13 @@ header{
       position: relative;
       width: 29.0625vw;
       transform: scale(1.10);
+
         @include responsive(tablet-screens) {
           display: none;
           transform: scale(1);
         }
-      svg{
+
+      img{
         position: absolute;
         left: 0px;
         width: 52.5vw;
@@ -1417,12 +1484,51 @@ header{
     p:nth-of-type(3){
       transition-delay: 1500ms;
     }
-    svg{
-      transition-delay: 2000ms;
-      transform: translate(0);
+    p:nth-of-type(4){
+      img{
+        transition-delay: 2000ms;
+        transform: translate(0);
+      }
     }
-
   }
 }
 
+
+
+// .fade-title .skill__sticky{
+//   &::before{
+//     width: 0px;
+//     background-color: blue;
+//   }
+// }
+
+
+
+.fade-title h2 {
+  &::before{
+    width: 0px;
+  }
+}
+
+.fade-title .work-des__title{
+  &::before{
+    width: 0px !important;
+  }
+}
+.fade-title .skill__sticky{
+  &::after{
+    width: 0px;
+  }
+}
+
+
+
+
+
+//   ,
+//   .work-des__title,
+//   h2{
+
+//   }
+// }
 

@@ -41,6 +41,7 @@ h1 {
 body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  background-color: #171e40;
 }
 
 body::-webkit-scrollbar {
@@ -306,15 +307,35 @@ header .outer-img__half {
 }
 
 .about {
-  margin-top: 100px;
   position: relative;
-  padding-top: 500px;
+  padding-top: 100vh;
   overflow: hidden;
   margin-bottom: 400px;
   background-color: #171e40;
   background: linear-gradient(180deg, #5f3f8e 0%, #171e40 55%);
   color: #fff;
   z-index: -2;
+}
+.about h2 {
+  position: absolute;
+  display: block;
+  top: 50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13vw;
+  font-family: "Luckiest Guy", cursive;
+  text-shadow: 0 0.1em 20px rgb(174, 41, 246), 0.05em -0.03em 0 rgb(174, 41, 246), 0.05em 0.005em 0 rgb(174, 41, 246), 0em 0.08em 0 rgb(174, 41, 246), 0.05em 0.08em 0 rgb(174, 41, 246), 0px -0.03em 0 rgb(174, 41, 246), -0.03em -0.03em 0 rgb(174, 41, 246), -0.03em 0.08em 0 rgb(174, 41, 246), -0.03em 0 0 rgb(174, 41, 246);
+}
+.about h2::before {
+  content: "";
+  position: absolute;
+  right: -5%;
+  top: -8%;
+  height: 125%;
+  width: 120%;
+  background: rgb(65, 49, 109);
+  background: linear-gradient(0deg, #473373 20%, rgb(76, 54, 122) 67%);
+  transition: 1s all;
 }
 .about h4 {
   font-size: 22px;
@@ -771,6 +792,20 @@ header .outer-img__half {
   font-size: 15vw;
   font-family: "Luckiest Guy", cursive;
   text-shadow: 0 0.1em 20px rgb(174, 41, 246), 0.05em -0.03em 0 rgb(174, 41, 246), 0.05em 0.005em 0 rgb(174, 41, 246), 0em 0.08em 0 rgb(174, 41, 246), 0.05em 0.08em 0 rgb(174, 41, 246), 0px -0.03em 0 rgb(174, 41, 246), -0.03em -0.03em 0 rgb(174, 41, 246), -0.03em 0.08em 0 rgb(174, 41, 246), -0.03em 0 0 rgb(174, 41, 246);
+  z-index: -2;
+}
+.skill__contain .skill__sticky::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  display: block;
+  width: 50%;
+  right: 25%;
+  height: 20vw;
+  z-index: -1;
+  background-color: #171e40;
+  transition: all 2s;
 }
 .skill__contain .skill__sticky .cards {
   display: flex;
@@ -821,9 +856,9 @@ header .outer-img__half {
   background-color: #fff;
   text-align: center;
   box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.78);
-  border-radius: min(3.8vw, 15px);
   transform: perspective(4000px) rotateY(180deg) translateX(100vw);
   transform-style: preserve-3d;
+  border-radius: min(3.8vw, 15px);
 }
 @media screen and (min-width: 768px) {
   .skill__contain .skill__sticky .cards__card {
@@ -834,7 +869,6 @@ header .outer-img__half {
     max-height: 200px;
     max-width: 150px;
     max-height: 200px;
-    border-radius: min(2.1429vw, 30px);
   }
 }
 .skill__contain .skill__sticky .cards__card--front, .skill__contain .skill__sticky .cards__card--back {
@@ -847,11 +881,7 @@ header .outer-img__half {
   justify-content: center;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-}
-@media screen and (min-width: 768px) {
-  .skill__contain .skill__sticky .cards__card--front, .skill__contain .skill__sticky .cards__card--back {
-    border-radius: 2.1429vw;
-  }
+  border-radius: 2.1429vw;
 }
 .skill__contain .skill__sticky .cards__card--front img, .skill__contain .skill__sticky .cards__card--back img {
   display: inline-block;
@@ -879,11 +909,6 @@ header .outer-img__half {
   z-index: -1;
   transform: rotateY(180deg);
   background-color: #fff;
-}
-@media screen and (min-width: 768px) {
-  .skill__contain .skill__sticky .cards__card--back {
-    border-radius: 20px;
-  }
 }
 .skill__contain .skill__sticky .cards__card--back::before {
   content: "";
@@ -967,6 +992,23 @@ header .outer-img__half {
     display: flex;
     flex-direction: row-reverse;
   }
+}
+.work__sticky .work__abs-box .work-list .work-des__title {
+  position: relative;
+  margin: 0 auto;
+  font-size: 15vw;
+  font-family: "Luckiest Guy", cursive;
+  text-shadow: 0 0.1em 20px rgb(174, 41, 246), 0.05em -0.03em 0 rgb(174, 41, 246), 0.05em 0.005em 0 rgb(174, 41, 246), 0em 0.08em 0 rgb(174, 41, 246), 0.05em 0.08em 0 rgb(174, 41, 246), 0px -0.03em 0 rgb(174, 41, 246), -0.03em -0.03em 0 rgb(174, 41, 246), -0.03em 0.08em 0 rgb(174, 41, 246), -0.03em 0 0 rgb(174, 41, 246);
+}
+.work__sticky .work__abs-box .work-list .work-des__title::before {
+  content: "";
+  position: absolute;
+  right: -5%;
+  top: -7%;
+  width: 120%;
+  height: 130%;
+  background-color: #171e40;
+  transition: 1s all;
 }
 .work__sticky .work__abs-box .work-list .work-des__rf-contain {
   z-index: 100;
@@ -1109,12 +1151,18 @@ header .outer-img__half {
 .work__sticky .work__abs-box .work-list .work-des--focuse .work__btns {
   transition-delay: 800ms;
 }
+.work__sticky .work__abs-box .work-list .first-des {
+  margin-top: 0;
+  top: 0;
+  opacity: 1;
+}
 
 .contect {
   display: flex;
   width: 100vw;
   height: 100vh;
   padding: 80px 0;
+  margin-top: 100px;
   background-color: #171e40;
   justify-content: center;
   flex-direction: column;
@@ -1181,7 +1229,7 @@ header .outer-img__half {
     transform: scale(1);
   }
 }
-.contect__sns--character svg {
+.contect__sns--character img {
   position: absolute;
   left: 0px;
   width: 52.5vw;
@@ -1205,7 +1253,19 @@ header .outer-img__half {
 .contect .focuse-contect p:nth-of-type(3) {
   transition-delay: 1500ms;
 }
-.contect .focuse-contect svg {
+.contect .focuse-contect p:nth-of-type(4) img {
   transition-delay: 2000ms;
   transform: translate(0);
+}
+
+.fade-title h2::before {
+  width: 0px;
+}
+
+.fade-title .work-des__title::before {
+  width: 0px !important;
+}
+
+.fade-title .skill__sticky::after {
+  width: 0px;
 }
