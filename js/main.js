@@ -1,25 +1,39 @@
   //DOM
+const $body = document.querySelector('body')
+const $banner = document.querySelector('.banner')
+const $banner_sticky = document.querySelector('.banner__img')
+const $banner_starrySky = document.querySelector('.starry-sky')
+
+const $gnb = document.querySelector('.gnb')
+const $gnbList = Array.from(document.querySelectorAll('.gnb > li'))
+const $outerBox = document.querySelector('.outer-img')
+const $section = document.querySelectorAll('section')
+
+const $about = document.querySelector('.about')
+const $about_topImgBox = document.querySelector('.about-top__img')
+const $about_top = document.querySelector('.about-top')
+const $about_btm = document.querySelector('.about-btm')
+
 const $skill_contain = document.querySelector('.skill__contain')
 const $skill_sticky = document.querySelector('.skill__sticky')
 const $skill_cards = document.querySelectorAll('.cards')
 const $modal_circle = document.querySelector('.modal__circle')
 const $modal_wrap = document.querySelector('.modal')
-const $body = document.querySelector('body')
+
 const $work = document.querySelector('.work')
 const $work_sticky = document.querySelector('.work__sticky')
 const $workDes = document.querySelectorAll('.work-des') 
-const $gnb = document.querySelector('.gnb')
-const $gnbList = Array.from(document.querySelectorAll('.gnb > li'))
-const $section = document.querySelectorAll('section')
-const $main = document.querySelector('.banner')
+const $work_rfImg = document.querySelectorAll('.work-des__rf-contain--border')
+const $work_designBtns = document.querySelectorAll('.work__btns--design')
 const $contect = document.querySelector('.contect')
-const $outerBox = document.querySelector('.outer-img')
-const $about = document.querySelector('.about')
-const $about_topImgBox = document.querySelector('.about-top__img')
-const $about_top = document.querySelector('.about-top')
-const $about_btm = document.querySelector('.about-btm')
 const $contect_sns = document.querySelector('.contect__sns')
-const $banner_starrySky = document.querySelector('.starry-sky')
+
+const $design = document.querySelector('.design-guide')
+const $design_close = document.querySelector('.design-guide__close')
+
+let secstions = Array.from($section)
+secstions.push($contect)
+secstions.unshift($banner)
 
       /*
       2. 글자 애니메이션
@@ -30,57 +44,54 @@ const $banner_starrySky = document.querySelector('.starry-sky')
       12 버튼 호버 에니메이션 추가 //호버하면 클릭 버튼 나오게하기 
       12 디자인 가이드 작성
       13 시간나면 아래 하단에 나래이션 추가
-      14. 어바웃 위치조정 
       */
-      let secstions = Array.from($section)
-      secstions.push($contect)
-      secstions.unshift($main)
-
+    
       
       // setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
       
-      let lastMenu = 0 //대소비교 
-      let setTime
-      //nav animation 
-      let navAnimate = (el , time = 300) => {
-        const targetMap = {
-          LI : el,
-          A : el.parentElement
-        }
+let lastMenu = 0 //대소비교 
+let setTime
+//nav animation 
+let navAnimate = (el , time = 300) => {
+  const targetMap = {
+    LI : el,
+    A : el.parentElement
+  }
 
-        let li =  targetMap[el.tagName]; 
-        const list = [...$gnb.children]
-        if (!li) return 
+  let li =  targetMap[el.tagName]; 
+  const list = [...$gnb.children]
+  if (!li) return 
 
-        let direct = lastMenu > list.indexOf(li) ? '--reverse' : '';
-        li.classList.add('gnb-start' + direct)
+  let direct = lastMenu > list.indexOf(li) ? '--reverse' : '';
+  li.classList.add('gnb-start' + direct)
 
-        setTime =  setTimeout(()=>{
-          list.forEach(e => e.classList = '') 
-          li.classList = 'gnb-end' +  direct
-        },time)
-        lastMenu = list.indexOf(li)
-      }
+  setTime =  setTimeout(()=>{
+    list.forEach(e => e.classList = '') 
+    li.classList = 'gnb-end' +  direct
+  },time)
 
-      let scrollInToNav = (e) => {
-        e.preventDefault()
-        const targetMap = {
-          LI : e.target,
-          A : e.target.parentElement
-        }
-        let li =  targetMap[e.target.tagName]; 
-        if (!li) return 
-        let idx = $gnbList.indexOf(li)
+  lastMenu = list.indexOf(li)
+}
 
-        secstions[idx].className == 'work' && setTimeout(()=>$workDes[0].classList.add('work-des--focuse'),400)
-        secstions[idx].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-      }
+let scrollInToNav = (e) => {
+  e.preventDefault()
+  const targetMap = {
+    LI : e.target,
+    A : e.target.parentElement
+  }
+  let li =  targetMap[e.target.tagName]; 
+  if (!li) return 
+  let idx = $gnbList.indexOf(li)
 
-      $gnb.addEventListener('click', e =>{
-        e.preventDefault()
-        navAnimate(e.target)
-        scrollInToNav(e)
-      })
+  secstions[idx].className == 'work' && setTimeout( _ => $workDes[0].classList.add('work-des--focuse'),400)
+  secstions[idx].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+}
+
+$gnb.addEventListener('click', e =>{
+  e.preventDefault()
+  navAnimate(e.target)
+  scrollInToNav(e)
+})
 
       
 //skill
@@ -170,20 +181,24 @@ class ClickCardOnModal{
       jquery : "jquery임",
     } 
 
-    const openModal = (e) => {
+    const openModal = e => {
       let onCard = {
         'cards__card--front' : e.target , 
-        'cards__card--img' : e.target.parentElement,
+        'cards__card--img' : e.target.parentElement.parentElement,
+        'cards__card--name' : e.target.parentElement,
         'cards__card--name' : e.target.parentElement
       }[e.target.className]
       if (!onCard) return
 
       //modal skill content push
-      let skillImg = onCard.firstElementChild.getAttribute('src')
+      let skillImg = onCard.firstElementChild.firstElementChild
       let skillN = onCard.lastElementChild.textContent
+
+      console.log(skillImg)
+      console.log(onCard);;
       let skillmsg = skillDes[skillN.toLowerCase()]
 
-      this.img.setAttribute('src',skillImg)
+      this.img.setAttribute('src',skillImg.getAttribute('src'))
       this.skillName.textContent = skillN
       this.skillDescription.textContent = skillmsg
 
@@ -204,12 +219,9 @@ class ClickCardOnModal{
   }
 }
 
-
-
 const clickCardOnModal1 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap , $skill_cards[0])
 const clickCardOnModal2 = new ClickCardOnModal($body , $skill_sticky ,$modal_wrap , $skill_cards[1])
 const clickCardOnModal3 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap, $skill_cards[2])
-
 
 cardFlipOnScroll1.init()
 cardFlipOnScroll2.init(20)
@@ -282,12 +294,10 @@ class BannerRotateOnScroll {
   }
 }
 
-const $banner_sticky = document.querySelector('.banner__img')
-const $banner = document.querySelector('.banner')
+
 const bannerRotateOnScroll = new BannerRotateOnScroll( $banner , $banner_sticky)
 bannerRotateOnScroll.init()
 
-    
 class SlideVerticalOnScroll {
   constructor (wrapper , sticky , contentBox){
     this.wrapper = wrapper
@@ -318,6 +328,12 @@ class SlideVerticalOnScroll {
       return
     } 
 
+    //search
+    const scrollImg = idx => {    
+        let scrollLength = $work_rfImg[idx].children[0].offsetHeight - $work_rfImg[idx].offsetHeight 
+        $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
+    }
+
     for (let i = 0; i < this.length - 1; i++) {
       let s = this.start + (this.step * i)
       let e = s + this.step * this.breakPoint;
@@ -328,21 +344,20 @@ class SlideVerticalOnScroll {
         BUP : - 100 / this.length * i
       }
 
-      const contentStyle = (idx) => { 
+      const contentStyle = idx => { 
         this.workDes.forEach(e => e.classList.remove('work-des--focuse'))
         this.workDes[idx].classList.add('work-des--focuse')
       }
 
       if(sclY > s && sclY <= e){
-        console.log("asss");
         //객체(directX)에서 스크롤 방향에 맞는 속성 실행
         this.vertivalBox.style.transform = `
         translateX(${directX[direction == 'UP' ? 'BUP' : 'UP']}%)
         ` 
 
-
         //스크롤 방향에 맞는 스타일 변경 함수(contentStyle) 실행
         contentStyle(i)
+        scrollImg(i)
       } 
 
       else if ( sclY > e  && sclY <= s + this.step) {
@@ -360,10 +375,9 @@ class SlideVerticalOnScroll {
   }
 }
 
-  const slideVerticalOnScroll = new SlideVerticalOnScroll($work, $work_sticky ,$workDes)
-  let lastScroll = 0
-  slideVerticalOnScroll.init()
-
+const slideVerticalOnScroll = new SlideVerticalOnScroll($work, $work_sticky ,$workDes)
+let lastScroll = 0
+slideVerticalOnScroll.init()
 
 
 //banner - 별생성
@@ -400,7 +414,7 @@ let printStarrySky = () => {
 printStarrySky()
 
 let resizeStars = () => {
-  let stars= document.querySelectorAll('.star')
+  let stars = document.querySelectorAll('.star')
 
   stars.forEach( star => {
     let t =  Math.floor(Math.random() * $banner_starrySky.offsetHeight) + 1
@@ -411,12 +425,32 @@ let resizeStars = () => {
 } 
 
 
-    //observer secstion
-    const option = {
-      root : null,
-      rootMargin: '0px',
-      threshold: [0]
-    }
+
+//design-guide--open
+let openDesignGuide = () => {
+  $body.style.overflow = "hidden"
+  $design.classList.add('design-guide--open')
+}
+
+let closeDesignGuide = () => {
+  $body.style.overflow = "visible"
+  $design.lastElementChild.scrollTop = 0
+  $design.classList.remove('design-guide--open')
+}
+
+$work_designBtns.forEach((e)=>{
+  e.addEventListener('click' , openDesignGuide)
+})
+
+$design_close.addEventListener('click' , closeDesignGuide)
+
+
+//observer secstion
+const option = {
+  root : null,
+  rootMargin: '0px',
+  threshold: [0]
+}
 
 const isObserver = (entries, observer) => {
   let $div = $about.querySelectorAll('.grid')
@@ -488,7 +522,7 @@ const isObserver = (entries, observer) => {
 }//isObserver
 
 const io = new IntersectionObserver(isObserver , option)
-secstions.forEach(dom => io.observe(dom))
+secstions.forEach( dom => io.observe(dom))
 
 
 let fadeTarget = secstions
@@ -497,7 +531,7 @@ let fadeTarget = secstions
 let fadeStart = fadeTarget.map( sec => sec.offsetTop)
 
 let fadeText = sclY => {
-fadeTarget.forEach((e,i) =>{
+fadeTarget.forEach(( e , i ) => {
   if (sclY > fadeStart[i] * 0.93 && sclY < fadeStart[i] + innerHeight * 1.3) {
     e.classList.add("fade-title")
   } 
@@ -508,7 +542,7 @@ fadeTarget.forEach((e,i) =>{
 }
 
 //scoll 
-let clearScroll = () =>{
+let clearScroll = () => {
   let checkRAF = false;
   if (checkRAF) return ;
   checkRAF = true
@@ -517,7 +551,7 @@ let clearScroll = () =>{
   const sclDirection = sclY < lastScroll ? "UP" : "DN"
   lastScroll = sclY
 
-  requestAnimationFrame(()=>{
+  requestAnimationFrame(() => {
     bannerRotateOnScroll.animate(sclY)
     cardFlipOnScroll1.animate(sclY)
     cardFlipOnScroll2.animate(sclY)
@@ -532,7 +566,7 @@ let clearScroll = () =>{
 window.addEventListener('scroll', clearScroll)
 
 //resize
-window.addEventListener('resize', ()=>{
+window.addEventListener('resize', () => {
   bannerRotateOnScroll.init()
   cardFlipOnScroll1.init()
   cardFlipOnScroll3.init(10)
