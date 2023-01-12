@@ -41,7 +41,6 @@ secstions.unshift($banner)
       9.content animation // 링크연결
       10 베너 어바웃 사이에 컨텐츠 넣기
       11 자격사항 체워넣기
-      12 버튼 호버 에니메이션 추가 //호버하면 클릭 버튼 나오게하기 
       12 디자인 가이드 작성
       13 시간나면 아래 하단에 나래이션 추가
       */
@@ -172,13 +171,16 @@ class ClickCardOnModal{
 
   clickEvnt(){
     const skillDes = {
-      html : "html임",
-      css : "css임",
-      javascript : "javascript임",
-      react : "react임",
-      tailwind : "tailwind임",
-      bootstrap : "bootstrap임",
-      jquery : "jquery임",
+      html : "웹 접근성을 준수한 회원가입폼 구현가능, 마크업 가능 HTML5 등에서 사용되는 시멘틱 태그를 이해하고 있습니다.",
+      css : "BEM방법의 클래스작성과 반응형을 준수한 CSS 작성이 가능합니다",
+      javascript : "Vanilla Javascript 활용 및 Jquery.js React.js 활용 배열 및 객체의 이해, 상호작용하는 애니메이션을 구현할수 있습니다.",
+      react : "Hook ,라우팅을 이해하고 있습니다. 이를 활용한 웹을 구현할수 있습니다.",
+      tailwind : "tailwind에서 제공하는 클래스 명령어를 모두 이해하고 있으며 신속한 스타일 작성이 가능합니다",
+      bootstrap : "bootstrap에서 제공하고 있는 스타일 컴포넌트를 활용한 웹 제작이 가능합니다",
+      sass : "요소의 관계를 명확하게 나타내며 Mixin과 변수를 활용하여 스타일을 작성합니다.",
+      jquery : "슬라이드, 풀페이지 및 동적 인터페이스 구현가능 Ajax를 활용한 비동기 통신 구현가능",
+      git : "local , remote repository 간에 업로드 및 업데이트 가능. branch 활용 가능.",
+      nodejs : "로그인,회원가입, 게시판 기본적인 기능 구현이 가능 합니다."
     } 
 
     const openModal = e => {
@@ -188,6 +190,7 @@ class ClickCardOnModal{
         'cards__card--name' : e.target.parentElement,
         'cards__card--name' : e.target.parentElement
       }[e.target.className]
+
       if (!onCard) return
 
       //modal skill content push
@@ -298,6 +301,42 @@ class BannerRotateOnScroll {
 const bannerRotateOnScroll = new BannerRotateOnScroll( $banner , $banner_sticky)
 bannerRotateOnScroll.init()
 
+let workImgs = [...document.querySelectorAll('.work-des__rf-contain--border > img')]
+let imgH = workImgs.map(e => e.offsetHeight)
+workImgs.map(e => {
+  let clones = e.cloneNode(true)
+  e.insertAdjacentElement('afterend' , clones)
+})
+
+$work_rfImg.for
+
+
+// let $cloneNodes = [...$work_rfImg].map( e => {
+//   let clone = e.firstElementChild.cloneNode(true)
+//   clone.classList.add('clone')
+//   e.appendChild(clone)
+//   return clone
+// }) 
+
+let img 
+function scrollEvnt() {
+  scrollY
+  let imgBox = $work_rfImg[0].children[0]
+  let imgBoxT = imgBox.offsetTop
+
+  console.log(imgBoxT);
+  
+  console.log();
+
+}
+
+addEventListener('scroll' , scrollEvnt)
+
+
+// - $work_rfImg[idx].offsetHeight 
+// let scrollLength = $work_rfImg[idx].children[0].offsetHeight
+// $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
+
 class SlideVerticalOnScroll {
   constructor (wrapper , sticky , contentBox){
     this.wrapper = wrapper
@@ -318,6 +357,7 @@ class SlideVerticalOnScroll {
     this.end = (this.wrapper.offsetTop +this. wrapper.offsetHeight - innerHeight)
     this.step = (this.end - this.start) / this.length
     this.width = this.vertivalBox.offsetWidth 
+
   }
 
   scroll(sclY  , direction){
@@ -329,9 +369,13 @@ class SlideVerticalOnScroll {
     } 
 
     //search
+
+
     const scrollImg = idx => {    
-        let scrollLength = $work_rfImg[idx].children[0].offsetHeight - $work_rfImg[idx].offsetHeight 
-        $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
+      // - $work_rfImg[idx].offsetHeight 
+      // - $work_rfImg[idx].offsetHeight 
+      //   let scrollLength = $work_rfImg[idx].children[0].offsetHeight
+      //   $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
     }
 
     for (let i = 0; i < this.length - 1; i++) {

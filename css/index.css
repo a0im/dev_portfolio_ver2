@@ -698,7 +698,6 @@ header .outer-img__half {
   left: 50%;
   width: 50px;
   height: 50px;
-  background-color: #c6c6c6;
   font-size: min(10vw, 50px);
   transform: translate(-50%);
   color: #ae29f6;
@@ -740,8 +739,15 @@ header .outer-img__half {
   }
 }
 .skill .modal__box p:nth-of-type(2) {
-  font-size: min(5vw, 22px);
+  font-size: min(5vw, 18px);
   margin-top: min(6.25vw, 40px);
+  padding: 0 25px;
+}
+@media screen and (min-width: 768px) {
+  .skill .modal__box p:nth-of-type(2) {
+    font-size: min(5vw, 20px);
+    padding: 0 20px;
+  }
 }
 .skill .modal__bg {
   position: absolute;
@@ -1169,15 +1175,6 @@ header .outer-img__half {
   top: 0;
   margin-top: 0;
   opacity: 1;
-}
-.work__sticky .work__abs-box .work-list img {
-  bottom: var(--work-pos);
-  animation: scrollImg 5s linear alternate infinite;
-}
-@keyframes scrollImg {
-  100% {
-    bottom: 0;
-  }
 }
 .work .design-guide {
   position: fixed;

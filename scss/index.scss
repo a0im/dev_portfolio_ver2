@@ -790,7 +790,6 @@ header{
         left: 50%;
         width: 50px;
         height: 50px;
-        background-color: #c6c6c6;
         font-size: min(10vw,50px);
         transform: translate(-50%);
         color: #ae29f6;
@@ -835,8 +834,15 @@ header{
       }
 
       p:nth-of-type(2){
-        font-size: min(5vw,22px);
+        font-size: min(5vw,18px);
         margin-top: min(6.25vw,40px);
+        padding: 0 25px;
+
+        @include responsive(tablet-screens) {
+          font-size: min(5vw,20px);
+          padding: 0 20px;
+
+        }
       }
     }
 
@@ -1294,7 +1300,6 @@ header{
                   max-width: 140px;
                   max-height: 45px;
                   border: 2px solid #ae29f6;
-
                 }
 
                 &::before{
@@ -1336,6 +1341,20 @@ header{
           .work__btns{
             transition-delay: 800ms;
           }
+
+          // img{
+          //   display: block;
+          //   top: 0;
+          //   // bottom : var(--work-pos);
+          //   animation: scrollImg 3s linear infinite;
+          //   @keyframes scrollImg {
+          //     100% {
+          //   top: 100%;
+
+          //       // bottom: 0;
+          //     }
+          //   }
+          // }
         }
 
         .first-des{ top: 0;
@@ -1343,18 +1362,11 @@ header{
           opacity: 1;    
         }
 
-        img{
-          bottom : var(--work-pos);
-          animation: scrollImg 5s linear alternate infinite;
-          @keyframes scrollImg {
-            100% {bottom: 0;}
-          }
-        }
+       
       } //work-list
     }
   }
 
-  //search
   .design-guide{
     position: fixed;
     visibility: hidden;
