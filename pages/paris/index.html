@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta product="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/style.css">
+  <title>파리바게뜨</title>
+  <script src="https://kit.fontawesome.com/0c997df9c9.js" crossorigin="anonymous"></script>
+  <script src="./js/data.js"></script>
+  <script defer src="./js/main.js"></script>
+</head>
+<body>
+  <header>
+    <h1>PARIS BAGUETTE</h1>
+    <nav>
+      <ul class="product-nav">
+        <li data-product-type="*">전체</li>
+        <li data-product-type="bread">빵/케이크</li>
+        <li data-product-type="beverage">음료</li>
+        <li data-product-type="sandwich">샌드위치/샐러드</li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="items-box"></div>
+  <div class="cart-wrap">
+    <i class="fa-solid fa-rotate-left reset-btn"></i>
+    <div class="hidden-btn"></div>
+    <div class="cart-box"></div>
+    <div class="payment-wrap">
+      <div class="payment-box"><span>충전금액</span>0원</div>
+      <div class="payment-btns">
+        <button data-payment="1000">천원</button>
+        <button data-payment="5000">오천원</button>
+        <button data-payment="10000">만원</button>
+        <button data-payment="50000">오만원</button>
+      </div>
+    </div>
+    <div class="sum-box close">결제하기</div>
+  </div><!-- cart-wrap -->
+
+  <div class="modal-wrap"></div>
+</body>
+</html>

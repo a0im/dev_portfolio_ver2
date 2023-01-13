@@ -1,0 +1,308 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: DungGeunMo;
+  background-color: #000083;
+  color: #fff;
+  padding: 30px 40px 40px 40px;
+  font-size: 18px;
+  width: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+body::-webkit-scrollbar-thumb {
+  height: 10px;
+  background: #0000006d;
+  border-radius: 0.5px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+h1{
+  font-size: 52px;
+  margin-bottom: 20px;
+}
+
+h2{
+  color: #333;
+  font-size: 32px;
+}
+
+h3{
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-size: 36px;
+  text-align: center;
+}
+
+td{
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+
+input{
+  background-color: transparent;
+  color: #fff;
+  font-family: DungGeunMo;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  border-right: 2px solid #efefef;
+  border-bottom: 2px solid #efefef;
+}
+
+input::placeholder{
+  color: #c6c6c6;
+  font-size: 18px;
+}
+
+label{
+  margin-right: 30px;
+}
+ol{
+  padding: 0;
+  list-style-position: inside;
+}
+
+
+
+.content-wrap{
+  background-color: #04a9aa;
+  padding: 40px;
+}
+
+.description-box h2,
+.coution-box h2,
+.input-box h2,
+.btns h2{
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.description-box h2{
+  margin-top: 0;
+}
+
+.coution-box  li, 
+.description-box  p{
+  margin-bottom: 4px;
+}
+
+.coution-box li::marker{
+  font-size: 20px;
+}
+
+/* .modal, */
+
+.btns > p{
+  padding: 3px;
+}
+.btns > p:hover{
+ background-color: #c6c6c6;
+ color: #696969;
+}
+
+/* ====================table================== */
+
+.print-content-box{
+  display: flex;
+
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.print-content-box > table{
+
+  margin-right: 65px;
+  margin-bottom: auto;
+}
+
+.print-content-box > table:last-of-type{
+  margin-right: 0;
+}
+
+.print-content-box > table > caption{
+  margin-bottom: 10px;
+}
+
+.int-table, .result-table ,td{
+  border: 1px solid #fff;
+  font-size: 22px;
+}
+
+
+.result-table  td {
+  color: yellow;
+}
+
+.result-table::before,
+.result-table::after{
+  position: absolute;
+  display: block;
+  font-size: 80px;
+  top: calc(50% + 11px);
+  transform: translateY(-50%);
+}
+
+
+.result-table::after{
+  right: 203px;
+  content: "=";
+}
+
+/* .result-table::before{
+  content: "x";
+  left: 203px;
+} */
+
+.multi::before,
+.add::before,
+.sub::before{
+  left: 203px;
+}
+
+.multi::before{
+  content: "x";
+}
+.add::before{
+  content: "+";
+}
+.sub::before{
+  content: "-";
+}
+
+
+
+
+
+/* ====================modal======================= */
+.lock-scroll{
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal,
+.close-modal{
+  background-color: #c6c6c6;
+  border-top: 2px solid #efefef;
+  border-left: 2px solid #efefef;
+  border-right: 2px solid #696969;
+  border-bottom: 2px solid #696969;
+}
+.close-modal{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* 인터넷익스플로러 */
+  user-select: none;
+  cursor: pointer;
+}
+.modal-wrap{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+.show{
+  display: block;
+}
+.modal{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 350px;
+  height: 200px;
+}
+
+
+.modal > .headbar{
+  display: flex;
+  width: 30px;
+  height: 30px;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 2px);
+  padding: 4.5px 3px;
+  font-size: 18px;
+  background-color: #000080;
+}
+
+.modal > .headbar > .close-modal{
+  width: 21px;
+  height: 21px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.headbar > span{
+  margin-left: 7px;
+}
+
+.headbar > .close-modal > i{
+
+  color: #333;
+}
+
+.messege-box{
+  display: flex;
+  margin-top: 30px;
+  color: #333;
+  padding: 35px 20px;
+  align-items: center;
+}
+
+.messege-box img {
+  width: 40px;
+  margin-right: 20px;
+}
+
+.messege-box p {
+  line-height: 20px;
+}
+
+.modal > .close-modal{
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  height: 25px;
+  font-size: 18px;
+  text-align: 25px;
+  padding: 0 20px;
+  width: fit-content;
+  line-height: 23px;
+  color: #333;
+}
+
+.push{
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  border-right: 2px solid #efefef;
+  border-bottom: 2px solid #efefef;
+}
+
