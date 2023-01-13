@@ -307,24 +307,24 @@ main {
 }
 .biscuit a {
   height: 556px;
-  background-image: url(/img/s1_꽃.jpg);
+  background-image: url(../img/s1_꽃.jpg);
 }
 .biscuit a:hover {
-  background-image: url(/img/s1_꽃_hov.jpg);
+  background-image: url(../img/s1_꽃_hov.jpg);
 }
 .latte a {
   height: 270px;
-  background: url(/img/s1_라떼.jpg);
+  background: url(../img/s1_라떼.jpg);
 }
 .latte a:hover {
-  background-image: url(/img/s1_라떼_hov.jpg);
+  background-image: url(../img/s1_라떼_hov.jpg);
 }
 .decadence a {
   height: 270px;
-  background: url(/img/s1_데카당스.jpg);
+  background: url(../img/s1_데카당스.jpg);
 }
 .decadence a:hover {
-  background-image: url(/img/s1_데카당스_hov.jpg);
+  background-image: url(../img/s1_데카당스_hov.jpg);
 }
 
 .biscuit span,
