@@ -8,16 +8,13 @@
 // project폴더 - pages 
 //            - image
 //            - css 등 
-//리엑트는 하이퍼링크 
+//리엑트는 하이퍼링크
 
 :root{
-  --work-pos : 30px;
+  --work-pos : 0px;
 }
 
 body{
-  // position: fixed ;
-  // height: 100%;
-  // touch-action: none;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   background-color: #171e40;
@@ -559,11 +556,13 @@ header{
 
             &::before{
               content: "";
+              transition: 2s;
+              transition-delay: .7s;
               display: block;
               position: absolute;
               bottom: 5px;
               z-index: -1;
-              width: 100%;
+              width: 0%;
               height: 5px;
               background-color: #ae29f6;
             }
@@ -590,6 +589,11 @@ header{
 
     .about-top__txt{
       opacity: 1;
+    }
+
+    strong::before{
+      width: 100%;
+
     }
   }
 
@@ -834,7 +838,7 @@ header{
       }
 
       p:nth-of-type(2){
-        font-size: min(5vw,18px);
+        font-size: min(4vw,18px);
         margin-top: min(6.25vw,40px);
         padding: 0 25px;
 
@@ -991,6 +995,7 @@ header{
           transform-style: preserve-3d;
           border-radius: min(3.8vw,15px);
 
+
           @include responsive(tablet-screens) {
             width: 14.2857vw;
             height: 18.9286vw;
@@ -1000,6 +1005,8 @@ header{
             max-width: 150px;
             max-height: 200px;
           }
+
+     
 
           &--front,
           &--back
@@ -1013,7 +1020,7 @@ header{
             justify-content: center;
             backface-visibility: hidden;
             transform-style: preserve-3d;
-            border-radius: 2.1429vw;
+            border-radius: min(3.8vw,15px);
             img{
               display: inline-block;
               z-index: 100;
@@ -1028,6 +1035,13 @@ header{
             flex-direction: column;
             align-items: center;
             background-color: #fff;
+
+            &:hover{
+              background-color: #efefef;
+              transform: scale(1.05);
+            }
+
+          
 
             .cards__img-box{
               display: flex;
@@ -1053,9 +1067,7 @@ header{
             z-index: -1;
             transform: rotateY(180deg);
             background-color: #fff;
-            @include responsive(tablet-screens) {
-            // border-radius: 20px;
-            }
+
 
             &::before{
               content: "";
@@ -1080,7 +1092,6 @@ header{
   width: 100vw;
   height: 600vh;
   color: #fff;
-
   
   &__sticky{
     position: sticky;
@@ -1112,6 +1123,8 @@ header{
           z-index: 1;
           height: 100vh;
           overflow: hidden;
+          object-fit: cover;
+
 
           & > img{
             display: inline-block;
@@ -1119,7 +1132,6 @@ header{
             height: 100%;
             object-fit: cover;
             filter: blur(4px);
-            object-fit: cover;
           }
 
           &::before{
@@ -1207,7 +1219,6 @@ header{
                   display: block;
                   position: absolute;
                   width: 100%;
- 
                 }
               }
           }
@@ -1323,6 +1334,10 @@ header{
                 font-weight: 500;
 
                 }
+
+                a{
+                  color: #fff;
+                }
               }
             }
           }
@@ -1342,27 +1357,22 @@ header{
             transition-delay: 800ms;
           }
 
-          // img{
-          //   display: block;
-          //   top: 0;
-          //   // bottom : var(--work-pos);
-          //   animation: scrollImg 3s linear infinite;
-          //   @keyframes scrollImg {
-          //     100% {
-          //   top: 100%;
-
-          //       // bottom: 0;
-          //     }
-          //   }
-          // }
+          img{
+            display: block;
+            bottom : var(--work-pos);
+            animation: scrollImg 7s linear infinite alternate;
+            @keyframes scrollImg {
+              100% {
+                bottom: 0;
+              }
+            }
+          }
         }
 
         .first-des{ top: 0;
           margin-top: 0;
           opacity: 1;    
         }
-
-       
       } //work-list
     }
   }
@@ -1496,7 +1506,7 @@ header{
     -0.03em 0.08em 0 rgba(174,41,246, 1),
     -0.03em 0 0 rgba(174,41,246, 1);
     color: #fff;
-    font-size: min(12vw , 64px)  ;
+    font-size: min(14vw , 84px)  ;
     text-align: center;
     margin-bottom: 20px;
   }

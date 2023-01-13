@@ -39,7 +39,7 @@ h1 {
 }
 
 :root {
-  --work-pos: 30px;
+  --work-pos: 0px;
 }
 
 body {
@@ -478,11 +478,13 @@ header .outer-img__half {
 }
 .about-top__txt-first h3 strong::before {
   content: "";
+  transition: 2s;
+  transition-delay: 0.7s;
   display: block;
   position: absolute;
   bottom: 5px;
   z-index: -1;
-  width: 100%;
+  width: 0%;
   height: 5px;
   background-color: #ae29f6;
 }
@@ -498,6 +500,9 @@ header .outer-img__half {
 }
 .about .top--focuse .about-top__txt {
   opacity: 1;
+}
+.about .top--focuse strong::before {
+  width: 100%;
 }
 @media screen and (min-width: 768px) {
   .about-btm {
@@ -739,7 +744,7 @@ header .outer-img__half {
   }
 }
 .skill .modal__box p:nth-of-type(2) {
-  font-size: min(5vw, 18px);
+  font-size: min(4vw, 18px);
   margin-top: min(6.25vw, 40px);
   padding: 0 25px;
 }
@@ -895,7 +900,7 @@ header .outer-img__half {
   justify-content: center;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  border-radius: 2.1429vw;
+  border-radius: min(3.8vw, 15px);
 }
 .skill__contain .skill__sticky .cards__card--front img, .skill__contain .skill__sticky .cards__card--back img {
   display: inline-block;
@@ -907,6 +912,10 @@ header .outer-img__half {
   flex-direction: column;
   align-items: center;
   background-color: #fff;
+}
+.skill__contain .skill__sticky .cards__card--front:hover {
+  background-color: #efefef;
+  transform: scale(1.05);
 }
 .skill__contain .skill__sticky .cards__card--front .cards__img-box {
   display: flex;
@@ -978,6 +987,7 @@ header .outer-img__half {
   z-index: 1;
   height: 100vh;
   overflow: hidden;
+  object-fit: cover;
 }
 .work__sticky .work__abs-box .work-list__bg > img {
   display: inline-block;
@@ -985,7 +995,6 @@ header .outer-img__half {
   height: 100%;
   object-fit: cover;
   filter: blur(4px);
-  object-fit: cover;
 }
 .work__sticky .work__abs-box .work-list__bg::before {
   content: "";
@@ -1159,6 +1168,9 @@ header .outer-img__half {
   border: 1.5px solid #fff;
   font-weight: 500;
 }
+.work__sticky .work__abs-box .work-list .work-des__lf-contain .work__btns button a {
+  color: #fff;
+}
 .work__sticky .work__abs-box .work-list .work-des--focuse {
   margin-top: 0;
   opacity: 1;
@@ -1170,6 +1182,16 @@ header .outer-img__half {
 }
 .work__sticky .work__abs-box .work-list .work-des--focuse .work__btns {
   transition-delay: 800ms;
+}
+.work__sticky .work__abs-box .work-list .work-des--focuse img {
+  display: block;
+  bottom: var(--work-pos);
+  animation: scrollImg 7s linear infinite alternate;
+}
+@keyframes scrollImg {
+  100% {
+    bottom: 0;
+  }
 }
 .work__sticky .work__abs-box .work-list .first-des {
   top: 0;
@@ -1278,7 +1300,7 @@ header .outer-img__half {
   font-family: "Luckiest Guy", cursive;
   text-shadow: 0 0.1em 20px rgb(174, 41, 246), 0.05em -0.03em 0 rgb(174, 41, 246), 0.05em 0.005em 0 rgb(174, 41, 246), 0em 0.08em 0 rgb(174, 41, 246), 0.05em 0.08em 0 rgb(174, 41, 246), 0px -0.03em 0 rgb(174, 41, 246), -0.03em -0.03em 0 rgb(174, 41, 246), -0.03em 0.08em 0 rgb(174, 41, 246), -0.03em 0 0 rgb(174, 41, 246);
   color: #fff;
-  font-size: min(12vw, 64px);
+  font-size: min(14vw, 84px);
   text-align: center;
   margin-bottom: 20px;
 }

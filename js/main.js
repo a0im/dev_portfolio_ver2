@@ -1,4 +1,4 @@
-  //DOM
+ //DOM
 const $body = document.querySelector('body')
 const $banner = document.querySelector('.banner')
 const $banner_sticky = document.querySelector('.banner__img')
@@ -36,17 +36,16 @@ secstions.push($contect)
 secstions.unshift($banner)
 
       /*
-      2. 글자 애니메이션
-      5. 베너 달 아래쪽 수정
       9.content animation // 링크연결
-      10 베너 어바웃 사이에 컨텐츠 넣기
       11 자격사항 체워넣기
       12 디자인 가이드 작성
       13 시간나면 아래 하단에 나래이션 추가
+
       */
     
-      
       // setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
+
+      //추가할내용 1. 텍스트 좌우 추가 . 2. work수정
       
 let lastMenu = 0 //대소비교 
 let setTime
@@ -188,8 +187,10 @@ class ClickCardOnModal{
         'cards__card--front' : e.target , 
         'cards__card--img' : e.target.parentElement.parentElement,
         'cards__card--name' : e.target.parentElement,
-        'cards__card--name' : e.target.parentElement
+        'cards__img-box' : e.target.parentElement
       }[e.target.className]
+      console.log(e.target);
+      console.log(onCard);
 
       if (!onCard) return
 
@@ -236,7 +237,6 @@ clickCardOnModal1.clickEvnt()
 clickCardOnModal2.clickEvnt()
 clickCardOnModal3.clickEvnt()
 
-      
 class BannerRotateOnScroll {
   constructor(wrapper , sticky){
     this.wrapper = wrapper
@@ -301,14 +301,14 @@ class BannerRotateOnScroll {
 const bannerRotateOnScroll = new BannerRotateOnScroll( $banner , $banner_sticky)
 bannerRotateOnScroll.init()
 
-let workImgs = [...document.querySelectorAll('.work-des__rf-contain--border > img')]
-let imgH = workImgs.map(e => e.offsetHeight)
-workImgs.map(e => {
-  let clones = e.cloneNode(true)
-  e.insertAdjacentElement('afterend' , clones)
-})
+// let workImgs = [...document.querySelectorAll('.work-des__rf-contain--border > img')]
+// let imgH = workImgs.map(e => e.offsetHeight)
+// workImgs.map(e => {
+//   let clones = e.cloneNode(true)
+//   e.insertAdjacentElement('afterend' , clones)
+// })
 
-$work_rfImg.for
+// $work_rfImg.for
 
 
 // let $cloneNodes = [...$work_rfImg].map( e => {
@@ -317,22 +317,16 @@ $work_rfImg.for
 //   e.appendChild(clone)
 //   return clone
 // }) 
+// let img 
+// function scrollEvnt() {
+//   scrollY
+//   let imgBox = $work_rfImg[0].children[0]
+//   let imgBoxT = imgBox.offsetTop
+//   console.log(imgBoxT);
+//   console.log();
+// }
 
-let img 
-function scrollEvnt() {
-  scrollY
-  let imgBox = $work_rfImg[0].children[0]
-  let imgBoxT = imgBox.offsetTop
-
-  console.log(imgBoxT);
-  
-  console.log();
-
-}
-
-addEventListener('scroll' , scrollEvnt)
-
-
+// addEventListener('scroll' , scrollEvnt)
 // - $work_rfImg[idx].offsetHeight 
 // let scrollLength = $work_rfImg[idx].children[0].offsetHeight
 // $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
@@ -369,13 +363,9 @@ class SlideVerticalOnScroll {
     } 
 
     //search
-
-
     const scrollImg = idx => {    
-      // - $work_rfImg[idx].offsetHeight 
-      // - $work_rfImg[idx].offsetHeight 
-      //   let scrollLength = $work_rfImg[idx].children[0].offsetHeight
-      //   $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
+        let scrollLength = $work_rfImg[idx].children[0].offsetHeight - $work_rfImg[idx].offsetHeight 
+        $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
     }
 
     for (let i = 0; i < this.length - 1; i++) {
@@ -389,7 +379,7 @@ class SlideVerticalOnScroll {
       }
 
       const contentStyle = idx => { 
-        this.workDes.forEach(e => e.classList.remove('work-des--focuse'))
+        this.workDes.forEach( e => e.classList.remove('work-des--focuse'))
         this.workDes[idx].classList.add('work-des--focuse')
       }
 
@@ -482,7 +472,7 @@ let closeDesignGuide = () => {
   $design.classList.remove('design-guide--open')
 }
 
-$work_designBtns.forEach((e)=>{
+$work_designBtns.forEach( e => {
   e.addEventListener('click' , openDesignGuide)
 })
 
@@ -605,7 +595,6 @@ let clearScroll = () => {
     checkRAF = false
   })
 }
-
 
 window.addEventListener('scroll', clearScroll)
 
