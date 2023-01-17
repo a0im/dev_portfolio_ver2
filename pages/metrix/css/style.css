@@ -6,6 +6,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 *{
   margin: 0;
   padding: 0;
@@ -24,11 +25,13 @@ body {
 body::-webkit-scrollbar {
   width: 5px;
 }
+
 body::-webkit-scrollbar-thumb {
   height: 10px;
   background: #0000006d;
   border-radius: 0.5px;
 }
+
 body::-webkit-scrollbar-track {
   background: transparent; 
 }
@@ -69,6 +72,10 @@ input{
   border-bottom: 2px solid #efefef;
 }
 
+caption{
+  white-space: nowrap;
+}
+
 input::placeholder{
   color: #c6c6c6;
   font-size: 18px;
@@ -77,6 +84,7 @@ input::placeholder{
 label{
   margin-right: 30px;
 }
+
 ol{
   padding: 0;
   list-style-position: inside;
@@ -165,27 +173,24 @@ ol{
 
 
 .result-table::after{
-  right: 203px;
+  right: 29%;
   content: "=";
 }
-
-/* .result-table::before{
-  content: "x";
-  left: 203px;
-} */
 
 .multi::before,
 .add::before,
 .sub::before{
-  left: 203px;
+  left: 29%;
 }
 
 .multi::before{
   content: "x";
 }
+
 .add::before{
   content: "+";
 }
+
 .sub::before{
   content: "-";
 }
@@ -208,6 +213,7 @@ ol{
   border-right: 2px solid #696969;
   border-bottom: 2px solid #696969;
 }
+
 .close-modal{
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -215,6 +221,7 @@ ol{
   user-select: none;
   cursor: pointer;
 }
+
 .modal-wrap{
   display: none;
   position: fixed;
@@ -224,9 +231,11 @@ ol{
   height: 100vh;
   background-color: transparent;
 }
+
 .show{
   display: block;
-}
+} 
+
 .modal{
   position: absolute;
   left: 50%;

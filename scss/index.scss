@@ -11,7 +11,9 @@
 //리엑트는 하이퍼링크
 
 :root{
-  --work-pos : 0px;
+  --work-pos : 0%;
+  --design-img : ;
+  --design-duration : 0;
 }
 
 body{
@@ -118,11 +120,10 @@ header{
           transform : translateX(-110%) scale(1.2);  
         }
       }
-
     }
 
-    .in-banner{
-     transform: translateY(-100%);
+    .close-gnb{
+      transform: translateY(-100%);
     }
   }
   .banner {
@@ -334,7 +335,7 @@ header{
 .outer-img{
   position: relative;
   width: 100vw;
-  height: 250px;
+  height: 350px;
   overflow: hidden;
   background: #5f3f8e;
   background: linear-gradient(180deg,  rgba(255,255,255,1) -52%,#5f3f8e 55%);
@@ -347,7 +348,6 @@ header{
     transform: translateX(-50%);
     transform-origin: 50% 0%;
   }
-
 }//banner
 }
 
@@ -371,7 +371,7 @@ header{
     top: 50vh;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 13vw;
+    font-size: min(13vw,230px);    
     font-family: "Luckiest Guy", cursive;
     text-shadow: 
     0 0.1em 20px rgba(174,41,246, 1), 
@@ -434,12 +434,7 @@ header{
 
       }
 
-      @keyframes scaleSkills {
-        100%{
-          transform: scale(1)  translate(-50% ,-50%);
-          transform-origin: 50% 50%;
-        }
-      }
+
       
       &--laptop{
         width: 100%;
@@ -477,8 +472,9 @@ header{
       {
         position: absolute;
         transform: scale(0.8) translate(-50% ,-50%);
-        animation: scaleSkills alternate infinite;
         transform-origin: 50% 50%;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
       }
 
       &--css{
@@ -509,12 +505,14 @@ header{
         animation-delay: 300ms;
 
       }
+
       &--js{
         top: 40%;
         left: 25%;
         width: 17%;
         animation-duration: 4s;
       }
+
       &--git{
         top: 65%;
         left: 35%;
@@ -542,9 +540,9 @@ header{
 
 
       &-first{
-
         width: 100%;
         margin-bottom: 60px;
+
         h3{
           margin: 30px 0 ;
           font-size: 16px;
@@ -584,6 +582,24 @@ header{
       }
       &--drop{
         bottom: 10%;
+      }
+
+      &--css,
+      &--git,
+      &--html,
+      &--jquery,
+      &--js,
+      &--react,
+      &--scss
+      {
+        animation-name: scaleSkills;
+      }
+
+      @keyframes scaleSkills {
+        100%{
+          transform: scale(1)  translate(-50% ,-50%);
+          transform-origin: 50% 50%;
+        }
       }
     }
 
@@ -632,7 +648,6 @@ header{
         margin: 0 auto;
         padding-top : 22%;
         transform: translate(-10% 0%);
-        animation: moveScuba 3s alternate infinite;
 
         @include responsive(tablet-screens) {
           width: 75%;
@@ -682,22 +697,6 @@ header{
           animation-duration: 4s;
           animation-iteration-count: infinite;
         }
-
-        .cls-1:nth-of-type(1){
-          animation-name: fade1;
-        }
-        .cls-1:nth-of-type(2){
-          animation-name: fade2;
-        }
-        .cls-1:nth-of-type(3){
-          animation-name: fade3;
-        }
-        .cls-1:nth-of-type(4){
-          animation-name: fade4;
-        }
-        .cls-1:nth-of-type(5){
-          animation-name: fade5;
-        }
       }
 
       &--left-img{
@@ -735,7 +734,28 @@ header{
         top: 50%;
         left: 100vw;
         opacity: 0;
+      }
 
+      &--scuba{
+        animation: moveScuba 3s alternate infinite;
+      }
+
+      &--buble{
+        .cls-1:nth-of-type(1){
+          animation-name: fade1;
+        }
+        .cls-1:nth-of-type(2){
+          animation-name: fade2;
+        }
+        .cls-1:nth-of-type(3){
+          animation-name: fade3;
+        }
+        .cls-1:nth-of-type(4){
+          animation-name: fade4;
+        }
+        .cls-1:nth-of-type(5){
+          animation-name: fade5;
+        }
       }
     }
     .about-btm__txt{
@@ -792,11 +812,15 @@ header{
         position: absolute;
         top: max(-15vw,-80px);
         left: 50%;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         font-size: min(10vw,50px);
         transform: translate(-50%);
         color: #ae29f6;
+
+        img{
+          width: 100%;
+        }
       }
 
       &--skill{
@@ -812,7 +836,7 @@ header{
         }
   
       }
- 
+
       p:nth-of-type(1){
         position: relative;
         font-size: min(6.25vw,38px);
@@ -918,7 +942,7 @@ header{
         content: "SKILL";
         z-index: -2;
         color: #fff;
-        font-size: 15vw;
+        font-size: min(15vw,250px);
         font-family: "Luckiest Guy", cursive;
         text-shadow: 
         0 0.1em 20px rgba(174,41,246, 1), 
@@ -937,9 +961,9 @@ header{
         display: block;
         position: absolute;
         top: 50%;
-        right: 25%;
+        right: 20%;
         z-index: -1;
-        width: 50%;
+        width:70%;
         height: 20vw;
         transform: translateY(-60%);
         background-color: #171e40;
@@ -1006,8 +1030,6 @@ header{
             max-height: 200px;
           }
 
-     
-
           &--front,
           &--back
           {
@@ -1040,8 +1062,6 @@ header{
               background-color: #efefef;
               transform: scale(1.05);
             }
-
-          
 
             .cards__img-box{
               display: flex;
@@ -1153,7 +1173,7 @@ header{
           z-index: 100;
           flex-direction: column;
           align-items: center;
-          margin-top: 50px;
+          transform: translateY(50px);
           opacity: 0;
           transition: all 400ms  cubic-bezier(0.61, 1, 0.88, 1);
           
@@ -1165,7 +1185,7 @@ header{
           &__title{
             position: relative;
             margin: 0 auto;
-            font-size: 15vw;
+            font-size: min(15vw,250px);
             font-family: "Luckiest Guy", cursive;
             text-shadow: 
             0 0.1em 20px rgba(174,41,246, 1), 
@@ -1194,7 +1214,7 @@ header{
           &__rf-contain{
               z-index: 100;
               width: 100%;
-              height: fit-content;
+              height: fit-content; //이게 문제였음 
               height: 33.5714vw;
               padding: 10px;
               line-height: 100vh;
@@ -1219,6 +1239,12 @@ header{
                   display: block;
                   position: absolute;
                   width: 100%;
+                  bottom : 0;
+                  animation-delay: 300ms;
+                  animation-direction: alternate;
+                  animation-iteration-count: infinite;
+                  animation-duration: var(--design-duration);
+                  animation-timing-function: linear;
                 }
               }
           }
@@ -1238,23 +1264,19 @@ header{
 
             & > :nth-child(1n + 2){
               position: relative;
-              top : 30px;
+              transform: translateY(50px);
               opacity: 0;
               transition-property: opacity top;
               transition-duration: 400ms;
               transition-delay: 400ms;
               transition-timing-function:  cubic-bezier(0.61, 1, 0.88, 1);
-
-              // transition-delay: 100ms;
             }
             
             h3{
               margin: 20px 0;
               padding:  0 0 20px 0;
-
               font-size: clamp(20px , 3.4286vw , 38px);
               border-bottom: #ae29f6 1.5px solid;
-
               @include responsive(tablet-screens) {
               border-bottom: #ae29f6 2px solid;
               }
@@ -1344,12 +1366,12 @@ header{
         } //work-des
 
         .work-des--focuse{
-          margin-top: 0;
+          transform: translateY(0);
           opacity: 1;
 
           .work-des__lf-contain :nth-child(1n + 2){
             position: relative;
-            top: 0px;
+            transform: translateY(0);
             opacity: 1;
           }
 
@@ -1359,17 +1381,16 @@ header{
 
           img{
             display: block;
-            bottom : var(--work-pos);
-            animation: scrollImg 7s linear infinite alternate;
+            animation-name: scrollImg;
+
             @keyframes scrollImg {
-              100% {
-                bottom: 0;
-              }
+              100% {transform: translateY(0%);}
             }
           }
         }
 
-        .first-des{ top: 0;
+        .first-des{ 
+          top: 0;
           margin-top: 0;
           opacity: 1;    
         }
@@ -1384,25 +1405,29 @@ header{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: transparent;
+    background-color: rgba(0,0,0,0.7);
 
     &__close{
       position: absolute;
       top: 10vh;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 50px;
+      // left: 50%;
+      right: 10%;
+      // transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
       z-index: 2000;
-      border: 3px solid #fff;
       color: #fff;
       font-size: 40px;
       background-color: transparent;
       mix-blend-mode:  difference;
-      border-radius: 50%;
       transition: 1s ease;
       opacity: 0;
       transition-delay: 1000ms;
+      border: none;
+
+      img{
+        width: 100%;
+      }
     }
 
     &__box{
@@ -1411,13 +1436,17 @@ header{
       left: 0;
       width: 100%;
       height: 100%;
-      max-width: 1400px;
+      max-width: 1024px;
       margin: 0 auto;
       overflow-y: scroll;
 
+
       &--content,
       &--rect{
-        background: url(../images/work/bg-hotel.jpeg) top no-repeat;
+        background-color: #efefef;
+        // background: var(--design-img) top no-repeat ;
+        background-position: top;
+        background-repeat: no-repeat;
         background-size: 100%;
         transition-property: all;
         transition-timing-function: ease;
@@ -1453,15 +1482,39 @@ header{
       }
 
       &--content{
-        top: 75%;
+        // position: relative;
+        top: 0;
         z-index: -1;
         width: 100%;
-        height: 800%;
+        height: max-content;
         background-position: left 0 top -75vh;
         transition-duration: 1500ms;
         transform: translateX(100%);
+        overflow: hidden;
+
+        img{
+          width: 100%;
+          transform: translateY(-75vh);
+          margin-bottom: -25vh;
+        }
+      }
+
+
+    }
+
+    //reflow 줄이기
+    &--hotel {
+      .design-guide__box--rect{
+        background-image: url(../images/work/design-hotel.jpg);
       }
     }
+
+    &--godiva {
+      .design-guide__box--rect{
+        background-image: url(../images/work/design-godiva.jpg);
+      }
+    }
+
   }//design-guide
 
   .design-guide--open{
@@ -1476,10 +1529,7 @@ header{
       transform: translateX(0%);
     }
   }
-
 }
-
-
 
 
 .contect{
@@ -1512,7 +1562,6 @@ header{
   }
 
   &__sns{
-
     display: grid;
     margin: 0 10px;
     padding: 6.2500vw;
@@ -1546,22 +1595,6 @@ header{
       img{
         width: 100%;
       }
-      // &::before{
-      //   content: "";
-      //   display: block;
-      //   position: absolute;
-      //   top: 100%;
-      //   width: 100%;
-      //   height: 100%;
-      //   background-color: rgba(0,0,0,0.7);
-      //   transition: all 300ms linear;
-      //   touch-action: none;
-
-      // }
-
-      // &:hover::before{
-      //   top: 0;
-      // }
     }
 
 
@@ -1612,7 +1645,6 @@ header{
   }
 }
 
-
 .fade-title h2 {
   &::before{
     width: 0px;
@@ -1624,6 +1656,7 @@ header{
     width: 0px !important;
   }
 }
+
 .fade-title .skill__sticky{
   &::after{
     width: 0px;

@@ -30,10 +30,13 @@ const $contect_sns = document.querySelector('.contect__sns')
 
 const $design = document.querySelector('.design-guide')
 const $design_close = document.querySelector('.design-guide__close')
+const $design_box = document.querySelector('.design-guide__box')
 
+//카페24 에 넣기
 let secstions = Array.from($section)
 secstions.push($contect)
 secstions.unshift($banner)
+
 
       /*
       9.content animation // 링크연결
@@ -47,6 +50,8 @@ secstions.unshift($banner)
 
       //추가할내용 1. 텍스트 좌우 추가 . 2. work수정
       
+
+
 let lastMenu = 0 //대소비교 
 let setTime
 //nav animation 
@@ -142,7 +147,6 @@ class CardFlipOnScroll{
     });
   }
 }
-
 
 const cardFlipOnScroll1 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[0])
 const cardFlipOnScroll2 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[1])
@@ -331,6 +335,20 @@ bannerRotateOnScroll.init()
 // let scrollLength = $work_rfImg[idx].children[0].offsetHeight
 // $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
 
+let imgInit = () => {
+  $work_rfImg.forEach( e => {
+    let img = e.children[0]
+    let imgH = img.offsetHeight 
+    let scrollArea = imgH - e.offsetHeight
+    let duration = imgH / 0.2
+
+    img.style.transform = `translateY(${scrollArea / imgH * 100}%)`
+    img.style.setProperty("--design-duration",duration + "ms")
+  })
+}
+window.onload = imgInit
+
+
 class SlideVerticalOnScroll {
   constructor (wrapper , sticky , contentBox){
     this.wrapper = wrapper
@@ -350,12 +368,12 @@ class SlideVerticalOnScroll {
     this.start = this.wrapper.offsetTop * 1.02
     this.end = (this.wrapper.offsetTop +this. wrapper.offsetHeight - innerHeight)
     this.step = (this.end - this.start) / this.length
-    this.width = this.vertivalBox.offsetWidth 
-
+    this.width = this.vertivalBox.offsetWidth
   }
 
-  scroll(sclY  , direction){
+ 
 
+  scroll(sclY  , direction){
     if (sclY  <= this.start) {
       this.vertivalBox.style.transform = `translateX(0)`
       direction == "UP" && this.workDes[0].classList.remove('work-des--focuse')
@@ -363,10 +381,6 @@ class SlideVerticalOnScroll {
     } 
 
     //search
-    const scrollImg = idx => {    
-        let scrollLength = $work_rfImg[idx].children[0].offsetHeight - $work_rfImg[idx].offsetHeight 
-        $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
-    }
 
     for (let i = 0; i < this.length - 1; i++) {
       let s = this.start + (this.step * i)
@@ -391,7 +405,6 @@ class SlideVerticalOnScroll {
 
         //스크롤 방향에 맞는 스타일 변경 함수(contentStyle) 실행
         contentStyle(i)
-        scrollImg(i)
       } 
 
       else if ( sclY > e  && sclY <= s + this.step) {
@@ -408,14 +421,15 @@ class SlideVerticalOnScroll {
     }
   }
 }
-
+// --disign-duration
 const slideVerticalOnScroll = new SlideVerticalOnScroll($work, $work_sticky ,$workDes)
 let lastScroll = 0
 slideVerticalOnScroll.init()
 
 
+
 //banner - 별생성
-let counter = 70 //별갯수
+let counter = 40 //별갯수
 let styleProps = [
   "width", 
   "height" ,
@@ -447,6 +461,7 @@ let printStarrySky = () => {
 
 printStarrySky()
 
+//resize star
 let resizeStars = () => {
   let stars = document.querySelectorAll('.star')
 
@@ -458,18 +473,52 @@ let resizeStars = () => {
   })
 } 
 
+//디자인가이드 모달
+// let designGuideImg = {
+//   hotel : "url(../images/work/design-hotel.jpeg)",
+//   godiva : "url(../images/work/design-godiva.jpg)"
+// }
 
+// const designGuideClass = {
+//   hotel : "design-guide--hotel",
+//   godiva : "design-guide--godiva",
+//   profile : "design-guide--godiva"
+// }
 
-//design-guide--open
-let openDesignGuide = () => {
+const designGuideData = {
+  hotel : {
+    class : "design-guide--hotel" ,
+    img : "../images/work/design-hotel.jpg"
+  },
+  godiva : {
+    class : "design-guide--godiva" ,
+    img : "../images/work/design-godiva.jpg"
+  },
+  profile : {
+    class : "design-guide--hotel" ,
+    img : "../images/work/design-hotel.jpeg"
+  },
+}
+
+const $design_img =  $design_box.querySelector('img')
+
+let openDesignGuide = e => {
+  let imgName = e.target.dataset.project
+  $design_box.classList = "design-guide__box"
   $body.style.overflow = "hidden"
+
+  $design_img.setAttribute("src", designGuideData[imgName]["img"])
+  $design_box.classList.add(designGuideData[imgName]["class"])
   $design.classList.add('design-guide--open')
+  $gnb.classList.add('close-gnb')
 }
 
 let closeDesignGuide = () => {
   $body.style.overflow = "visible"
   $design.lastElementChild.scrollTop = 0
   $design.classList.remove('design-guide--open')
+  $gnb.classList.remove('close-gnb')
+
 }
 
 $work_designBtns.forEach( e => {
@@ -515,9 +564,9 @@ const isObserver = (entries, observer) => {
     offsetT = entry.target.offsetTop 
 
     let inAbout = () => {
-      $gnb.classList.remove('in-banner')
+      $gnb.classList.remove('close-gnb')
       window.addEventListener('resize',initAbout)
-      window.addEventListener('scroll',scrollEvt)
+      window.addEventListener('scroll',scrollEvt,{ passive: true })
     }
 
     let outAbout = () =>{
@@ -538,7 +587,7 @@ const isObserver = (entries, observer) => {
       navAnimate($gnb.children[idx])
 
       switch (onClass) {
-        case 'banner': return $gnb.classList.add('in-banner')
+        case 'banner': return $gnb.classList.add('close-gnb')
         case 'about': return inAbout()
         case 'skill': return $skill_sticky.classList.add('skill--focuse')
         case 'contect': return inContect()
@@ -610,6 +659,7 @@ window.addEventListener('resize', () => {
   slideVerticalOnScroll.init()
   slideVerticalOnScroll.scroll(scrollY)
   resizeStars()
-  fadeText() 
+  fadeText()
+  imgInit()
 })
 

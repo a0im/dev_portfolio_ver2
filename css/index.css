@@ -39,7 +39,9 @@ h1 {
 }
 
 :root {
-  --work-pos: 0px;
+  --work-pos: 0%;
+  --design-img: ;
+  --design-duration: 0;
 }
 
 body {
@@ -124,7 +126,7 @@ header nav .gnb .gnb-end--reverse a::before {
 header nav .gnb .gnb-end--reverse a::before {
   transform: translateX(-110%) scale(1.2);
 }
-header nav .in-banner {
+header nav .close-gnb {
   transform: translateY(-100%);
 }
 header .banner {
@@ -296,7 +298,7 @@ header .banner__img .banner__obj-box.planet .banner__obj-box--planet-blue {
 header .outer-img {
   position: relative;
   width: 100vw;
-  height: 250px;
+  height: 350px;
   overflow: hidden;
   background: #5f3f8e;
   background: linear-gradient(180deg, rgb(255, 255, 255) -52%, #5f3f8e 55%);
@@ -326,7 +328,7 @@ header .outer-img__half {
   top: 50vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 13vw;
+  font-size: min(13vw, 230px);
   font-family: "Luckiest Guy", cursive;
   text-shadow: 0 0.1em 20px rgb(174, 41, 246), 0.05em -0.03em 0 rgb(174, 41, 246), 0.05em 0.005em 0 rgb(174, 41, 246), 0em 0.08em 0 rgb(174, 41, 246), 0.05em 0.08em 0 rgb(174, 41, 246), 0px -0.03em 0 rgb(174, 41, 246), -0.03em -0.03em 0 rgb(174, 41, 246), -0.03em 0.08em 0 rgb(174, 41, 246), -0.03em 0 0 rgb(174, 41, 246);
 }
@@ -376,12 +378,6 @@ header .outer-img__half {
     max-width: 640px;
   }
 }
-@keyframes scaleSkills {
-  100% {
-    transform: scale(1) translate(-50%, -50%);
-    transform-origin: 50% 50%;
-  }
-}
 .about-top__img--laptop {
   width: 100%;
   padding: 2%;
@@ -406,8 +402,9 @@ header .outer-img__half {
 .about-top__img--css, .about-top__img--git, .about-top__img--html, .about-top__img--jquery, .about-top__img--js, .about-top__img--react, .about-top__img--scss {
   position: absolute;
   transform: scale(0.8) translate(-50%, -50%);
-  animation: scaleSkills alternate infinite;
   transform-origin: 50% 50%;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 .about-top__img--css {
   top: 40%;
@@ -498,6 +495,15 @@ header .outer-img__half {
 .about .top--focuse .about-top__img--drop {
   bottom: 10%;
 }
+.about .top--focuse .about-top__img--css, .about .top--focuse .about-top__img--git, .about .top--focuse .about-top__img--html, .about .top--focuse .about-top__img--jquery, .about .top--focuse .about-top__img--js, .about .top--focuse .about-top__img--react, .about .top--focuse .about-top__img--scss {
+  animation-name: scaleSkills;
+}
+@keyframes scaleSkills {
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+  }
+}
 .about .top--focuse .about-top__txt {
   opacity: 1;
 }
@@ -537,7 +543,6 @@ header .outer-img__half {
   margin: 0 auto;
   padding-top: 22%;
   transform: translate(-10% 0%);
-  animation: moveScuba 3s alternate infinite;
 }
 @media screen and (min-width: 768px) {
   .about-btm__img--scuba {
@@ -603,21 +608,6 @@ header .outer-img__half {
   animation-duration: 4s;
   animation-iteration-count: infinite;
 }
-.about-btm__img--buble .cls-1:nth-of-type(1) {
-  animation-name: fade1;
-}
-.about-btm__img--buble .cls-1:nth-of-type(2) {
-  animation-name: fade2;
-}
-.about-btm__img--buble .cls-1:nth-of-type(3) {
-  animation-name: fade3;
-}
-.about-btm__img--buble .cls-1:nth-of-type(4) {
-  animation-name: fade4;
-}
-.about-btm__img--buble .cls-1:nth-of-type(5) {
-  animation-name: fade5;
-}
 .about-btm__img--left-img {
   position: absolute;
   bottom: -10%;
@@ -648,6 +638,24 @@ header .outer-img__half {
   top: 50%;
   left: 100vw;
   opacity: 0;
+}
+.about .btm--focuse .about-btm__img--scuba {
+  animation: moveScuba 3s alternate infinite;
+}
+.about .btm--focuse .about-btm__img--buble .cls-1:nth-of-type(1) {
+  animation-name: fade1;
+}
+.about .btm--focuse .about-btm__img--buble .cls-1:nth-of-type(2) {
+  animation-name: fade2;
+}
+.about .btm--focuse .about-btm__img--buble .cls-1:nth-of-type(3) {
+  animation-name: fade3;
+}
+.about .btm--focuse .about-btm__img--buble .cls-1:nth-of-type(4) {
+  animation-name: fade4;
+}
+.about .btm--focuse .about-btm__img--buble .cls-1:nth-of-type(5) {
+  animation-name: fade5;
 }
 .about .btm--focuse .about-btm__txt {
   opacity: 1;
@@ -701,11 +709,14 @@ header .outer-img__half {
   position: absolute;
   top: max(-15vw, -80px);
   left: 50%;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   font-size: min(10vw, 50px);
   transform: translate(-50%);
   color: #ae29f6;
+}
+.skill .modal__box--close img {
+  width: 100%;
 }
 .skill .modal__box--skill {
   width: 28.125vw;
@@ -809,7 +820,7 @@ header .outer-img__half {
   content: "SKILL";
   z-index: -2;
   color: #fff;
-  font-size: 15vw;
+  font-size: min(15vw, 250px);
   font-family: "Luckiest Guy", cursive;
   text-shadow: 0 0.1em 20px rgb(174, 41, 246), 0.05em -0.03em 0 rgb(174, 41, 246), 0.05em 0.005em 0 rgb(174, 41, 246), 0em 0.08em 0 rgb(174, 41, 246), 0.05em 0.08em 0 rgb(174, 41, 246), 0px -0.03em 0 rgb(174, 41, 246), -0.03em -0.03em 0 rgb(174, 41, 246), -0.03em 0.08em 0 rgb(174, 41, 246), -0.03em 0 0 rgb(174, 41, 246);
 }
@@ -818,9 +829,9 @@ header .outer-img__half {
   display: block;
   position: absolute;
   top: 50%;
-  right: 25%;
+  right: 20%;
   z-index: -1;
-  width: 50%;
+  width: 70%;
   height: 20vw;
   transform: translateY(-60%);
   background-color: #171e40;
@@ -1013,7 +1024,7 @@ header .outer-img__half {
   z-index: 100;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  transform: translateY(50px);
   opacity: 0;
   transition: all 400ms cubic-bezier(0.61, 1, 0.88, 1);
 }
@@ -1026,7 +1037,7 @@ header .outer-img__half {
 .work__sticky .work__abs-box .work-list .work-des__title {
   position: relative;
   margin: 0 auto;
-  font-size: 15vw;
+  font-size: min(15vw, 250px);
   font-family: "Luckiest Guy", cursive;
   text-shadow: 0 0.1em 20px rgb(174, 41, 246), 0.05em -0.03em 0 rgb(174, 41, 246), 0.05em 0.005em 0 rgb(174, 41, 246), 0em 0.08em 0 rgb(174, 41, 246), 0.05em 0.08em 0 rgb(174, 41, 246), 0px -0.03em 0 rgb(174, 41, 246), -0.03em -0.03em 0 rgb(174, 41, 246), -0.03em 0.08em 0 rgb(174, 41, 246), -0.03em 0 0 rgb(174, 41, 246);
 }
@@ -1067,6 +1078,12 @@ header .outer-img__half {
   display: block;
   position: absolute;
   width: 100%;
+  bottom: 0;
+  animation-delay: 300ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-duration: var(--design-duration);
+  animation-timing-function: linear;
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain {
   width: 100%;
@@ -1085,7 +1102,7 @@ header .outer-img__half {
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain > :nth-child(1n+2) {
   position: relative;
-  top: 30px;
+  transform: translateY(50px);
   opacity: 0;
   transition-property: opacity top;
   transition-duration: 400ms;
@@ -1172,12 +1189,12 @@ header .outer-img__half {
   color: #fff;
 }
 .work__sticky .work__abs-box .work-list .work-des--focuse {
-  margin-top: 0;
+  transform: translateY(0);
   opacity: 1;
 }
 .work__sticky .work__abs-box .work-list .work-des--focuse .work-des__lf-contain :nth-child(1n+2) {
   position: relative;
-  top: 0px;
+  transform: translateY(0);
   opacity: 1;
 }
 .work__sticky .work__abs-box .work-list .work-des--focuse .work__btns {
@@ -1185,12 +1202,11 @@ header .outer-img__half {
 }
 .work__sticky .work__abs-box .work-list .work-des--focuse img {
   display: block;
-  bottom: var(--work-pos);
-  animation: scrollImg 7s linear infinite alternate;
+  animation-name: scrollImg;
 }
 @keyframes scrollImg {
   100% {
-    bottom: 0;
+    transform: translateY(0%);
   }
 }
 .work__sticky .work__abs-box .work-list .first-des {
@@ -1205,25 +1221,26 @@ header .outer-img__half {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .work .design-guide__close {
   position: absolute;
   top: 10vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
+  right: 10%;
+  width: 40px;
+  height: 40px;
   z-index: 2000;
-  border: 3px solid #fff;
   color: #fff;
   font-size: 40px;
   background-color: transparent;
   mix-blend-mode: difference;
-  border-radius: 50%;
   transition: 1s ease;
   opacity: 0;
   transition-delay: 1000ms;
+  border: none;
+}
+.work .design-guide__close img {
+  width: 100%;
 }
 .work .design-guide__box {
   position: relative;
@@ -1231,12 +1248,14 @@ header .outer-img__half {
   left: 0;
   width: 100%;
   height: 100%;
-  max-width: 1400px;
+  max-width: 1024px;
   margin: 0 auto;
   overflow-y: scroll;
 }
 .work .design-guide__box--content, .work .design-guide__box--rect {
-  background: url(../images/work/bg-hotel.jpeg) top no-repeat;
+  background-color: #efefef;
+  background-position: top;
+  background-repeat: no-repeat;
   background-size: 100%;
   transition-property: all;
   transition-timing-function: ease;
@@ -1266,13 +1285,25 @@ header .outer-img__half {
   transform: translateX(-100%);
 }
 .work .design-guide__box--content {
-  top: 75%;
+  top: 0;
   z-index: -1;
   width: 100%;
-  height: 800%;
+  height: max-content;
   background-position: left 0 top -75vh;
   transition-duration: 1500ms;
   transform: translateX(100%);
+  overflow: hidden;
+}
+.work .design-guide__box--content img {
+  width: 100%;
+  transform: translateY(-75vh);
+  margin-bottom: -25vh;
+}
+.work .design-guide--hotel .design-guide__box--rect {
+  background-image: url(../images/work/design-hotel.jpg);
+}
+.work .design-guide--godiva .design-guide__box--rect {
+  background-image: url(../images/work/design-godiva.jpg);
 }
 .work .design-guide--open {
   visibility: visible;
