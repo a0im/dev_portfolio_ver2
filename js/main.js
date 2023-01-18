@@ -36,6 +36,7 @@ const $design_box = document.querySelector('.design-guide__box')
 let secstions = Array.from($section)
 secstions.push($contect)
 secstions.unshift($banner)
+// setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
 
 
       /*
@@ -44,9 +45,10 @@ secstions.unshift($banner)
       12 디자인 가이드 작성
       13 시간나면 아래 하단에 나래이션 추가
 
+      오늘 할일 
+      디자인가이드
+      리드미 
       */
-    
-      // setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
 
       //추가할내용 1. 텍스트 좌우 추가 . 2. work수정
       
@@ -305,36 +307,6 @@ class BannerRotateOnScroll {
 const bannerRotateOnScroll = new BannerRotateOnScroll( $banner , $banner_sticky)
 bannerRotateOnScroll.init()
 
-// let workImgs = [...document.querySelectorAll('.work-des__rf-contain--border > img')]
-// let imgH = workImgs.map(e => e.offsetHeight)
-// workImgs.map(e => {
-//   let clones = e.cloneNode(true)
-//   e.insertAdjacentElement('afterend' , clones)
-// })
-
-// $work_rfImg.for
-
-
-// let $cloneNodes = [...$work_rfImg].map( e => {
-//   let clone = e.firstElementChild.cloneNode(true)
-//   clone.classList.add('clone')
-//   e.appendChild(clone)
-//   return clone
-// }) 
-// let img 
-// function scrollEvnt() {
-//   scrollY
-//   let imgBox = $work_rfImg[0].children[0]
-//   let imgBoxT = imgBox.offsetTop
-//   console.log(imgBoxT);
-//   console.log();
-// }
-
-// addEventListener('scroll' , scrollEvnt)
-// - $work_rfImg[idx].offsetHeight 
-// let scrollLength = $work_rfImg[idx].children[0].offsetHeight
-// $work_rfImg[idx].style.setProperty("--work-pos",-scrollLength + "px")
-
 let imgInit = () => {
   $work_rfImg.forEach( e => {
     let img = e.children[0]
@@ -495,8 +467,8 @@ const designGuideData = {
     img : "../images/work/design-godiva.jpg"
   },
   profile : {
-    class : "design-guide--hotel" ,
-    img : "../images/work/design-hotel.jpeg"
+    class : "design-guide--profile" ,
+    img : "../images/work/design-profile.jpg"
   },
 }
 

@@ -1153,7 +1153,7 @@ header .outer-img__half {
   max-height: 35px;
   border: 1.5px solid #ae29f6;
   cursor: pointer;
-  font-size: clamp(13px, 1.5914vw, 20px);
+  font-size: clamp(13px, 1.3914vw, 20px);
   background: transparent;
   color: #fff;
 }
@@ -1164,6 +1164,9 @@ header .outer-img__half {
     max-width: 140px;
     max-height: 45px;
     border: 2px solid #ae29f6;
+    margin-right: 2px;
+    max-width: 140px;
+    padding: 0 5px;
   }
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain .work__btns button::before {
@@ -1304,6 +1307,9 @@ header .outer-img__half {
 }
 .work .design-guide--godiva .design-guide__box--rect {
   background-image: url(../images/work/design-godiva.jpg);
+}
+.work .design-guide--profile .design-guide__box--rect {
+  background-image: url(../images/work/design-profile.jpg);
 }
 .work .design-guide--open {
   visibility: visible;
