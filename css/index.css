@@ -706,6 +706,7 @@ header .outer-img__half {
   }
 }
 .skill .modal__box--close {
+  cursor: pointer;
   position: absolute;
   top: max(-15vw, -80px);
   left: 50%;
@@ -919,6 +920,7 @@ header .outer-img__half {
   width: 50%;
 }
 .skill__contain .skill__sticky .cards__card--front {
+  cursor: pointer;
   z-index: 0;
   flex-direction: column;
   align-items: center;
@@ -1227,6 +1229,7 @@ header .outer-img__half {
   background-color: rgba(0, 0, 0, 0.7);
 }
 .work .design-guide__close {
+  cursor: pointer;
   position: absolute;
   top: 10vh;
   right: 10%;

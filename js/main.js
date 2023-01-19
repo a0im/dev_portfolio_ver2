@@ -185,7 +185,8 @@ class ClickCardOnModal{
       sass : "요소의 관계를 명확하게 나타내며 Mixin과 변수를 활용하여 스타일을 작성합니다.",
       jquery : "슬라이드, 풀페이지 및 동적 인터페이스 구현가능 Ajax를 활용한 비동기 통신 구현가능",
       git : "local , remote repository 간에 업로드 및 업데이트 가능. branch 활용 가능.",
-      nodejs : "로그인,회원가입, 게시판 기본적인 기능 구현이 가능 합니다."
+      nodejs : "로그인,회원가입, 게시판 기본적인 기능 구현이 가능 합니다.",
+      mongodb : "데이터에 CRUD를 구현할 수 있습니다"
     } 
 
     const openModal = e => {

@@ -808,6 +808,7 @@ header{
       }
 
       &--close{
+        cursor: pointer;
         position: absolute;
         top: max(-15vw,-80px);
         left: 50%;
@@ -1052,6 +1053,7 @@ header{
           }
           
           &--front{
+            cursor: pointer;
             z-index: 0;
             flex-direction: column;
             align-items: center;
@@ -1411,6 +1413,7 @@ header{
     background-color: rgba(0,0,0,0.7);
 
     &__close{
+      cursor: pointer;
       position: absolute;
       top: 10vh;
       // left: 50%;
@@ -1517,7 +1520,7 @@ header{
         background-image: url(../images/work/design-godiva.jpg);
       }
     }
-    
+
     &--profile {
       .design-guide__box--rect{
         background-image: url(../images/work/design-profile.jpg);
