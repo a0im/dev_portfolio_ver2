@@ -1,4 +1,7 @@
  //DOM
+const $root = document.querySelector(":root")
+let styles = getComputedStyle($root);
+
 const $body = document.querySelector('body')
 const $banner = document.querySelector('.banner')
 const $banner_sticky = document.querySelector('.banner__img')
@@ -31,7 +34,6 @@ const $contect_sns = document.querySelector('.contect__sns')
 const $design = document.querySelector('.design-guide')
 const $design_close = document.querySelector('.design-guide__close')
 const $design_box = document.querySelector('.design-guide__box')
-
 //카페24 에 넣기
 let secstions = Array.from($section)
 secstions.push($contect)
@@ -50,8 +52,63 @@ secstions.unshift($banner)
       리드미 
       */
 
-      //추가할내용 1. 텍스트 좌우 추가 . 2. work수정
-      
+const skillInfo = {
+  html : {
+    des : "웹 접근성을 준수한 회원가입폼 구현가능, 마크업 가능 HTML5 등에서 사용되는 시멘틱 태그를 이해하고 있습니다.",
+    color : '#e44d27',
+    ability : 95,
+  },
+  css : {
+    des : "BEM방법의 클래스작성과 반응형을 준수한 CSS 작성이 가능합니다",
+    color : '#1472b6',
+    ability : 90,
+  },
+  javascript : {
+    des : "Vanilla Javascript 활용 및 Jquery.js React.js 활용 배열 및 객체의 이해, 상호작용하는 애니메이션을 구현할수 있습니다.",
+    color : '#f7df1c',
+    ability : 85,
+  },
+  react : {
+    des : "Hook ,라우팅을 이해하고 있습니다. 이를 활용한 웹을 구현할수 있습니다.",
+    color : '#52c1de',
+    ability : 70,
+  },
+  tailwind : {
+    des : "tailwind에서 제공하는 클래스 명령어를 모두 이해하고 있으며 신속한 스타일 작성이 가능합니다",
+    color : '#05b6d3',
+    ability : 80,
+  },
+  bootstrap : {
+    des : "bootstrap에서 제공하고 있는 스타일 컴포넌트를 활용한 웹 제작이 가능합니다",
+    color : '#5e3b7f',
+    ability : 60,
+  },
+  sass : {
+    des : "요소의 관계를 명확하게 나타내며 Mixin과 변수를 활용하여 스타일을 작성합니다.",
+    color : '#ce649a',
+    ability : 70,
+  },
+  jquery : {
+    des : "슬라이드, 풀페이지 및 동적 인터페이스 구현가능 Ajax를 활용한 비동기 통신이 가능합니다.",
+    color : '#0767ac',
+    ability : 80,
+  },
+  git : {
+    des : "local , remote repository 간에 업로드 및 업데이트 가능. branch 활용 가능.",
+    color : '#e44d27',
+    ability : 50,
+  },
+  nodejs : {
+    des : "로그인,회원가입, 게시판 기본적인 기능 구현이 가능 합니다.",
+    color : '#4d9345',
+    ability : 40,
+  },
+  mongodb : {
+    des : "데이터에 CRUD를 구현할 수 있습니다",
+    color : '#6ab058',
+    ability : 40,
+  },
+}
 
 
 let lastMenu = 0 //대소비교 
@@ -155,7 +212,7 @@ const cardFlipOnScroll2 = new CardFlipOnScroll($skill_contain, $skill_sticky , $
 const cardFlipOnScroll3 = new CardFlipOnScroll($skill_contain, $skill_sticky , $skill_cards[2])
 
 class ClickCardOnModal{
-  constructor(body  ,sticky ,  modal , cards){
+  constructor(body, sticky,  modal, cards, data){
     this.body = body
     this.sticky = sticky
     this.modal = modal
@@ -166,6 +223,7 @@ class ClickCardOnModal{
     this.img = modal.querySelector(".modal__box--skill")
     this.skillName = modal.querySelector(".modal__box--title")
     this.skillDescription = modal.querySelector(".modal__box--des")
+    this.data = data
   }
 
   init(){
@@ -175,20 +233,6 @@ class ClickCardOnModal{
   }      
 
   clickEvnt(){
-    const skillDes = {
-      html : "웹 접근성을 준수한 회원가입폼 구현가능, 마크업 가능 HTML5 등에서 사용되는 시멘틱 태그를 이해하고 있습니다.",
-      css : "BEM방법의 클래스작성과 반응형을 준수한 CSS 작성이 가능합니다",
-      javascript : "Vanilla Javascript 활용 및 Jquery.js React.js 활용 배열 및 객체의 이해, 상호작용하는 애니메이션을 구현할수 있습니다.",
-      react : "Hook ,라우팅을 이해하고 있습니다. 이를 활용한 웹을 구현할수 있습니다.",
-      tailwind : "tailwind에서 제공하는 클래스 명령어를 모두 이해하고 있으며 신속한 스타일 작성이 가능합니다",
-      bootstrap : "bootstrap에서 제공하고 있는 스타일 컴포넌트를 활용한 웹 제작이 가능합니다",
-      sass : "요소의 관계를 명확하게 나타내며 Mixin과 변수를 활용하여 스타일을 작성합니다.",
-      jquery : "슬라이드, 풀페이지 및 동적 인터페이스 구현가능 Ajax를 활용한 비동기 통신 구현가능",
-      git : "local , remote repository 간에 업로드 및 업데이트 가능. branch 활용 가능.",
-      nodejs : "로그인,회원가입, 게시판 기본적인 기능 구현이 가능 합니다.",
-      mongodb : "데이터에 CRUD를 구현할 수 있습니다"
-    } 
-
     const openModal = e => {
       let onCard = {
         'cards__card--front' : e.target , 
@@ -196,32 +240,26 @@ class ClickCardOnModal{
         'cards__card--name' : e.target.parentElement,
         'cards__img-box' : e.target.parentElement
       }[e.target.className]
-      console.log(e.target);
-      console.log(onCard);
 
       if (!onCard) return
 
       //modal skill content push
       let skillImg = onCard.firstElementChild.firstElementChild
       let skillN = onCard.lastElementChild.textContent
+      let skillObj = this.data[skillN.toLowerCase()]
 
-      console.log(skillImg)
-      console.log(onCard);;
-      let skillmsg = skillDes[skillN.toLowerCase()]
+      $root.style.setProperty('--skill-color',skillObj['color'])
+      $root.style.setProperty('--skill-ability',skillObj['ability'] / 100 * 40 + "%")
 
       this.img.setAttribute('src',skillImg.getAttribute('src'))
       this.skillName.textContent = skillN
-      this.skillDescription.textContent = skillmsg
-
+      this.skillDescription.textContent = skillObj['des']
       this.body.style.overflow = 'hidden'
       this.modal.classList = 'modal'
       this.modal.classList.add('modal--open')
     }
 
-
-    this.cards.forEach( card  => {
-      card.addEventListener('click',openModal)
-    })
+    this.cards.forEach( card  => card.addEventListener('click',openModal))
 
     this.closeBtn.addEventListener('click',()=>{  
       this.modal.classList.remove('modal--open')
@@ -230,9 +268,12 @@ class ClickCardOnModal{
   }
 }
 
-const clickCardOnModal1 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap , $skill_cards[0])
-const clickCardOnModal2 = new ClickCardOnModal($body , $skill_sticky ,$modal_wrap , $skill_cards[1])
-const clickCardOnModal3 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap, $skill_cards[2])
+const clickCardOnModal1 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap , $skill_cards[0], skillInfo)
+const clickCardOnModal2 = new ClickCardOnModal($body , $skill_sticky ,$modal_wrap , $skill_cards[1], skillInfo)
+const clickCardOnModal3 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap, $skill_cards[2], skillInfo)
+
+
+// console.log(skillObj['ability'] / 100 * 40);
 
 cardFlipOnScroll1.init()
 cardFlipOnScroll2.init(20)
@@ -243,6 +284,8 @@ clickCardOnModal3.init()
 clickCardOnModal1.clickEvnt()
 clickCardOnModal2.clickEvnt()
 clickCardOnModal3.clickEvnt()
+
+
 
 class BannerRotateOnScroll {
   constructor(wrapper , sticky){
@@ -402,8 +445,8 @@ slideVerticalOnScroll.init()
 
 
 //banner - 별생성
-let counter = 40 //별갯수
-let styleProps = [
+const counter = 40 //별갯수
+const styleProps = [
   "width", 
   "height" ,
   "animation-duration" ,
@@ -411,11 +454,11 @@ let styleProps = [
   "left"
 ]
 
-let printStarrySky = () => { 
+const printStarrySky = () => { 
   for (let i = 0; i < counter; i++) {
-    let ofsetH =  $banner_starrySky.offsetHeight
-    let ofsetY =  $banner_starrySky.offsetWidth
-    let size = Math.floor(Math.random() * 3) + 3 + "px"
+    const ofsetH =  $banner_starrySky.offsetHeight
+    const ofsetY =  $banner_starrySky.offsetWidth
+    const size = Math.floor(Math.random() * 3) + 3 + "px"
 
     let styles = {
       "width" : size,
@@ -425,18 +468,17 @@ let printStarrySky = () => {
       "left": Math.floor(Math.random() * ofsetY) + 1 + "px"
     }
     
-    let $star = document.createElement('div')
+    const $star = document.createElement('div')
     $star.classList.add('star')
     $banner_starrySky.appendChild($star)
     styleProps.forEach( prop => $star.style.setProperty(prop ,  styles[prop]))
   }
 }
-
 printStarrySky()
 
 //resize star
-let resizeStars = () => {
-  let stars = document.querySelectorAll('.star')
+const resizeStars = () => {
+  const stars = document.querySelectorAll('.star')
 
   stars.forEach( star => {
     let t =  Math.floor(Math.random() * $banner_starrySky.offsetHeight) + 1
@@ -445,18 +487,6 @@ let resizeStars = () => {
     star.style.setProperty("left" , l + "px") 
   })
 } 
-
-//디자인가이드 모달
-// let designGuideImg = {
-//   hotel : "url(../images/work/design-hotel.jpeg)",
-//   godiva : "url(../images/work/design-godiva.jpg)"
-// }
-
-// const designGuideClass = {
-//   hotel : "design-guide--hotel",
-//   godiva : "design-guide--godiva",
-//   profile : "design-guide--godiva"
-// }
 
 const designGuideData = {
   hotel : {
@@ -475,7 +505,7 @@ const designGuideData = {
 
 const $design_img =  $design_box.querySelector('img')
 
-let openDesignGuide = e => {
+const openDesignGuide = e => {
   let imgName = e.target.dataset.project
   $design_box.classList = "design-guide__box"
   $body.style.overflow = "hidden"
@@ -486,7 +516,7 @@ let openDesignGuide = e => {
   $gnb.classList.add('close-gnb')
 }
 
-let closeDesignGuide = () => {
+const closeDesignGuide = () => {
   $body.style.overflow = "visible"
   $design.lastElementChild.scrollTop = 0
   $design.classList.remove('design-guide--open')
@@ -508,17 +538,17 @@ const option = {
   threshold: [0]
 }
 
-const isObserver = (entries, observer) => {
-  let $div = $about.querySelectorAll('.grid')
+const isObserver = (entries, _) => {
+  const $div = $about.querySelectorAll('.grid')
   let offsetT
 
-  let initAbout = () => ({
+  const initAbout = () => ({
       topSecH : $div[0].offsetTop,
       btmSecH : $div[1].offsetTop,
       end : $about.offsetHeight,
   })
   
-  let scrollEvt = () => {
+  const scrollEvt = () => {
     let {topSecH,btmSecH, end} = initAbout()
     let currenScl = scrollY - offsetT + (innerHeight / 2)
 
@@ -536,20 +566,20 @@ const isObserver = (entries, observer) => {
     let onClass = entry.target.className
     offsetT = entry.target.offsetTop 
 
-    let inAbout = () => {
+    const inAbout = () => {
       $gnb.classList.remove('close-gnb')
       window.addEventListener('resize',initAbout)
       window.addEventListener('scroll',scrollEvt,{ passive: true })
     }
 
-    let outAbout = () =>{
+    const outAbout = () =>{
       $about_top.classList.remove('top--focuse')
       $about_btm.classList.remove('btm--focuse')
       window.removeEventListener('resize',initAbout)
       window.removeEventListener('scroll',scrollEvt)
     }
 
-    let inContect = () => {      
+    const inContect = () => {      
       scrollTo(0 , $body.offsetHeight)
       $contect_sns.classList.add('focuse-contect')
     }
@@ -586,7 +616,7 @@ let fadeTarget = secstions
 
 let fadeStart = fadeTarget.map( sec => sec.offsetTop)
 
-let fadeText = sclY => {
+const fadeText = sclY => {
 fadeTarget.forEach(( e , i ) => {
   if (sclY > fadeStart[i] * 0.93 && sclY < fadeStart[i] + innerHeight * 1.3) {
     e.classList.add("fade-title")
@@ -598,7 +628,7 @@ fadeTarget.forEach(( e , i ) => {
 }
 
 //scoll 
-let clearScroll = () => {
+const clearScroll = () => {
   let checkRAF = false;
   if (checkRAF) return ;
   checkRAF = true

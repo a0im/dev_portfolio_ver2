@@ -42,6 +42,8 @@ h1 {
   --work-pos: 0%;
   --design-img: ;
   --design-duration: 0;
+  --skill-ability: ;
+  --skill-color: ;
 }
 
 body {
@@ -733,13 +735,13 @@ header .outer-img__half {
     max-width: 150px;
   }
 }
-.skill .modal__box p:nth-of-type(1) {
+.skill .modal__box--title {
   position: relative;
   font-size: min(6.25vw, 38px);
   font-weight: 500;
   margin-top: min(3.125vw, 20px);
 }
-.skill .modal__box p:nth-of-type(1)::before {
+.skill .modal__box--title::before {
   content: "";
   display: block;
   position: absolute;
@@ -747,21 +749,35 @@ header .outer-img__half {
   left: 50%;
   width: min(6.25vw, 25px);
   height: min(0.625vw, 4px);
-  background-color: #ae29f6;
+  background-color: #fff;
   transform: translateX(-50%);
 }
 @media screen and (min-width: 768px) {
-  .skill .modal__box p:nth-of-type(1)::before {
+  .skill .modal__box--title::before {
     bottom: max(-3.125vw, -19px);
   }
 }
-.skill .modal__box p:nth-of-type(2) {
+.skill .modal__box--title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: max(-3.125vw, -11px);
+  left: 30%;
+  width: 0%;
+  height: min(0.645vw, 5px);
+}
+@media screen and (min-width: 768px) {
+  .skill .modal__box--title::after {
+    bottom: max(-3.125vw, -19px);
+  }
+}
+.skill .modal__box--des {
   font-size: min(4vw, 18px);
   margin-top: min(6.25vw, 40px);
   padding: 0 25px;
 }
 @media screen and (min-width: 768px) {
-  .skill .modal__box p:nth-of-type(2) {
+  .skill .modal__box--des {
     font-size: min(5vw, 20px);
     padding: 0 20px;
   }
@@ -801,6 +817,17 @@ header .outer-img__half {
 }
 .skill .modal--open .modal__box {
   opacity: 1;
+}
+.skill .modal--open .modal__box--title::before {
+  transition: all 1s;
+  transition-delay: 1000ms;
+  width: 40%;
+}
+.skill .modal--open .modal__box--title::after {
+  transition: all 1s;
+  transition-delay: 2100ms;
+  background-color: var(--skill-color);
+  width: var(--skill-ability);
 }
 .skill__contain {
   position: relative;
