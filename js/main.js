@@ -69,7 +69,7 @@ const skillInfo = {
     ability : 85,
   },
   react : {
-    des : "Hook ,라우팅을 이해하고 있습니다. 이를 활용한 웹을 구현할수 있습니다.",
+    des : "Hook과 라우팅을 이해하고 있습니다. 이를 활용한 웹을 구현할수 있습니다.",
     color : '#52c1de',
     ability : 70,
   },
@@ -96,10 +96,10 @@ const skillInfo = {
   git : {
     des : "local , remote repository 간에 업로드 및 업데이트 가능. branch 활용 가능.",
     color : '#e44d27',
-    ability : 50,
+    ability : 60,
   },
   nodejs : {
-    des : "로그인,회원가입, 게시판 기본적인 기능 구현이 가능 합니다.",
+    des : "로그인,회원가입, 게시판등 기본적인 기능 구현이 가능 합니다.",
     color : '#4d9345',
     ability : 40,
   },
@@ -107,6 +107,16 @@ const skillInfo = {
     des : "데이터에 CRUD를 구현할 수 있습니다",
     color : '#6ab058',
     ability : 40,
+  },
+  typescript : {
+    des : "데이터에 CRUD를 구현할 수 있습니다",
+    color : '#3077c6',
+    ability : 75,
+  },
+  vue : {
+    des : "라우팅을 활용해서 추가,삭제,변경등의 기본적인 기능 구현이 가능 합니다.",
+    color : '#3fb984',
+    ability : 55,
   },
 }
 
