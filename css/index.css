@@ -1284,6 +1284,23 @@ header .outer-img__half {
   max-width: 1024px;
   margin: 0 auto;
   overflow-y: scroll;
+  overflow-x: hidden;
+}
+.work .design-guide__box::-webkit-scrollbar {
+  width: 7px;
+}
+.work .design-guide__box::-webkit-scrollbar-thumb {
+  height: 7%;
+  min-height: 40px;
+  background-color: #ae29f6;
+  border-radius: 18px;
+}
+.work .design-guide__box::-webkit-scrollbar-track {
+  background: transparent;
+}
+.work .design-guide__box {
+  scrollbar-color: #ae29f6 transparent;
+  scrollbar-width: thin;
 }
 .work .design-guide__box--content, .work .design-guide__box--rect {
   background-color: #efefef;

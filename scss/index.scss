@@ -1436,6 +1436,9 @@ header{
     }
   }
 
+
+
+
   .design-guide{
     position: fixed;
     visibility: hidden;
@@ -1444,6 +1447,8 @@ header{
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0,0.7);
+
+
 
     &__close{
       cursor: pointer;
@@ -1478,6 +1483,25 @@ header{
       max-width: 1024px;
       margin: 0 auto;
       overflow-y: scroll;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb{
+        height: 7%;
+        min-height: 40px;
+        background-color: #ae29f6;
+        border-radius: 18px;
+      }
+      &::-webkit-scrollbar-track{
+        background: transparent;
+      } 
+    
+      &{
+        scrollbar-color: #ae29f6 transparent;
+        scrollbar-width: thin;
+      }
 
 
       &--content,
