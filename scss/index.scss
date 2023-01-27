@@ -547,12 +547,13 @@ header{
 
         h3{
           margin: 30px 0 ;
-          font-size: 16px;
+          font-size: 18px;
           strong{
             display: inline-block;
             position: relative;
             z-index: 20;
-            font-size: 24px;
+            font-size: 26px;
+
 
             &::before{
               content: "";
@@ -566,6 +567,10 @@ header{
               height: 5px;
               background-color: #ae29f6;
             }
+
+            // span{
+            //   color: #f7df1c;
+            // }
           }
         }
       }
@@ -1314,6 +1319,14 @@ header{
               @include responsive(tablet-screens) {
               border-bottom: #ae29f6 2px solid;
               }
+
+              .vue{
+                color: #42f8a9;
+              }
+
+              .react{
+                color: #5edfff;
+              }
             }
       
             small{
@@ -1346,6 +1359,7 @@ header{
             }
           
             .work__btns{
+
               button{
                 position: relative;
                 width: 7.1429vw;
@@ -1359,6 +1373,7 @@ header{
                 font-size:clamp(13px , 1.3914vw , 20px);
                 background: transparent;
                 color: #fff;
+                padding: 0;
   
   
                 @include responsive(tablet-screens) {
@@ -1369,7 +1384,6 @@ header{
                   border: 2px solid #ae29f6;
                   margin-right: 2px;
                   max-width: 140px;
-                  padding: 0 5px;
                 }
 
                 &::before{
@@ -1395,6 +1409,10 @@ header{
                 }
 
                 a{
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 100%;
                   color: #fff;
                 }
               }
@@ -1658,13 +1676,17 @@ header{
       overflow: hidden;
       border-radius: min(4.6875vw , 30px);
 
-
-      // width: min(43.1250vw , 290px);
-
       img{
         width: 100%;
+        height: 100%;
+      }
+
+      img:hover{
+        transition: transform 150ms linear;
+        transform: scale(1.1);
       }
     }
+
 
 
     &--character{

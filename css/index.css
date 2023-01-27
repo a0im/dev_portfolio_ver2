@@ -467,13 +467,13 @@ header .outer-img__half {
 }
 .about-top__txt-first h3 {
   margin: 30px 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 .about-top__txt-first h3 strong {
   display: inline-block;
   position: relative;
   z-index: 20;
-  font-size: 24px;
+  font-size: 26px;
 }
 .about-top__txt-first h3 strong::before {
   content: "";
@@ -1149,6 +1149,12 @@ header .outer-img__half {
     border-bottom: #ae29f6 2px solid;
   }
 }
+.work__sticky .work__abs-box .work-list .work-des__lf-contain h3 .vue {
+  color: #42f8a9;
+}
+.work__sticky .work__abs-box .work-list .work-des__lf-contain h3 .react {
+  color: #5edfff;
+}
 .work__sticky .work__abs-box .work-list .work-des__lf-contain small {
   position: relative;
   font-size: clamp(14px, 1.5714vw, 22px);
@@ -1185,6 +1191,7 @@ header .outer-img__half {
   font-size: clamp(13px, 1.3914vw, 20px);
   background: transparent;
   color: #fff;
+  padding: 0;
 }
 @media screen and (min-width: 768px) {
   .work__sticky .work__abs-box .work-list .work-des__lf-contain .work__btns button {
@@ -1195,7 +1202,6 @@ header .outer-img__half {
     border: 2px solid #ae29f6;
     margin-right: 2px;
     max-width: 140px;
-    padding: 0 5px;
   }
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain .work__btns button::before {
@@ -1218,6 +1224,10 @@ header .outer-img__half {
   font-weight: 500;
 }
 .work__sticky .work__abs-box .work-list .work-des__lf-contain .work__btns button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   color: #fff;
 }
 .work__sticky .work__abs-box .work-list .work-des--focuse {
@@ -1416,6 +1426,11 @@ header .outer-img__half {
 }
 .contect__sns--github img, .contect__sns--velog img, .contect__sns--gmail img {
   width: 100%;
+  height: 100%;
+}
+.contect__sns--github img:hover, .contect__sns--velog img:hover, .contect__sns--gmail img:hover {
+  transition: transform 150ms linear;
+  transform: scale(1.1);
 }
 .contect__sns--character {
   position: relative;

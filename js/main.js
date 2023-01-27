@@ -54,32 +54,32 @@ secstions.unshift($banner)
 
 const skillInfo = {
   html : {
-    des : "웹 접근성을 준수한 회원가입폼 구현가능, 마크업 가능 HTML5 등에서 사용되는 시멘틱 태그를 이해하고 있습니다.",
+    des : "웹 접근성을 준수한 레이아웃을 구현할 수 있습니다. 시맨틱 태그를 이해하고 있습니다.",
     color : '#e44d27',
     ability : 95,
   },
   css : {
-    des : "BEM방법의 클래스작성과 반응형을 준수한 CSS 작성이 가능합니다",
+    des : "BEM 방법의 클래스 작성과 반응형을 준수한 <br> 스타일 작성이 가능합니다.",
     color : '#1472b6',
     ability : 90,
   },
   javascript : {
-    des : "Vanilla Javascript 활용 및 Jquery.js React.js 활용 배열 및 객체의 이해, 상호작용하는 애니메이션을 구현할수 있습니다.",
+    des : "ES6 문법을 이해하고 있으며 상호작용하는 <br> 애니메이션을 구현할 수 있습니다.",
     color : '#f7df1c',
     ability : 85,
   },
   react : {
-    des : "Hook과 라우팅을 이해하고 있습니다. 이를 활용한 웹을 구현할수 있습니다.",
+    des : "JSX 문법을 준수한 코드 작성이 가능합니다. Hook과 라우팅을 이해하고 있습니다. <br> 이를 활용한 웹을 구현할 수 있습니다.",
     color : '#52c1de',
     ability : 70,
   },
   tailwind : {
-    des : "tailwind에서 제공하는 클래스 명령어를 모두 이해하고 있으며 신속한 스타일 작성이 가능합니다",
+    des : "tailwind에서 제공하는 클래스 명령어를 모두 <br> 이해하고 있으며 신속한 스타일 작성이 <br>가능합니다.",
     color : '#05b6d3',
     ability : 80,
   },
   bootstrap : {
-    des : "bootstrap에서 제공하고 있는 스타일 컴포넌트를 활용한 웹 제작이 가능합니다",
+    des : "bootstrap에서 제공하고 있는 스타일 컴포넌트를 활용한 웹 제작이 가능합니다.",
     color : '#5e3b7f',
     ability : 60,
   },
@@ -89,34 +89,34 @@ const skillInfo = {
     ability : 70,
   },
   jquery : {
-    des : "슬라이드, 풀페이지 및 동적 인터페이스 구현가능 Ajax를 활용한 비동기 통신이 가능합니다.",
+    des : "동적 인터페이스를 구현할 수 있습니다. <br>Ajax를 활용한 비동기 통신이 가능합니다.",
     color : '#0767ac',
     ability : 80,
   },
   git : {
-    des : "local , remote repository 간에 업로드 및 업데이트 가능. branch 활용 가능.",
+    des : "local , remote repository 간에 업로드 및 업데이트 가능합니다. branch를 활용할 수 있습니다.",
     color : '#e44d27',
     ability : 60,
   },
   nodejs : {
-    des : "로그인,회원가입, 게시판등 기본적인 기능 구현이 가능 합니다.",
+    des : "로그인, 회원가입, 게시판 등의 기본적인 기능 구현이 가능합니다.",
     color : '#4d9345',
-    ability : 40,
+    ability : 50,
   },
   mongodb : {
-    des : "데이터에 CRUD를 구현할 수 있습니다",
+    des : "추가 제거 변경 등의 기능이 DB에 반영될 수 있도록 기능 구현이 가능합니다.",
     color : '#6ab058',
-    ability : 40,
+    ability : 50,
   },
   typescript : {
-    des : "데이터에 CRUD를 구현할 수 있습니다",
+    des : "타입의 범위를 좁혀서 안정적인 코드를 작성할 수 있습니다. 동적인 타입을 활용할 수 있습니다.",
     color : '#3077c6',
     ability : 75,
   },
   vue : {
-    des : "라우팅을 활용해서 추가,삭제,변경등의 기본적인 기능 구현이 가능 합니다.",
+    des : "라우팅을 통한 간단한 싱글 페이지 웹사이트를 구현할 수 있습니다. <br> 추가 삭제 변경 등의 기본적인 기능 구현이 가능합니다.",
     color : '#3fb984',
-    ability : 55,
+    ability : 60,
   },
 }
 
@@ -263,7 +263,7 @@ class ClickCardOnModal{
 
       this.img.setAttribute('src',skillImg.getAttribute('src'))
       this.skillName.textContent = skillN
-      this.skillDescription.textContent = skillObj['des']
+      this.skillDescription.innerHTML = skillObj['des']
       this.body.style.overflow = 'hidden'
       this.modal.classList = 'modal'
       this.modal.classList.add('modal--open')
@@ -455,7 +455,7 @@ slideVerticalOnScroll.init()
 
 
 //banner - 별생성
-const counter = 40 //별갯수
+const counter = 60 //별갯수
 const styleProps = [
   "width", 
   "height" ,

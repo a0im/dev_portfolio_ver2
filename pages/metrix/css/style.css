@@ -157,44 +157,9 @@ ol{
   font-size: 22px;
 }
 
-
 .result-table  td {
   color: yellow;
 }
-
-.result-table::before,
-.result-table::after{
-  position: absolute;
-  display: block;
-  font-size: 80px;
-  top: calc(50% + 11px);
-  transform: translateY(-50%);
-}
-
-
-.result-table::after{
-  right: 29%;
-  content: "=";
-}
-
-.multi::before,
-.add::before,
-.sub::before{
-  left: 29%;
-}
-
-.multi::before{
-  content: "x";
-}
-
-.add::before{
-  content: "+";
-}
-
-.sub::before{
-  content: "-";
-}
-
 
 
 
