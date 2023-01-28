@@ -34,23 +34,12 @@ const $contect_sns = document.querySelector('.contect__sns')
 const $design = document.querySelector('.design-guide')
 const $design_close = document.querySelector('.design-guide__close')
 const $design_box = document.querySelector('.design-guide__box')
-//카페24 에 넣기
+
+
 let secstions = Array.from($section)
 secstions.push($contect)
 secstions.unshift($banner)
-// setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
-
-
-      /*
-      9.content animation // 링크연결
-      11 자격사항 체워넣기
-      12 디자인 가이드 작성
-      13 시간나면 아래 하단에 나래이션 추가
-
-      오늘 할일 
-      디자인가이드
-      리드미 
-      */
+setTimeout(()=> scrollTo(0,0),100) //시작시 0,0 
 
 const skillInfo = {
   html : {

@@ -543,7 +543,8 @@ header .outer-img__half {
   z-index: 1000;
   width: 60%;
   margin: 0 auto;
-  padding-top: 22%;
+  padding-top: 30%;
+  padding-bottom: 15%;
   transform: translate(-10% 0%);
 }
 @media screen and (min-width: 768px) {
