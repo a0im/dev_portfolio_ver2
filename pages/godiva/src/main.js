@@ -97,7 +97,7 @@ observer_arrow.observe($header);
 
 changeArticleImgFn();
 function changeArticleImgFn() {
-  let bg = ["./img/h-bg4.jpg", "./img/h-bg3.jpg"];
+  let bg = ["../img/h-bg4.jpg", "../img/h-bg3.jpg"];
   let bgIdx = 0;
   let interval = null;
 
