@@ -490,15 +490,15 @@ const resizeStars = () => {
 const designGuideData = {
   hotel : {
     class : "design-guide--hotel" ,
-    img : "../images/work/design-hotel.jpg"
+    img : "./images/work/design-hotel.jpg"
   },
   godiva : {
     class : "design-guide--godiva" ,
-    img : "../images/work/design-godiva.jpg"
+    img : "./images/work/design-godiva.jpg"
   },
   profile : {
     class : "design-guide--profile" ,
-    img : "../images/work/design-profile.jpg"
+    img : "./images/work/design-profile.jpg"
   },
 }
 

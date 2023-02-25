@@ -334,8 +334,8 @@
      $modalWrap.innerHTML = modalEl
 
      //모달 닫기
-     $closeModalBtn = document.querySelector('.close-modal')
-     $closeModalBtn.addEventListener('click',()=>{
+     $closeModalbtn = document.querySelector('.close-modal')
+     $closeModalbtn.addEventListener('click',()=>{
        $modalWrap.classList.remove('success')
        $body.classList.remove('lock-scroll')
        resetData()
