@@ -17,7 +17,6 @@
  let $closeModalbtn = null
  let $checkBox = null
 
-
  //페이지가 로드되고 상품목록을 동적 생성
  const renderProduct = () => {
 
