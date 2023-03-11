@@ -43,13 +43,13 @@ const images = [
     xPos : [555,289,99,488],
     yPos : [83,154,774,582],
   },
-  {
-    id : 6,
-    url1 : "./images/simpsons6-1.jpg",
-    url2 : "./images/simpsons6-2.jpg",
-    xPos : [359,393,51,79,380,279],
-    yPos : [585,220,404,81,354,477],
-  },
+  // { //난이도가 어려워서 뺐음 
+  //   id : 6,
+  //   url1 : "./images/simpsons6-1.jpg",
+  //   url2 : "./images/simpsons6-2.jpg",
+  //   xPos : [359,393,51,79,380,279],
+  //   yPos : [585,220,404,81,354,477],
+  // },
 ]
 
 const modalObj = {

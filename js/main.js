@@ -112,7 +112,7 @@ const skillInfo = {
 
 let lastMenu = 0 //대소비교 
 let setTime
-//nav animation 
+//nav 버튼 에니메이션 효과 
 let navAnimate = (el , time = 300) => {
   const targetMap = {
     LI : el,
@@ -134,6 +134,7 @@ let navAnimate = (el , time = 300) => {
   lastMenu = list.indexOf(li)
 }
 
+//nav클릭 영역이동 
 let scrollInToNav = (e) => {
   e.preventDefault()
   const targetMap = {
@@ -350,6 +351,7 @@ class BannerRotateOnScroll {
 const bannerRotateOnScroll = new BannerRotateOnScroll( $banner , $banner_sticky)
 bannerRotateOnScroll.init()
 
+//
 let imgInit = () => {
   $work_rfImg.forEach( e => {
     let img = e.children[0]
@@ -503,7 +505,7 @@ const designGuideData = {
 }
 
 const $design_img =  $design_box.querySelector('img')
-
+//디자인가이드 모달 팝업
 const openDesignGuide = e => {
   let imgName = e.target.dataset.project
   $design_box.classList = "design-guide__box"
@@ -520,7 +522,6 @@ const closeDesignGuide = () => {
   $design.lastElementChild.scrollTop = 0
   $design.classList.remove('design-guide--open')
   $gnb.classList.remove('close-gnb')
-
 }
 
 $work_designBtns.forEach( e => {
