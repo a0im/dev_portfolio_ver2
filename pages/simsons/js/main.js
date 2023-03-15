@@ -43,7 +43,7 @@ const images = [
     xPos : [555,289,99,488],
     yPos : [83,154,774,582],
   },
-  // { //난이도가 어려워서 뺐음 
+  // { // 난이도가 높다고 의견을 줘서 뺐음.
   //   id : 6,
   //   url1 : "./images/simpsons6-1.jpg",
   //   url2 : "./images/simpsons6-2.jpg",
@@ -73,7 +73,7 @@ const $count = document.querySelector('.count')
 
 
 //1. images원본 배열을 복사함  == closer
-//2. 함수내 메서드가 배열내 객체를 (추출-readItem ,되섞기-reload ,삭제-delItem , 초기화-reset , 길이확인-itemLength)함 
+//2. 함수내 메서드가 배열내 객체를 (읽기-readItem ,되섞기-reload ,삭제-delItem , 초기화-reset , 길이확인-itemLength)함 
 let setObj = isSetObj(); 
 function isSetObj () {
   let cloneArr = JSON.parse(JSON.stringify(images))
@@ -125,7 +125,6 @@ const renderModal = (state) => {
   }
 }
 renderModal('start') //load Default
-
 
 //게임 시간초과 함수
 let currentTime = 100; //막대크기 100%
