@@ -7,7 +7,7 @@
   --work-pos : 0%;
   --design-img : ;
   --design-duration : 0;
-  --skill-ability : ;
+  --skill-ability : 0;
   --skill-color: ;
 }
 
@@ -22,7 +22,6 @@ body::-webkit-scrollbar {
 }
 
 .grid{
-  //  width: 89.74358974358974%;
   width: 87.5vw;
   margin: 0 auto;
   max-width: 1400px;
@@ -38,7 +37,6 @@ header{
       display: flex;
       position: fixed;
       z-index: 10000;
-      // align-items: center;
       width: 100%;
       color: #fff;
       justify-content: center;
@@ -226,7 +224,6 @@ header{
           }
         }
       }
-
     }
 
     .banner__obj-box{
@@ -235,8 +232,6 @@ header{
       top: -30vh;
       left: 0;
       width: 100vw; 
-      // transform: translateY(100%);
-      // width: 200vh;
 
       & > img{
         position: absolute;
@@ -323,27 +318,25 @@ header{
       
     }
   }//banner__img
-
-
-
 } //banner
-.outer-img{
-  position: relative;
-  width: 100vw;
-  height: 350px;
-  overflow: hidden;
-  background: #5f3f8e;
-  background: linear-gradient(180deg,  rgba(255,255,255,1) -52%,#5f3f8e 55%);
-  &__half{
-    position: absolute;
-    left: 50%;
-    width: 51.68vh;
-    margin-top: -2px;
-    // margin-left: 5.3px;
-    transform: translateX(-50%);
-    transform-origin: 50% 0%;
+
+  .outer-img{
+    position: relative;
+    width: 100vw;
+    height: 350px;
+    overflow: hidden;
+    background: #5f3f8e;
+    background: linear-gradient(180deg,  rgba(255,255,255,1) -52%,#5f3f8e 55%);
+    &__half{
+      position: absolute;
+      left: 50%;
+      width: 51.68vh;
+      margin-top: -2px;
+      // margin-left: 5.3px;
+      transform: translateX(-50%);
+      transform-origin: 50% 0%;
+    }
   }
-}//banner
 }
 
 
@@ -849,18 +842,16 @@ header{
           position: absolute;
           bottom: max(-3.1250vw , -11px);
           left: 50%;
-          width: min(6.2500vw,25px);
+          width: 0px;
           height: min(0.6250vw,4px);
           background-color: #fff;
           transform: translateX(-50%);
           @include responsive(tablet-screens) {
             bottom: max(-3.1250vw,-19px);
           }
-
         }
 
         &::after{
-
           content: "";
           display: block;
           position: absolute;

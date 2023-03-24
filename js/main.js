@@ -155,7 +155,7 @@ $gnb.addEventListener('click', e =>{
   scrollInToNav(e)
 })
 
-      
+
 //skill
 class CardFlipOnScroll{
   constructor(wrapper , sticky , cards){
@@ -273,7 +273,6 @@ const clickCardOnModal2 = new ClickCardOnModal($body , $skill_sticky ,$modal_wra
 const clickCardOnModal3 = new ClickCardOnModal($body , $skill_sticky , $modal_wrap, $skill_cards[2], skillInfo)
 
 
-// console.log(skillObj['ability'] / 100 * 40);
 
 cardFlipOnScroll1.init()
 cardFlipOnScroll2.init(20)
@@ -442,7 +441,6 @@ class SlideVerticalOnScroll {
 const slideVerticalOnScroll = new SlideVerticalOnScroll($work, $work_sticky ,$workDes)
 let lastScroll = 0
 slideVerticalOnScroll.init()
-
 
 
 //banner - 별생성

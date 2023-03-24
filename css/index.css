@@ -42,7 +42,7 @@ h1 {
   --work-pos: 0%;
   --design-img: ;
   --design-duration: 0;
-  --skill-ability: ;
+  --skill-ability: 0;
   --skill-color: ;
 }
 
@@ -748,7 +748,7 @@ header .outer-img__half {
   position: absolute;
   bottom: max(-3.125vw, -11px);
   left: 50%;
-  width: min(6.25vw, 25px);
+  width: 0px;
   height: min(0.625vw, 4px);
   background-color: #fff;
   transform: translateX(-50%);
