@@ -543,14 +543,14 @@ header{
 
             &::before{
               content: "";
-              transition: 2s;
-              transition-delay: .7s;
               display: block;
               position: absolute;
               bottom: 5px;
               z-index: -1;
               width: 0%;
               height: 5px;
+              transition: 2s;
+              transition-delay: .7s;
               background-color: #ae29f6;
             }
 
@@ -570,6 +570,13 @@ header{
 
   .top--focuse{
     .about-top__img{
+
+      @keyframes scaleSkills {
+        100%{
+          transform: scale(1)  translate(-50% ,-50%);
+          transform-origin: 50% 50%;
+        }
+      }
       &--chair{
         bottom: 10%;
       }
@@ -586,13 +593,6 @@ header{
       &--scss
       {
         animation-name: scaleSkills;
-      }
-
-      @keyframes scaleSkills {
-        100%{
-          transform: scale(1)  translate(-50% ,-50%);
-          transform-origin: 50% 50%;
-        }
       }
     }
 
@@ -801,12 +801,12 @@ header{
       }
 
       &--close{
-        cursor: pointer;
         position: absolute;
         top: max(-15vw,-80px);
         left: 50%;
         width: 40px;
         height: 40px;
+        cursor: pointer;
         font-size: min(10vw,50px);
         transform: translate(-50%);
         color: #ae29f6;
@@ -870,13 +870,13 @@ header{
       }
 
       &--des{
+        padding: 0 25px;
         font-size: min(4vw,18px);
         margin-top: min(6.25vw,40px);
-        padding: 0 25px;
 
         @include responsive(tablet-screens) {
-          font-size: min(5vw,20px);
           padding: 0 20px;
+          font-size: min(5vw,20px);
 
         }
       }
@@ -929,16 +929,16 @@ header{
       opacity: 1;
       &--title{
         &::before{
+          width: 40%;
           transition: all 1s;
           transition-delay: 1000ms;
-          width: 40%;
         }
 
         &::after{
+          width: var(--skill-ability);
           transition: all 1s;
           transition-delay: 2100ms;
           background-color: var(--skill-color);
-          width: var(--skill-ability);
         }
       }
     }
@@ -1041,7 +1041,6 @@ header{
           transform-style: preserve-3d;
           border-radius: min(3.8vw,15px);
 
-
           @include responsive(tablet-screens) {
             width: 14.2857vw;
             height: 18.9286vw;
@@ -1075,8 +1074,8 @@ header{
           }
           
           &--front{
-            cursor: pointer;
             z-index: 0;
+            cursor: pointer;
             flex-direction: column;
             align-items: center;
             background-color: #fff;
@@ -1088,10 +1087,10 @@ header{
 
             .cards__img-box{
               display: flex;
-              align-items: center;
-              justify-content: center;
               width: 100%;
               height: 45%;
+              align-items: center;
+              justify-content: center;
             }
       
             p{
@@ -1261,8 +1260,8 @@ header{
                 img {
                   display: block;
                   position: absolute;
-                  width: 100%;
                   bottom : 0;
+                  width: 100%;
                   animation-delay: 300ms;
                   animation-direction: alternate;
                   animation-iteration-count: infinite;
@@ -1348,6 +1347,7 @@ header{
                 position: relative;
                 width: 7.1429vw;
                 height: 2.1429vw;
+                padding: 0;
                 min-width: 90px;
                 max-width: 125px;
                 min-height: 30px;
@@ -1357,7 +1357,6 @@ header{
                 font-size:clamp(13px , 1.3914vw , 20px);
                 background: transparent;
                 color: #fff;
-                padding: 0;
   
   
                 @include responsive(tablet-screens) {
@@ -1394,9 +1393,9 @@ header{
 
                 a{
                   display: flex;
+                  height: 100%;
                   align-items: center;
                   justify-content: center;
-                  height: 100%;
                   color: #fff;
                 }
               }
@@ -1443,23 +1442,23 @@ header{
 
   .design-guide{
     position: fixed;
-    visibility: hidden;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    visibility: hidden;
     background-color: rgba(0,0,0,0.7);
 
     &__close{
-      cursor: pointer;
       position: absolute;
       top: 10vh;
       // left: 50%;
       right: 10%;
+      z-index: 2000;
       // transform: translateX(-50%);
       width: 40px;
       height: 40px;
-      z-index: 2000;
+      cursor: pointer;
       color: #fff;
       font-size: 40px;
       background-color: transparent;
@@ -1480,8 +1479,8 @@ header{
       left: 0;
       width: 100%;
       height: 100%;
-      max-width: 1024px;
       margin: 0 auto;
+      max-width: 1024px;
       overflow-y: scroll;
       overflow-x: hidden;
 
@@ -1584,7 +1583,7 @@ header{
       }
     }
 
-  }//design-guide
+  }
 
   .design-guide--open{
     visibility: visible;
@@ -1597,7 +1596,7 @@ header{
     .design-guide__box--content{
       transform: translateX(0%);
     }
-  }
+  }//design-guide
 }
 
 //*********************** CONTECT ***********************
