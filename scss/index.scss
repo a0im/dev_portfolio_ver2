@@ -31,8 +31,10 @@ section > h2{
   display: none;
 }
 
+
+//*********************** frontPage ***********************
 header{
-  nav {
+  nav { //***** nav
     .gnb{
       display: flex;
       position: fixed;
@@ -119,7 +121,6 @@ header{
   }
 
   
-
   .banner {
   position: relative;
   height: 500vh;
@@ -340,7 +341,7 @@ header{
 }
 
 
-
+//*********************** ABOUT ***********************
 .about{
   position: relative;
   z-index: -2;
@@ -757,12 +758,11 @@ header{
   }//top//btm
 }
 
+//*********************** SKILL ***********************
 .skill{
   width: 100vw;
   margin: 100px 0;
   background: #171e40;
-
-
   .modal{
     position: fixed;
     top: 0;
@@ -1129,7 +1129,7 @@ header{
   }
 } //skill
 
-
+//*********************** WORK ***********************
 .work{
   position: relative;
   width: 100vw;
@@ -1450,8 +1450,6 @@ header{
     height: 100vh;
     background-color: rgba(0,0,0,0.7);
 
-
-
     &__close{
       cursor: pointer;
       position: absolute;
@@ -1602,7 +1600,7 @@ header{
   }
 }
 
-
+//*********************** CONTECT ***********************
 .contect{
   display: flex;
   width: 100vw;
