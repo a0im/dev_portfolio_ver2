@@ -12,9 +12,9 @@
 }
 
 body{
+  background-color: #171e40;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  background-color: #171e40;
 }
 
 body::-webkit-scrollbar {
@@ -23,8 +23,8 @@ body::-webkit-scrollbar {
 
 .grid{
   width: 87.5vw;
-  margin: 0 auto;
   max-width: 1400px;
+  margin: 0 auto;
 }
 
 section > h2{
@@ -37,12 +37,12 @@ header{
   nav { //***** nav
     .gnb{
       display: flex;
-      position: fixed;
-      z-index: 10000;
-      width: 100%;
-      color: #fff;
       justify-content: center;
+      position: fixed;
+      width: 100%;
+      z-index: 10000;
       background-color: rgba(0,0,0,0.7);
+      color: #fff;
       border-bottom: #ae29f6 1.5px solid;
       transition: all 1s ease;
 
@@ -55,23 +55,23 @@ header{
         a{
           width: 100%;
           height: 25px;
-          font-size: min(4.3750vw,22px);
-          line-height: 25px;
           color: #5a5753;
           font-weight: 600;
+          font-size: min(4.3750vw,22px);
+          line-height: 25px;
       
           &:hover{
             color : #fff;
           }
 
           &::before{
-            content: "";
             display: block;
             position: absolute;
             top: 0;
             width: 0%;
             height: 100%;
             background-color: #ae29f6;
+            content: "";
           }
 
         }
@@ -94,16 +94,15 @@ header{
       .gnb-end,
       .gnb-end--reverse {
         a{
-          text-shadow: 0 0 20px #4df9ffd2;
           color: #ae29f6;
+          text-shadow: 0 0 20px #4df9ffd2;
           &::before {
             width: 100%;
-            transition: all 330ms ease;
             color: #ae29f6;
             font-weight: 600;
+            transition: all 330ms ease;
             transform : translateX(110%) scale(1.2);
             transition-delay: 300ms;
-         
           }             
         }
       }
@@ -136,12 +135,12 @@ header{
       position: absolute;
       left: 50%;
       z-index: 100;
-      color: #fff;
-      font-family: "Luckiest Guy", cursive;
-      font-size: min(16.5625vw , 90px);
-      transform: translateX(-50%);
       margin-top: 70px;
+      color: #fff;
+      font-size: min(16.5625vw , 90px);
+      font-family: "Luckiest Guy", cursive;
       text-align: center;
+      transform: translateX(-50%);
 
       text-shadow: 
       0 0.1em 20px rgba(174,41,246, 1), 
@@ -155,7 +154,6 @@ header{
       -0.03em 0 0 rgba(174,41,246, 1);
     }
 
-  
 
     .banner__bg {
       display: block;
@@ -211,11 +209,11 @@ header{
         position: absolute;
         top:40.6%;
         left: 50.50%;
-        z-index: 1000;
         width: 6.7vh;
-        transform-origin: 0% 100%;
+        z-index: 1000;
 
         animation: wave 0.7s cubic-bezier(0.785, 0.135, 0.150, 0.860) infinite alternate;
+        transform-origin: 0% 100%;
         @keyframes wave {
           0% {
             transform: rotate(-11deg);
@@ -250,11 +248,11 @@ header{
       &--cloud2{
         top: 0;
         left: 4vw;
+        width: 20vw;
+        max-width: 180px;
+        min-width: 140px;
 
         z-index: 3;
-        width: 20vw;
-        min-width: 140px;
-        max-width: 180px;
         @include responsive(tablet-screens) {
           left: 20vw;
         }
@@ -264,17 +262,16 @@ header{
         top: 0;
         left: 70vw;
         width: 20vw;
-        min-width: 100px;
         max-width: 130px;
-
-
+        min-width: 100px;
       }
+
       &--planet-red{
         top: 0;
         left: 20vw;
         width: 20vw;
-        min-width: 130px;
         max-width: 180px;
+        min-width: 130px;
 
       }
 
@@ -292,7 +289,6 @@ header{
 
           @include responsive(tablet-screens) {
             top: min(123.4375vw , 740px ) ;
-      
           }
         }
       }
@@ -312,11 +308,46 @@ header{
 
           @include responsive(tablet-screens) {
             top: min(123.4375vw , 600px ) ;
-      
           }
         }
       }
-      
+
+      &--scroll-noti{
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        left: 50%;
+        bottom: 5%;
+        transform: translateX(-50%);
+        z-index: 10000;
+
+        @include responsive(pc-screens) {
+          width: 35px;
+          height: 35px;
+        }
+        
+        img{
+          display: block;
+          width: 100%;
+          animation: scrollAni alternate infinite ease-in-out 700ms;
+          position: relative;
+        }
+
+
+        @keyframes  scrollAni{
+          100% {
+            transform: translateY(-20%);
+          }
+        }
+      }
+
+      &.planet{
+        .banner__obj-box--scroll-on{
+          display: none;
+        }
+      }
+
+
     }
   }//banner__img
 } //banner
@@ -325,9 +356,9 @@ header{
     position: relative;
     width: 100vw;
     height: 350px;
-    overflow: hidden;
     background: #5f3f8e;
     background: linear-gradient(180deg,  rgba(255,255,255,1) -52%,#5f3f8e 55%);
+    overflow: hidden;
     &__half{
       position: absolute;
       left: 50%;
@@ -346,22 +377,20 @@ header{
   position: relative;
   z-index: -2;
   padding-top: 100vh;
-  overflow: hidden;
   margin-bottom: 400px;
-  background-color: #171e40;
   background: linear-gradient(180deg,  #5f3f8e 0%,#171e40 55%);
+  background-color: #171e40;
   color: #fff;
-
-
+  overflow: hidden;
 
   h2{
     display: block;
     position: absolute;
     top: 50vh;
     left: 50%;
-    transform: translateX(-50%);
     font-size: min(13vw,230px);    
     font-family: "Luckiest Guy", cursive;
+    transform: translateX(-50%);
     text-shadow: 
     0 0.1em 20px rgba(174,41,246, 1), 
     0.05em -0.03em 0 rgba(174,41,246, 1),
@@ -374,7 +403,6 @@ header{
     -0.03em 0 0 rgba(174,41,246, 1);
 
     &::before{
-      content: "";
       position: absolute;
       top: -8%;
       right: -5%;
@@ -382,6 +410,7 @@ header{
       height: 125%;
       background: rgb(65,49,109);
       background: linear-gradient(0deg, #473373 20%, rgba(76,54,122,1) 67%);
+      content: "";
       transition: 1s all;
       @include responsive(tablet-screens) {
       background: linear-gradient(0deg, #3a2d65 3%, #463373 80%);
@@ -391,8 +420,8 @@ header{
 
 
   h4{
-    font-size: 22px;
     margin-bottom: 30px;
+    font-size: 22px;
   }
 
   p{
@@ -404,9 +433,9 @@ header{
     @include responsive(tablet-screens) {
       display: flex;
       flex-direction: row-reverse;
-      margin-bottom: 200px;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 200px;
     }
 
     &__img{
@@ -435,8 +464,8 @@ header{
         position: absolute;
         right: 20%;
         bottom: 100%;
-        z-index: 10;
         width: 35%;
+        z-index: 10;
         transition: bottom 600ms cubic-bezier(0.55, 0, 1, 0.45);
       }
 
@@ -542,16 +571,16 @@ header{
 
 
             &::before{
-              content: "";
               display: block;
               position: absolute;
               bottom: 5px;
-              z-index: -1;
               width: 0%;
               height: 5px;
+              z-index: -1;
+              background-color: #ae29f6;
+              content: "";
               transition: 2s;
               transition-delay: .7s;
-              background-color: #ae29f6;
             }
 
             // span{
@@ -636,11 +665,11 @@ header{
       }
 
       &--scuba{
-        z-index: 1000;
         width: 60%;
-        margin: 0 auto;
+        z-index: 1000;
         padding-top : 30%;
         padding-bottom: 15%;
+        margin: 0 auto;
         transform: translate(-10% 0%);
 
         @include responsive(tablet-screens) {
@@ -661,8 +690,8 @@ header{
       &--buble{
         position: absolute;
         left: 50%;
-        z-index: 1000;
         width: 7%;
+        z-index: 1000;
 
         @keyframes fade1 {
           20%{opacity: 1;}
@@ -697,8 +726,8 @@ header{
         position: absolute;
         bottom: -10%;
         left: 50%;
-        z-index: -1;
         width: 130%;
+        z-index: -1;
         transform: translateX(-50%);
         @include responsive(tablet-screens) {
           width: 100%;
@@ -767,37 +796,37 @@ header{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
     width: 100vw;
     height: 100vh;
+    z-index: 10;
     pointer-events: none;
 
     &__box{
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: absolute;
       top: 50%;
       left: 50%;
-      z-index: 101;
       height: 87.5vw;
+      z-index: 101;
       border: #ae29f6 1.5px solid;
+      color: #fff;
+      text-align: center;
       transform: translate(-50%, -50%);
       opacity: 0;
       transition: opacity 1s ease;
       transition-delay: 600ms;
-      text-align: center;
-      color: #fff;
-      flex-direction: column;
-      justify-content: center;
 
       @include responsive(tablet-screens) {
-        margin: 0 auto;
-        max-height: 450px;
         max-width: 450px;
+        max-height: 450px;
+        margin: 0 auto;
       }
 
       @include responsive(pc-screens) {
-        max-height: 490px;
         max-width: 490px;
+        max-height: 490px;
       }
 
       &--close{
@@ -806,10 +835,10 @@ header{
         left: 50%;
         width: 40px;
         height: 40px;
-        cursor: pointer;
-        font-size: min(10vw,50px);
-        transform: translate(-50%);
         color: #ae29f6;
+        font-size: min(10vw,50px);
+        cursor: pointer;
+        transform: translate(-50%);
 
         img{
           width: 100%;
@@ -832,19 +861,19 @@ header{
 
       &--title{
         position: relative;
-        font-size: min(6.25vw,38px);
-        font-weight: 500;
         margin-top: min(3.125vw,20px);
+        font-weight: 500;
+        font-size: min(6.25vw,38px);
 
         &::before{
-          content: "";
           display: block;
           position: absolute;
           bottom: max(-3.1250vw , -11px);
           left: 50%;
-          width: 0px;
+          width: 0;
           height: min(0.6250vw,4px);
           background-color: #fff;
+          content: "";
           transform: translateX(-50%);
           @include responsive(tablet-screens) {
             bottom: max(-3.1250vw,-19px);
@@ -852,13 +881,13 @@ header{
         }
 
         &::after{
-          content: "";
           display: block;
           position: absolute;
           bottom: max(-3.1250vw , -11px);
           left: 30%;
-          width: 0%;
+          width: 0;
           height: min(0.6450vw,5px);
+          content: "";
 
 
           @include responsive(tablet-screens) {
@@ -871,8 +900,8 @@ header{
 
       &--des{
         padding: 0 25px;
-        font-size: min(4vw,18px);
         margin-top: min(6.25vw,40px);
+        font-size: min(4vw,18px);
 
         @include responsive(tablet-screens) {
           padding: 0 20px;
@@ -936,9 +965,9 @@ header{
 
         &::after{
           width: var(--skill-ability);
+          background-color: var(--skill-color);
           transition: all 1s;
           transition-delay: 2100ms;
-          background-color: var(--skill-color);
         }
       }
     }
@@ -951,21 +980,21 @@ header{
 
     .skill__sticky{
       display: flex;
+      justify-content: center;
+      align-items: center;
       position: sticky;
       top: 0px;
       width: 100%;
       height: 100vh;
-      justify-content: center;
       overflow: hidden;
-      align-items: center;
       align-content: space-around;
 
       &::before{
-        content: "SKILL";
         z-index: -2;
         color: #fff;
         font-size: min(15vw,250px);
         font-family: "Luckiest Guy", cursive;
+        content: "SKILL";
         text-shadow: 
         0 0.1em 20px rgba(174,41,246, 1), 
         0.05em -0.03em 0 rgba(174,41,246, 1),
@@ -979,26 +1008,26 @@ header{
       }
 
       &::after{
-        content: "";
         display: block;
         position: absolute;
         top: 50%;
         right: 20%;
-        z-index: -1;
         width:70%;
         height: 20vw;
-        transform: translateY(-60%);
+        z-index: -1;
         background-color: #171e40;
+        content: "";
+        transform: translateY(-60%);
         transition: all 2s;
       }
 
       .cards{
         display: flex;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         width: 95vw; 
         height: fit-content;
-        justify-content: center;
-        align-items: center;
 
         @include responsive(tablet-screens) {
           justify-content: center;
@@ -1030,55 +1059,55 @@ header{
         &__card{
           position: relative;
           width: 18.7500vw;
-          height: 26.5250vw;
-          margin: 0 min(1.5625vw,8px);
           max-width: 110px;
+          height: 26.5250vw;
           max-height: 150px;
+          margin: 0 min(1.5625vw,8px);
+          border-radius: min(3.8vw,15px);
           background-color: #fff;
           text-align: center;
           box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.78);
           transform: perspective(4000px) rotateY(180deg) translateX(100vw);
           transform-style: preserve-3d;
-          border-radius: min(3.8vw,15px);
 
           @include responsive(tablet-screens) {
             width: 14.2857vw;
+            max-width: 150px;
+            max-width: 150px;
             height: 18.9286vw;
+            max-height: 200px;
+            max-height: 200px;
             margin: 0 10px;
-            max-width: 150px;
-            max-height: 200px;
-            max-width: 150px;
-            max-height: 200px;
           }
 
           &--front,
           &--back
           {
             display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
             width: 100%;
             height: 100%;
+            border-radius: min(3.8vw,15px);
             overflow: hidden;
-            align-items: center;
-            justify-content: center;
             backface-visibility: hidden;
             transform-style: preserve-3d;
-            border-radius: min(3.8vw,15px);
             img{
               display: inline-block;
-              z-index: 100;
               width: 50%;
+              z-index: 100;
             }
 
 
           }
           
           &--front{
-            z-index: 0;
-            cursor: pointer;
             flex-direction: column;
             align-items: center;
+            z-index: 0;
             background-color: #fff;
+            cursor: pointer;
 
             &:hover{
               background-color: #efefef;
@@ -1087,17 +1116,17 @@ header{
 
             .cards__img-box{
               display: flex;
+              justify-content: center;
+              align-items: center;
               width: 100%;
               height: 45%;
-              align-items: center;
-              justify-content: center;
             }
       
             p{
               margin-top: min(1.2500vw,5px);
-              font-size: min(3.1250vw,20px);
-              font-weight: 600;
               color: #171e40;
+              font-weight: 600;
+              font-size: min(3.1250vw,20px);
 
               @include responsive(pc-screens) {
                 font-size: min(3.4375vw,22px);
@@ -1107,19 +1136,19 @@ header{
           
           &--back{
             z-index: -1;
-            transform: rotateY(180deg);
             background-color: #fff;
+            transform: rotateY(180deg);
 
 
             &::before{
-              content: "";
               display: block;
               position: absolute;
               top: 50%;
               width: 120%;
               height: 55%;
-              transform: translateY(-50%);
               background-color: #ae29f6;
+              content: "";
+              transform: translateY(-50%);
             }
           }
         }   
@@ -1151,19 +1180,19 @@ header{
 
       .work-list{
         display: flex;
+        justify-content: center;
+        align-items: center;
         position: relative;
         width: 100vw;
         height: 100vh;
-        align-items: center;
-        justify-content: center;
         background: #171e40;
 
         &__bg{
           position: absolute;
           top: 0;
           left: 0;
-          z-index: 1;
           height: 100vh;
+          z-index: 1;
           overflow: hidden;
           object-fit: cover;
 
@@ -1177,24 +1206,24 @@ header{
           }
 
           &::before{
-            content: "";
             display: block;
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 10;
             width: 100%;
             height: 100%;
-            background: linear-gradient(270deg,#5f3f8e 0%, rgba(23,30,64,1) 100%);;
+            z-index: 10;
+            background: linear-gradient(270deg,#5f3f8e 0%, rgba(23,30,64,1) 100%);
+            content: "";;
             opacity: 0.5;
             }
         }  // bg
 
         .work-des{
           display: flex;
-          z-index: 100;
           flex-direction: column;
           align-items: center;
+          z-index: 100;
           transform: translateY(50px);
           opacity: 0;
           transition: all 400ms  cubic-bezier(0.61, 1, 0.88, 1);
@@ -1221,28 +1250,28 @@ header{
             -0.03em 0 0 rgba(174,41,246, 1);
 
             &::before{
-              content: "";
               position: absolute;
               top: -7%;
               right: -5%;
               width: 120%;
               height: 130%;
               background-color: #171e40;
+              content: "";
               transition: 1s all;
             }
           }
 
         
           &__rf-contain{
-              z-index: 100;
               width: 100%;
               height: fit-content; //이게 문제였음 
               height: 33.5714vw;
-              padding: 10px;
-              line-height: 100vh;
-              border: 1.5px solid #ae29f6;
               max-height: 400px;
               min-height: 330px;
+              z-index: 100;
+              padding: 10px;
+              border: 1.5px solid #ae29f6;
+              line-height: 100vh;
       
               @include responsive(tablet-screens) {
                 width: 45%;
@@ -1278,10 +1307,10 @@ header{
             text-align: center;
             @include responsive(tablet-screens) {
               display: flex;
+              flex-direction: column;
+              justify-content: center;
               width: 50%;
               text-align: left;
-              justify-content: center;
-              flex-direction: column;
             }
 
             & > :nth-child(1n + 2){
@@ -1295,8 +1324,8 @@ header{
             }
             
             h3{
-              margin: 20px 0;
               padding:  0 0 20px 0;
+              margin: 20px 0;
               font-size: clamp(20px , 3.4286vw , 38px);
               border-bottom: #ae29f6 1.5px solid;
               @include responsive(tablet-screens) {
@@ -1314,8 +1343,8 @@ header{
       
             small{
               position: relative;
-              font-size:clamp(14px , 1.5714vw , 22px);
               color: #c6c6c6;
+              font-size:clamp(14px , 1.5714vw , 22px);
             }
       
             strong{
@@ -1331,8 +1360,8 @@ header{
             &--skill{
               margin: 20px 0 50px;
               color: #c6c6c6;
-              word-spacing: 10px;
               font-size:clamp(14px , 1.5714vw , 22px);
+              word-spacing: 10px;
   
               @include responsive(tablet-screens) {
                 margin: 20px 0 30px;
@@ -1346,39 +1375,39 @@ header{
               button{
                 position: relative;
                 width: 7.1429vw;
-                height: 2.1429vw;
-                padding: 0;
-                min-width: 90px;
                 max-width: 125px;
-                min-height: 30px;
+                min-width: 90px;
+                height: 2.1429vw;
                 max-height: 35px;
+                min-height: 30px;
+                padding: 0;
                 border: 1.5px solid #ae29f6;
-                cursor: pointer;
-                font-size:clamp(13px , 1.3914vw , 20px);
                 background: transparent;
                 color: #fff;
+                font-size:clamp(13px , 1.3914vw , 20px);
+                cursor: pointer;
   
   
                 @include responsive(tablet-screens) {
                   width: 10.1429vw;
+                  max-width: 140px;
+                  max-width: 140px;
                   height: 4.1429vw;
-                  max-width: 140px;
                   max-height: 45px;
-                  border: 2px solid #ae29f6;
                   margin-right: 2px;
-                  max-width: 140px;
+                  border: 2px solid #ae29f6;
                 }
 
                 &::before{
-                  content: "";
                   display: block;
                   position: absolute;
                   top: 0;
                   left: 0;
-                  z-index: -1;
                   width: 0;
                   height: 100%;
+                  z-index: -1;
                   background-color: #ae29f6;
+                  content: "";
                   transition: 300ms linear;
                 }
 
@@ -1393,9 +1422,9 @@ header{
 
                 a{
                   display: flex;
-                  height: 100%;
-                  align-items: center;
                   justify-content: center;
+                  align-items: center;
+                  height: 100%;
                   color: #fff;
                 }
               }
@@ -1446,27 +1475,27 @@ header{
     left: 0;
     width: 100vw;
     height: 100vh;
-    visibility: hidden;
     background-color: rgba(0,0,0,0.7);
+    visibility: hidden;
 
     &__close{
       position: absolute;
       top: 10vh;
       // left: 50%;
       right: 10%;
-      z-index: 2000;
       // transform: translateX(-50%);
       width: 40px;
       height: 40px;
-      cursor: pointer;
+      z-index: 2000;
+      border: none;
+      background-color: transparent;
       color: #fff;
       font-size: 40px;
-      background-color: transparent;
+      cursor: pointer;
       mix-blend-mode:  difference;
       transition: 1s ease;
       opacity: 0;
       transition-delay: 1000ms;
-      border: none;
 
       img{
         width: 100%;
@@ -1478,9 +1507,9 @@ header{
       top: 0;
       left: 0;
       width: 100%;
+      max-width: 1024px;
       height: 100%;
       margin: 0 auto;
-      max-width: 1024px;
       overflow-y: scroll;
       overflow-x: hidden;
 
@@ -1490,8 +1519,8 @@ header{
       &::-webkit-scrollbar-thumb{
         height: 7%;
         min-height: 40px;
-        background-color: #ae29f6;
         border-radius: 18px;
+        background-color: #ae29f6;
       }
       &::-webkit-scrollbar-track{
         background: transparent;
@@ -1506,18 +1535,18 @@ header{
       &--content,
       &--rect{
         background-color: #efefef;
+        background-size: 100%;
         // background: var(--design-img) top no-repeat ;
         background-position: top;
         background-repeat: no-repeat;
-        background-size: 100%;
         transition-property: all;
         transition-timing-function: ease;
         transition-delay: 400ms;
       }
 
       &--rect{
-        z-index: 10;
         height: 25%;
+        z-index: 10;
         overflow: hidden;
         // border: 1px solid black;
       }
@@ -1546,9 +1575,9 @@ header{
       &--content{
         // position: relative;
         top: 0;
-        z-index: -1;
         width: 100%;
         height: max-content;
+        z-index: -1;
         background-position: left 0 top -75vh;
         transition-duration: 1500ms;
         transform: translateX(100%);
@@ -1556,8 +1585,8 @@ header{
 
         img{
           width: 100%;
-          transform: translateY(-75vh);
           margin-bottom: -25vh;
+          transform: translateY(-75vh);
         }
       }
 
@@ -1602,17 +1631,21 @@ header{
 //*********************** CONTECT ***********************
 .contect{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   padding: 80px 0;
   margin-top: 100px;
   background-color: #171e40;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
 
   h2{
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: min(14vw , 84px)  ;
     font-family: "Luckiest Guy", cursive;
+    text-align: center;
     text-shadow: 
     0 0.1em 20px rgba(174,41,246, 1), 
     0.05em -0.03em 0 rgba(174,41,246, 1),
@@ -1623,20 +1656,16 @@ header{
     -0.03em -0.03em 0 rgba(174,41,246, 1), 
     -0.03em 0.08em 0 rgba(174,41,246, 1),
     -0.03em 0 0 rgba(174,41,246, 1);
-    color: #fff;
-    font-size: min(14vw , 84px)  ;
-    text-align: center;
-    margin-bottom: 20px;
   }
 
   &__sns{
     display: grid;
-    margin: 0 10px;
+    justify-content: center;
     padding: 6.2500vw;
+    margin: 0 10px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     gap: min( 2.2500vw, 30px);
-    justify-content: center;
     overflow: hidden;
     transition: all 2s linear;
 
@@ -1651,11 +1680,11 @@ header{
     &--gmail
     {
       position: relative;
+      border-radius: min(4.6875vw , 30px);
       opacity: 0;
       transition: all 1s linear;
       transform: translateY(15%);
       overflow: hidden;
-      border-radius: min(4.6875vw , 30px);
 
       img{
         width: 100%;

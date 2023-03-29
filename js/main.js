@@ -342,6 +342,8 @@ class BannerRotateOnScroll {
         translate(-50% ,-50%) 
         rotate(0deg)
         `
+
+      this.obj.classList.remove('banner__obj-box--scroll-on')
     }
   }
 }
